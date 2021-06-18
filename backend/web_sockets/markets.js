@@ -6,7 +6,7 @@ const delay = async (ms) => {
 
 const stockPrice = async (socket, currPrice, delayMs, stockTicker, fluctuationRange, stockId) => {
   let price = currPrice;
-  while (true) {
+  while (socket.connected) {
     let up = Math.round(Math.random());
     if (up) {
       price += Math.random() * fluctuationRange;
@@ -18,7 +18,7 @@ const stockPrice = async (socket, currPrice, delayMs, stockTicker, fluctuationRa
     if (price < 0) {
       price = 0;
     }
-    await Stock.findOneAndUpdate({id: stockId}, { currentPrice: price })
+    await Stock.findOneAndUpdate({ id: stockId }, { currentPrice: price })
     socket.emit(stockTicker, price.toFixed(2));
     await delay(delayMs);
   }

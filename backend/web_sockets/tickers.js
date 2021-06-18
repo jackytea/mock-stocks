@@ -6,7 +6,7 @@ const tickers = async (socket) => {
         const allStocks = await Stock.find();
         for (let i = 0; i < allStocks.length; i++) {
             let fluctuationRange = Math.floor(Math.random() * 10);
-            let delayTime = Math.floor(Math.random() * (4000 - 2000) + 2000);
+            let delayTime = Math.floor(Math.random() * (5000 - 3000) + 3000);
             stockPrice(socket, allStocks[i].currentPrice, delayTime, allStocks[i].ticker, fluctuationRange, allStocks[i].id);
         }
     } catch (error) {
