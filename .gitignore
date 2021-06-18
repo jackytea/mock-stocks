@@ -1,0 +1,41 @@
+## DATA ##
+/data
+
+## FRONTEND ##
+# dependencies
+/frontend/node_modules
+/frontend/.pnp
+.pnp.js
+# testing
+/frontend/coverage
+# production
+/frontend/build
+# misc
+/frontend/.DS_Store
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+# environment
+/frontend/.env
+
+## BACKEND ##
+# dependencies
+/backend/node_modules
+# misc
+/backend/.DS_Store
+/backend/.env.local
+/backend/.env.development.local
+/backend/.env.test.local
+/backend/.env.production.local
+# environment
+/backend/.env
+
+## VSCODE ##
+# vscode
+/.vscode/
+# local history
+/.history

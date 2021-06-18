@@ -1,0 +1,23 @@
+{
+  "name": "mock-stocks-api",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Socket IO Backend for Stocks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http": "*",
+    "mongoose": "^5.12.13",
+    "path": "^0.12.7",
+    "socket.io": "^4.1.2",
+    "url": "^0.11.0"
+  }
+}
