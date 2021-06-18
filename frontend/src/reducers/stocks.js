@@ -1,6 +1,6 @@
 import { GET_ALL_STOCKS, GET_ONE_STOCK } from '../constants/actions';
 
-export default (stocks = [], action) => {
+export function stocks(stocks = [], action) {
   switch (action.type) {
     case GET_ALL_STOCKS:
       return action.payload;
