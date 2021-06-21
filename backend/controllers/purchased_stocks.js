@@ -10,7 +10,7 @@ export const getPurchasedStocks = async (req, res) => {
     const allPurchasedStocks = await PurchasedStock.find();
     res.status(200).json(allPurchasedStocks);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: "An error has occurred fetching your purchased stocks." });
   }
 }
 
@@ -20,7 +20,7 @@ export const getPurchasedStock = async (req, res) => {
     const onePurchasedStock = await PurchasedStock.findById(id);
     res.status(200).json(onePurchasedStock);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: "An error has occurred fetching your purchased stocks" });
   }
 }
 
@@ -38,7 +38,7 @@ export const addPurchasedStock = async (req, res) => {
     await newPurchasedStock.save();
     res.status(200).json(newPurchasedStock);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: "An error has occurred purchasing stock." });
   }
 }
 
@@ -54,7 +54,7 @@ export const updatePurchasedStock = async (req, res) => {
     await PurchasedStock.findByIdAndUpdate(id, { shares: purchased.shares + boughtOrSoldShares, initialInvestment: purchased.initialInvestment + boughtOrSoldShares * stock.currentPrice });
     res.status(200).json({ message: "Bought more shares!" });
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: "An error has occurred updated your purchased stock." });
   }
 }
 
@@ -67,7 +67,7 @@ export const removePurchasedStock = async (req, res) => {
     await PurchasedStock.findByIdAndRemove(id);
     res.status(200).json({ message: "Stock fully sold!" });
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: "An error has occurred selling your purchased stock." });
   }
 }
 
