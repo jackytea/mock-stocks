@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
 
-const CurrentPrice = (props) => {
+const CurrentPrices = (props) => {
   const { currentPrice, ticker, socket } = props;
   const [price, setPrice] = useState(currentPrice.toFixed(2));
 
   useEffect(() => {
+    let mounted = true;
     socket.on(ticker, data => {
-      setPrice(data);
+      if (mounted) {
+        setPrice(data);
+      }
     });
-  });
+    return () => {
+      mounted = false
+    }
+  }, [socket, ticker]);
 
   return (
     <div>
@@ -17,4 +23,4 @@ const CurrentPrice = (props) => {
   );
 }
 
-export default CurrentPrice;
+export default CurrentPrices;
