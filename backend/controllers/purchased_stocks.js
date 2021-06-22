@@ -1,70 +1,135 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import User from '../models/user.js';
 import Stock from '../models/stock.js';
 import PurchasedStock from '../models/purchased_stock.js';
 
 const router = express.Router();
 
+// GET
 export const getPurchasedStocks = async (req, res) => {
   try {
-    const allPurchasedStocks = await PurchasedStock.find();
+    const allPurchasedStocks = await PurchasedStock.find({ userId: req.userId });
     res.status(200).json(allPurchasedStocks);
   } catch (error) {
     res.status(404).json({ message: "An error has occurred fetching your purchased stocks." });
   }
 }
 
+//GET /:id
 export const getPurchasedStock = async (req, res) => {
-  const { id } = req.params;
   try {
-    const onePurchasedStock = await PurchasedStock.findById(id);
+    const { id } = req.params;
+    const onePurchasedStock = await PurchasedStock.findOne({ userId: req.userId, stock: id });
     res.status(200).json(onePurchasedStock);
   } catch (error) {
-    res.status(404).json({ message: "An error has occurred fetching your purchased stocks" });
+    res.status(404).json({ message: "An error has occurred fetching your purchased stock." });
   }
 }
 
+// POST
 export const addPurchasedStock = async (req, res) => {
   try {
-    const userId = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
-    const stock = await Stock.findOne({ id: 5 });
-    const shares = 15;
-    const initialInvestment = shares * stock.currentPrice;
-    const newPurchasedStock = new PurchasedStock({ userId, stock, shares, initialInvestment });
-    const alreadyPurchased = await PurchasedStock.find({ stock: stock }).countDocuments() > 0;
+    const { stockId, sharesBought } = req.body;
+
+    const stock = await Stock.findById(stockId);
+    const user = await User.findById(req.userId);
+    const alreadyPurchased = await PurchasedStock.find({ userId: req.userId, stock: stock }).countDocuments() > 0;
+
     if (alreadyPurchased) {
       return res.status(409).send(`Stock: ${stock.ticker} was already purchased!`);
     }
+
+    if (sharesBought < 0 || sharesBought > 100) {
+      return res.status(400).json({ message: "Invalid shares!" });
+    }
+
+    const initialInvestment = sharesBought * stock.currentPrice;
+    if (initialInvestment > user.coins) {
+      return res.status(400).json({ message: "Not enough funds!" });
+    }
+
+    const newPurchasedStock = new PurchasedStock({
+      userId: req.userId,
+      stock: stock,
+      shares: sharesBought,
+      initialInvestment: initialInvestment
+    });
+    const cost = user.coins - initialInvestment;
+
+    await User.findByIdAndUpdate(req.userId, { coins: cost });
     await newPurchasedStock.save();
+
     res.status(200).json(newPurchasedStock);
   } catch (error) {
     res.status(404).json({ message: "An error has occurred purchasing stock." });
   }
 }
 
+
+// PATCH
 export const updatePurchasedStock = async (req, res) => {
   try {
-    const { id } = req.params;
-    const boughtOrSoldShares = 3;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).send(`No stock with id: ${id}`);
+    const { stockId, sharesBought } = req.body;
+    const bought = parseInt(sharesBought);
+
+    if (!mongoose.Types.ObjectId.isValid(stockId)) {
+      return res.status(404).send(`No stock with id: ${stockId}`);
     }
-    const purchased = await PurchasedStock.findById(id);
-    const stock = await Stock.findById(purchased.stock);
-    await PurchasedStock.findByIdAndUpdate(id, { shares: purchased.shares + boughtOrSoldShares, initialInvestment: purchased.initialInvestment + boughtOrSoldShares * stock.currentPrice });
+
+    if (bought > 100) {
+      return res.status(400).json({ message: "Invalid shares!" });
+    }
+
+    const stock = await Stock.findById(stockId);
+    const user = await User.findById(req.userId);
+    const purchased = await PurchasedStock.findOne({ userId: req.userId, stock: stock });
+
+    if ((purchased.shares + bought) < 0) {
+      const profit = user.coins + (stock.currentPrice * purchased.shares);
+      await User.findByIdAndUpdate(req.userId, { coins: profit });
+      await PurchasedStock.findOneAndDelete({ userId: req.userId, stock: stock });
+      return res.status(200).json({ message: "Fully sold stock!" });
+    }
+
+    if (bought < 0) {
+      const profit = user.coins + (stock.currentPrice * Math.abs(bought));
+      await User.findByIdAndUpdate(req.userId, { coins: profit });
+      await PurchasedStock.findOneAndUpdate({ userId: req.userId, stock: stock }, { shares: purchased.shares - Math.abs(bought), initialInvestment: purchased.initialInvestment - (Math.abs(bought) * stock.currentPrice) });
+      return res.status(200).json({ message: "Sold some shares!" });
+    }
+
+    if ((bought * stock.currentPrice) > user.coins) {
+      return res.status(400).json({ message: "Not enough funds!" });
+    }
+
+    const cost = user.coins - (bought * stock.currentPrice);
+    await User.findByIdAndUpdate(req.userId, { coins: cost });
+    await PurchasedStock.findOneAndUpdate({ userId: req.userId, stock: stock }, { shares: purchased.shares + bought, initialInvestment: purchased.initialInvestment + (bought * stock.currentPrice) });
+
     res.status(200).json({ message: "Bought more shares!" });
   } catch (error) {
     res.status(404).json({ message: "An error has occurred updated your purchased stock." });
   }
 }
 
+// DELETE
 export const removePurchasedStock = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).send(`No stock with id: ${id}`);
+    const { stockId } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(stockId)) {
+      return res.status(404).send(`No stock with id: ${stockId}`);
     }
-    await PurchasedStock.findByIdAndRemove(id);
+
+    const stock = await Stock.findById(stockId);
+    const user = await User.findById(req.userId);
+    const sold = await PurchasedStock.findOne({ userId: req.userId, stock: stock });
+    const profit = user.coins + (stock.currentPrice * sold.shares);
+
+    await User.findByIdAndUpdate(req.userId, { coins: profit });
+    await PurchasedStock.findOneAndDelete({ userId: req.userId, stock: stockId });
+
     res.status(200).json({ message: "Stock fully sold!" });
   } catch (error) {
     res.status(404).json({ message: "An error has occurred selling your purchased stock." });

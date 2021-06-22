@@ -10,13 +10,13 @@ export const registerUser = async (req, res) => {
   try {
     const { email, password, firstName, lastName } = req.body;
     const existingUser = await User.findOne({ email });
-
     if (existingUser) {
       return res.status(400).json({ message: "User already exists." });
     }
 
-    const passwordHashed = await bcrypt.hash(password, 12);
-    const createdUser = await User.create({ email: email, password: passwordHashed, name: `${firstName} ${lastName}` });
+    const salt = await bcrypt.genSalt(12);
+    const passwordHashed = await bcrypt.hash(password, salt);
+    const createdUser = await User.create({ email: email, password: passwordHashed, name: `${firstName} ${lastName}`, coins: 100000 });
     const token = jwt.sign({ email: createdUser.email, id: createdUser._id }, jwtSecret, { expiresIn: "1h" });
 
     res.status(201).json({ result: createdUser, token: token });
