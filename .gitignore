@@ -21,6 +21,8 @@
 /frontend/yarn-error.log*
 # environment
 /frontend/.env
+# production
+/frontend/build
 
 ## BACKEND ##
 # dependencies
