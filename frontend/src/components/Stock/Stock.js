@@ -7,7 +7,7 @@ import CurrentPrice from "./CurrentPrice/CurrentPrice"
 const Stock = (props) => {
   const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
   const { id } = props;
-  const stock = useSelector((state) => state.stocks);
+  const stock = useSelector((state) => state.stocksReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -5,6 +5,9 @@ import Navigation from './components/Navigation/Navigation';
 import Home from "./components/Home/Home";
 import Stock from "./components/Stock/Stock";
 import NotFound from "./components/NotFound/NotFound";
+import Auth from "./components/Auth/Auth";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import PurchasedStocks from "./components/PurchasedStocks/PurchasedStocks";
 
 const App = () => {
   return (
@@ -13,7 +16,11 @@ const App = () => {
       <Switch>
         <Route exact path='/' render={() => (<Home />)} />
         <Route exact path='/markets' render={() => (<Markets />)} />
+        <Route exact path='/auth' render={() => (<Auth />)} />
         <Route exact path='/stock/:id' render={(props) => (<Stock id={props.match.params.id} />)} />
+        <ProtectedRoute path='/purchased'>
+          <PurchasedStocks/>
+        </ProtectedRoute>
         <Route render={() => (<NotFound />)} />
       </Switch>
     </div>
