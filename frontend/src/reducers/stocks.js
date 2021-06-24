@@ -1,6 +1,6 @@
 import { GET_ALL_STOCKS, GET_ONE_STOCK } from '../constants/actions';
 
-export function stocks(stocks = [], action) {
+const stocksReducer = (stocks = [], action) => {
   switch (action.type) {
     case GET_ALL_STOCKS:
       return action.payload;
@@ -10,3 +10,5 @@ export function stocks(stocks = [], action) {
       return stocks;
   }
 };
+
+export default stocksReducer;

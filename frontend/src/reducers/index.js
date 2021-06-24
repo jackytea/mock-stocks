@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
-import { stocks } from './stocks';
+import stocksReducer from './stocks';
+import authReducer from './auth';
+import errorsReducer from './error';
 
-export const reducers = combineReducers({ stocks });
+export const reducers = combineReducers({ stocksReducer, authReducer, errorsReducer });
