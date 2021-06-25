@@ -70,18 +70,19 @@ export const addPurchasedStock = async (req, res) => {
 // PATCH
 export const updatePurchasedStock = async (req, res) => {
   try {
-    const { stockId, sharesBought } = req.body;
+    const { id } = req.params;
+    const { sharesBought } = req.body;
     const bought = parseInt(sharesBought);
 
-    if (!mongoose.Types.ObjectId.isValid(stockId)) {
-      return res.status(404).send(`No stock with id: ${stockId}`);
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send(`No stock with id: ${id}`);
     }
 
     if (bought > 100) {
       return res.status(400).json({ message: "Invalid shares!" });
     }
 
-    const stock = await Stock.findById(stockId);
+    const stock = await Stock.findById(id);
     const user = await User.findById(req.userId);
     const purchased = await PurchasedStock.findOne({ userId: req.userId, stock: stock });
 
@@ -116,19 +117,19 @@ export const updatePurchasedStock = async (req, res) => {
 // DELETE
 export const removePurchasedStock = async (req, res) => {
   try {
-    const { stockId } = req.body;
+    const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(stockId)) {
-      return res.status(404).send(`No stock with id: ${stockId}`);
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send(`No stock with id: ${id}`);
     }
 
-    const stock = await Stock.findById(stockId);
+    const stock = await Stock.findById(id);
     const user = await User.findById(req.userId);
     const sold = await PurchasedStock.findOne({ userId: req.userId, stock: stock });
     const profit = user.coins + (stock.currentPrice * sold.shares);
 
     await User.findByIdAndUpdate(req.userId, { coins: profit });
-    await PurchasedStock.findOneAndDelete({ userId: req.userId, stock: stockId });
+    await PurchasedStock.findOneAndDelete({ userId: req.userId, stock: stock });
 
     res.status(200).json({ message: "Stock fully sold!" });
   } catch (error) {

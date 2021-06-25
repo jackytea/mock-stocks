@@ -14,7 +14,7 @@ const router = express.Router();
 router.get('/', auth, getPurchasedStocks);
 router.get('/:id', auth, getPurchasedStock);
 router.post('/', auth, addPurchasedStock);
-router.patch('/', auth, updatePurchasedStock);
-router.delete('/', auth, removePurchasedStock);
+router.patch('/:id', auth, updatePurchasedStock);
+router.delete('/:id', auth, removePurchasedStock);
 
 export default router;
