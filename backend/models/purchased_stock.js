@@ -2,12 +2,19 @@ import mongoose from 'mongoose';
 import Stock from './stock.js';
 
 const purchasedStockSchema = mongoose.Schema({
-  userId: String,
+  userId: {
+    type: String,
+    unique: true
+  },
   stock: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: Stock
+    ref: Stock,
+    unique: true
   },
-  shares: Number,
+  shares: {
+    type: String,
+    min: 0
+  },
   initialInvestment: Number
 });
 

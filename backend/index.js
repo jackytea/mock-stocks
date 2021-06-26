@@ -49,7 +49,7 @@ io.on('connection', (socket) => {
 const CONNECTION_URL = process.env.MONGO_CONNECTION_STRING;
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => server.listen(PORT, () => console.log(`Node.JS Server Running on Port: ${PORT}`)))
   .catch((error) => console.log(`An error has occurred: ${error}`));
 
