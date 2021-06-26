@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import socketIOClient from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux';
 import { getStock } from '../../actions/stocks';
-import CurrentPrice from "./CurrentPrice/CurrentPrice"
+import CurrentPrice from "../CurrentPrice/CurrentPrice"
 
 const Stock = (props) => {
   const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });

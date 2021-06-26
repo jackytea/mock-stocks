@@ -3,20 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { loginUser, registerUser } from '../../actions/auth';
 import "./Auth.css";
-import { AUTH, ERROR_OCCURRED } from '../../constants/actions';
+import { AUTH_ERROR_OCCURRED } from '../../constants/actions';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
-  const errors = useSelector((state) => state.errorsReducer);
+  const errors = useSelector((state) => state.authErrorsReducer);
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const { state } = useLocation();
-  
+
   useEffect(() => {
-    dispatch({ type: ERROR_OCCURRED, payload: "" });
+    dispatch({ type: AUTH_ERROR_OCCURRED, payload: "" });
+    return () => {
+      dispatch({ type: AUTH_ERROR_OCCURRED, payload: "" });
+    }
   }, [dispatch]);
 
   const switchMode = () => {

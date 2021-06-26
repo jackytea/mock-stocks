@@ -1,27 +1,30 @@
-import { GET_ALL_STOCKS, GET_ONE_STOCK } from '../constants/actions';
+import { fetchStocks, fetchStock } from '../api/index.js';
+import { GET_ALL_STOCKS, GET_ONE_STOCK, MARKET_ERROR_OCCURRED } from '../constants/actions';
 
-import * as api from '../api/index.js';
-
+// GET /stocks
 export const getStocks = () => async (dispatch) => {
   try {
-    const { data } = await api.fetchStocks();
-    if (!data) {
-      window.location.href = "/404";
-    }
+    const { data } = await fetchStocks();
     dispatch({ type: GET_ALL_STOCKS, payload: data });
   } catch (error) {
-    console.log(error.message);
+    if (error.response) {
+      dispatch({ type: MARKET_ERROR_OCCURRED, payload: error.response.data.message });
+    } else {
+      dispatch({ type: MARKET_ERROR_OCCURRED, payload: "Markets are down!" });
+    }
   }
 };
 
+// GET /stocks/:id
 export const getStock = (id) => async (dispatch) => {
   try {
-    const { data } = await api.fetchStock(id);
-    if (!data) {
-      window.location.href = "/404";
-    }
+    const { data } = await fetchStock(id);
     dispatch({ type: GET_ONE_STOCK, payload: data });
   } catch (error) {
-    console.log(error.message);
+    if (error.response) {
+      dispatch({ type: MARKET_ERROR_OCCURRED, payload: error.response.data.message });
+    } else {
+      dispatch({ type: MARKET_ERROR_OCCURRED, payload: "Markets are down!" });
+    }
   }
 };
