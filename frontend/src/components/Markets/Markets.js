@@ -30,7 +30,7 @@ const Markets = () => {
       loading</div> : (
       <div>
         {stocks.map((stock) => (
-          <Link key={stock._id} to={`/stock/${stock.id}`}>
+          <Link key={stock._id} to={`/stock/${stock._id}`}>
             <div style={{ marginTop: "20px", backgroundColor: "lightgray" }}>
               Ticker: {stock.name}
               <img src={stock.icon} height="20" width="40" alt={stock.name}></img>
