@@ -52,6 +52,7 @@ export const addPurchasedStock = async (req, res) => {
     const newPurchasedStock = new PurchasedStock({
       userId: req.userId,
       stock: stock,
+      tickerBought: stock.ticker,
       shares: sharesBought,
       initialInvestment: initialInvestment
     });
