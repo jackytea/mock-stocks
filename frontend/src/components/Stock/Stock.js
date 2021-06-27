@@ -14,13 +14,13 @@ const Stock = (props) => {
     dispatch(getStock(id));
   }, [id, dispatch]);
 
-
   return (
-    <div>Stock {id}
-      <br/>
-      Ticker {stock.ticker}
-      <CurrentPrice currentPrice={stock.currentPrice} ticker={stock.ticker} socket={socket}/>
-    </div>
+    !stock._id ? <div>No stock</div> :
+      <div>Stock {id}
+        <br />
+        Ticker {stock.ticker}
+        <CurrentPrice currentPrice={stock.currentPrice} ticker={stock.ticker} socket={socket} />
+      </div>
   );
 }
 

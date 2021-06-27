@@ -17,9 +17,10 @@ const PurchasedStock = () => {
 
 
 	return (
-		<div>Purchased something {purchase.tickerBought}
-			<InvestmentPrice shares={purchase.shares} ticker={purchase.tickerBought} socket={socket} />
-		</div>
+		!purchase ? <div>No purchased stock here.</div> :
+			<div>Purchased something {purchase.tickerBought}
+				<InvestmentPrice shares={purchase.shares} ticker={purchase.tickerBought} socket={socket} />
+			</div>
 	);
 }
 
