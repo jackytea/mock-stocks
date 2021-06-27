@@ -8,6 +8,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Auth from "./components/Auth/Auth";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import PurchasedStocks from "./components/PurchasedStocks/PurchasedStocks";
+import PurchasedStock from "./components/PurchasedStock/PurchasedStock";
 
 const App = () => {
   return (
@@ -18,9 +19,8 @@ const App = () => {
         <Route exact path='/markets' render={() => (<Markets />)} />
         <Route exact path='/auth' render={() => (<Auth />)} />
         <Route exact path='/stock/:id' render={(props) => (<Stock id={props.match.params.id} />)} />
-        <ProtectedRoute path='/purchased'>
-          <PurchasedStocks/>
-        </ProtectedRoute>
+        <ProtectedRoute exact path='/purchased' comp={PurchasedStocks} />
+        <ProtectedRoute exact path='/purchased/:id' comp={PurchasedStock} />
         <Route render={() => (<NotFound />)} />
       </Switch>
     </div>
