@@ -9,6 +9,7 @@ import Auth from "./components/Auth/Auth";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import PurchasedStocks from "./components/PurchasedStocks/PurchasedStocks";
 import PurchasedStock from "./components/PurchasedStock/PurchasedStock";
+import TransactionForm from "./components/TransactionForm/TransactionForm";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route exact path='/stock/:id' render={(props) => (<Stock id={props.match.params.id} />)} />
         <ProtectedRoute exact path='/purchased' comp={PurchasedStocks} />
         <ProtectedRoute exact path='/purchased/:id' comp={PurchasedStock} />
+        <ProtectedRoute exact path='/transaction/:id' comp={TransactionForm} />
         <Route render={() => (<NotFound />)} />
       </Switch>
     </div>

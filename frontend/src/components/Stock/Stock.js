@@ -15,7 +15,7 @@ const Stock = (props) => {
   }, [id, dispatch]);
 
   return (
-    !stock._id ? <div>No stock</div> :
+    !stock?._id ? <div>No stock</div> :
       <div>Stock {id}
         <br />
         Ticker {stock.ticker}

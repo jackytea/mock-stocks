@@ -31,7 +31,7 @@ const Markets = () => {
   }, [dispatch]);
 
   return (
-    !stocks.length ? <div>
+    !stocks?.length ? <div>
       <div style={{ color: "red" }}>{errors}</div>
       loading</div> : (
       <div>
@@ -42,7 +42,7 @@ const Markets = () => {
               <img src={stock.icon} height="20" width="40" alt={stock.name}></img>
               Initial price: {stock.initialPrice}
               <CurrentPrice currentPrice={stock.currentPrice} ticker={stock.ticker} socket={socket} />
-              {purchases.length && purchases.find(p => p.stock === stock._id) ? <div style={{ color: "red" }}>Bought</div> : <div></div>}
+              {purchases?.length && purchases.find(p => p.stock === stock._id) ? <div style={{ color: "red" }}>Bought</div> : <div></div>}
             </div>
           </Link>
         ))}

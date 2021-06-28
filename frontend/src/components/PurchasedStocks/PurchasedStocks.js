@@ -15,7 +15,7 @@ const PurchasedStocks = () => {
   }, [dispatch]);
 
   return (
-    !purchases.length ? <div>loading purchases</div> : (
+    !purchases?.length ? <div>loading purchases</div> : (
       <div>
         {purchases.map((p) => (
           <Link key={p._id} to={`/purchased/${p.stock}`}>
