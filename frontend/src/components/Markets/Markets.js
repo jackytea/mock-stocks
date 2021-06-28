@@ -5,6 +5,7 @@ import socketIOClient from "socket.io-client";
 import { getStocks } from '../../actions/stocks';
 import { getPurchases } from '../../actions/purchased';
 import CurrentPrice from "../CurrentPrice/CurrentPrice";
+import PriceChart from "../PriceChart/PriceChart";
 import { MARKET_ERROR_OCCURRED } from '../../constants/actions';
 
 const Markets = () => {
@@ -42,6 +43,7 @@ const Markets = () => {
               <img src={stock.icon} height="20" width="40" alt={stock.name}></img>
               Initial price: {stock.initialPrice}
               <CurrentPrice currentPrice={stock.currentPrice} ticker={stock.ticker} socket={socket} />
+              <PriceChart id={stock.ticker} legendDisplay={false} xDisplay={false} yDisplay={false} socket={socket} ticker={stock.ticker} currPrice={stock.currentPrice} styleSet={{ width: "150px",  height: "80px" }}/>
               {purchases?.length && purchases.find(p => p.stock === stock._id) ? <div style={{ color: "red" }}>Bought</div> : <div></div>}
             </div>
           </Link>
