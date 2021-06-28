@@ -47,3 +47,12 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: "An error occurred while registering the user." });
   }
 };
+
+export const getUserInfo = async (req, res) => {
+  try {
+    const userData = await User.findById(req.userId);
+    res.status(200).json(userData);
+  } catch (error) {
+    res.status(404).json({ message: "An error has occurred fetching the user requested." });
+  }
+};
