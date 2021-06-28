@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux';
 import { getStock } from '../../actions/stocks';
@@ -20,6 +21,7 @@ const Stock = (props) => {
         <br />
         Ticker {stock.ticker}
         <CurrentPrice currentPrice={stock.currentPrice} ticker={stock.ticker} socket={socket} />
+        <Link to={`/transaction/${stock._id}`}><button style={{ background: "green" }}>Buy now</button></Link>
       </div>
   );
 }

@@ -18,7 +18,7 @@ const purchasedStockSchema = mongoose.Schema({
     unique: true
   },
   shares: {
-    type: String,
+    type: Number,
     required: true,
     min: 0
   },

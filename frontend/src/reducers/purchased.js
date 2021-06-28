@@ -7,11 +7,11 @@ const purchasedReducer = (purchased = [], action) => {
     case GET_ONE_PURCHASED:
       return action.payload;
     case ADD_PURCHASED:
-      return [...purchased, action.payload];
+      return action.payload;
     case UPDATE_PURCHASED:
-      return purchased.map((p) => (p._id === action.payload._id ? action.payload : p));
+      return action.payload;
     case REMOVE_PURCHASED:
-      return purchased.filter((p) => p._id !== action.payload);
+      return action.payload;
     default:
       return purchased;
   }
