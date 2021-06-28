@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
+import ToggleTheme from '../ToggleTheme/ToggleTheme';
 import { LOGOUT } from '../../constants/actions';
 
 const Navigation = () => {
@@ -36,6 +37,9 @@ const Navigation = () => {
 			</li>
 			<li>
 				<Link to='/markets'>Markets</Link>
+			</li>
+			<li>
+				<ToggleTheme/>
 			</li>
 			<li>
 				{user?.result ? (
