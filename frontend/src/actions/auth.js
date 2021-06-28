@@ -1,5 +1,5 @@
-import { login, register } from '../api/index.js';
-import { AUTH, AUTH_ERROR_OCCURRED } from '../constants/actions';
+import { login, register, userInfo } from '../api/index.js';
+import { AUTH, AUTH_ERROR_OCCURRED, USER_INFO } from '../constants/actions';
 
 // POST /user/login
 export const loginUser = (formInput, router, state) => async (dispatch) => {
@@ -28,5 +28,15 @@ export const registerUser = (formInput, router, state) => async (dispatch) => {
     } else {
       dispatch({ type: AUTH_ERROR_OCCURRED, payload: "Auth server is down!" });
     }
+  }
+};
+
+// GET /user/userinfo
+export const getUserInfo = () => async (dispatch) => {
+  try {
+    const { data } = await userInfo();
+    dispatch({ type: USER_INFO, data });
+  } catch (error) {
+    console.log(error);
   }
 };

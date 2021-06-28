@@ -9,9 +9,10 @@ api.interceptors.request.use((req) => {
   return req;
 });
 
-// authentication
+// authentication and user
 export const register = (formInput) => api.post('/user/register', formInput);
 export const login = (formInput) => api.post('/user/login', formInput);
+export const userInfo = () => api.get('/user/userinfo');
 
 // available market stocks
 export const fetchStocks = () => api.get('/stocks');

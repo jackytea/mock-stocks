@@ -12,6 +12,7 @@ export const REMOVE_PURCHASED = 'REMOVE_PURCHASED';
 //authentication actions
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
+export const USER_INFO = 'USER_INFO';
 
 //error actions
 export const AUTH_ERROR_OCCURRED = 'AUTH_ERROR_OCCURRED';

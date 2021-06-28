@@ -13,8 +13,8 @@ const Navigation = () => {
 	const logout = useCallback(
 		() => {
 			dispatch({ type: LOGOUT });
-			history.push('/auth');
 			setUser(null);
+			history.push('/auth');
 		}, [dispatch, history],
 	);
 
@@ -27,7 +27,7 @@ const Navigation = () => {
 			}
 		}
 		setUser(JSON.parse(localStorage.getItem('profile')));
-	}, [user?.token, location, logout]);
+	}, [user?.token, location, logout, dispatch]);
 
 	return (
 		<ul className="nav navbar-nav">

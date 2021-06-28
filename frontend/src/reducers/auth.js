@@ -1,4 +1,4 @@
-import { AUTH, LOGOUT } from '../constants/actions';
+import { AUTH, LOGOUT, USER_INFO } from '../constants/actions';
 
 const authReducer = (state = { authData: null }, action) => {
   switch (action.type) {
@@ -8,6 +8,11 @@ const authReducer = (state = { authData: null }, action) => {
     case LOGOUT:
       localStorage.clear();
       return { ...state, authData: null, errors: null };
+    case USER_INFO:
+      const userObject = JSON.parse(localStorage.getItem("profile"));
+      userObject.result.coins = action?.data.coins;
+      localStorage.setItem('profile', JSON.stringify(userObject));
+      return { ...state, authData: action.data, errors: null };
     default:
       return state;
   }
