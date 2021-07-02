@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Markets from "./components/Markets/Markets";
 import Navigation from './components/Navigation/Navigation';
 import Home from "./components/Home/Home";
+import Footer from "./components/Footer/Footer";
 import Stock from "./components/Stock/Stock";
 import NotFound from "./components/NotFound/NotFound";
 import Auth from "./components/Auth/Auth";
@@ -13,7 +14,7 @@ import TransactionForm from "./components/TransactionForm/TransactionForm";
 
 const App = () => {
   return (
-    <div>
+    <div className="font-inter">
       <Navigation />
       <Switch>
         <Route exact path='/' render={() => (<Home />)} />
@@ -25,6 +26,7 @@ const App = () => {
         <ProtectedRoute exact path='/transaction/:id' comp={TransactionForm} />
         <Route render={() => (<NotFound />)} />
       </Switch>
+      <Footer/>
     </div>
   );
 }

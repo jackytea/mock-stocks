@@ -5,7 +5,7 @@ import { loginUser, registerUser } from '../../actions/auth';
 import "./Auth.css";
 import { AUTH_ERROR_OCCURRED } from '../../constants/actions';
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const initialState = { firstName: '', lastName: '', email: '', password: '' };
 
 const Auth = () => {
   const errors = useSelector((state) => state.authErrorsReducer);
@@ -22,13 +22,15 @@ const Auth = () => {
     }
   }, [dispatch]);
 
-  const switchMode = () => {
+  const switchMode = (e) => {
+    dispatch({ type: AUTH_ERROR_OCCURRED, payload: "" });
     setForm(initialState);
     setIsSignup((prevIsSignup) => !prevIsSignup);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch({ type: AUTH_ERROR_OCCURRED, payload: "" });
     if (isSignup) {
       dispatch(registerUser(form, history, state));
     } else {
@@ -41,32 +43,87 @@ const Auth = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {isSignup && (
-          <>
-            <label>First Name
-              <input name="firstName" onChange={handleChange} required autoFocus />
-            </label>
-            <label>Last Name
-              <input name="lastName" onChange={handleChange} required />
-            </label>
-          </>
-        )}
-        <label>Email:
-          <input name="email" onChange={handleChange} type="email" />
-        </label>
-        <label>Password:
-          <input name="password" onChange={handleChange} type="password" />
-        </label>
-        <button type="submit">
-          {isSignup ? 'Sign Up' : 'Sign In'}
-        </button>
-        <button onClick={switchMode}>
-          {isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up"}
-        </button>
-      </form>
-      <div style={{ color: "red" }}>{errors}</div>
+    <div className="bg-white dark:bg-gray-800 h-screen my-auto flex items-center">
+      <div className="w-full max-w-sm mx-auto overflow-hidden bg-gray-100 rounded-lg shadow-md dark:bg-gray-800">
+        <div className="px-6 py-4">
+          <h2 className="text-3xl font-bold text-center text-gray-700 dark:text-white">Mock Stocks</h2>
+
+          <h3 className="mt-1 text-xl font-medium text-center text-gray-600 dark:text-gray-200">Welcome Back</h3>
+
+          <p className="mt-1 text-center text-gray-500 dark:text-gray-400">{isSignup ? "Create an account." : "Login to your account."}</p>
+
+          <form onSubmit={handleSubmit}>
+            {isSignup &&
+              <>
+                <div className="w-full mt-4">
+                  <input className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" type="text" placeholder="First name" aria-label="First ame" name="firstName" onChange={handleChange} />
+                </div>
+
+                <div className="w-full mt-4">
+                  <input className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" type="text" placeholder="Last name" aria-label="Last name" name="lastName" onChange={handleChange} />
+                </div>
+              </>
+            }
+
+            <div className="w-full mt-4">
+              <input className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" type="email" placeholder="Email Address" aria-label="Email Address" name="email" onChange={handleChange} />
+            </div>
+
+            <div className="w-full mt-4">
+              <input className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" type="password" placeholder="Password" aria-label="Password" name="password" onChange={handleChange} />
+            </div>
+
+            {errors &&
+              <div className="mt-4 flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div className="flex items-center justify-center w-12 bg-red-500 dark:bg-red-900">
+                  <svg className="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z" />
+                  </svg>
+                </div>
+
+                <div className="px-4 py-2 -mx-3">
+                  <div className="mx-3">
+                    <span className="font-semibold text-red-500 dark:text-red-900">Error: <span className="text-sm text-red-600 dark:text-red-200">{errors}</span></span>
+                  </div>
+                </div>
+              </div>
+            }
+
+            <div className="flex items-center justify-center mt-4">
+              <button className="w-full px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none" type="submit" onClick={handleSubmit}>
+                {isSignup ? "Create Account" : "Login"}
+              </button>
+            </div>
+          </form>
+
+          <div class="flex items-center justify-between mt-4">
+            <span class="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
+
+            <span class="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login with Social Media</span>
+
+            <span class="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
+          </div>
+
+          <div class="flex items-center mt-6 -mx-2">
+            <button type="button"
+              class="disabled:opacity-10 flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none" disabled>
+              <svg class="w-4 h-4 mx-2 fill-current" viewBox="0 0 24 24">
+                <path
+                  d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z">
+                </path>
+              </svg>
+
+              <span class="hidden mx-2 sm:inline">Sign in with Google</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center py-4 text-center bg-gray-300 dark:bg-gray-700">
+          <span className="text-sm text-gray-600 dark:text-gray-200">Don't have an account? </span>
+
+          <button onClick={switchMode} className="mx-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-500">Register</button>
+        </div>
+      </div>
     </div>
   );
 }

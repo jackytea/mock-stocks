@@ -10,12 +10,10 @@ const purchasedStockSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: Stock,
     required: true,
-    unique: true
   },
   tickerBought: {
     type: String,
     required: true,
-    unique: true
   },
   shares: {
     type: Number,
