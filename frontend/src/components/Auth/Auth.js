@@ -24,7 +24,10 @@ const Auth = () => {
 
   const switchMode = (e) => {
     dispatch({ type: AUTH_ERROR_OCCURRED, payload: "" });
-    setForm(initialState);
+    const inputs = document.forms["auth_form"].getElementsByTagName("input");
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].value = "";
+    }
     setIsSignup((prevIsSignup) => !prevIsSignup);
   };
 
@@ -44,7 +47,7 @@ const Auth = () => {
 
   return (
     <div className="bg-white dark:bg-gray-800 h-screen my-auto flex items-center">
-      <div className="w-full max-w-sm mx-auto overflow-hidden bg-gray-100 rounded-lg shadow-md dark:bg-gray-800">
+      <div className="w-full max-w-sm mx-auto overflow-hidden bg-gray-100 rounded-lg shadow-md dark:bg-gray-700">
         <div className="px-6 py-4">
           <h2 className="text-3xl font-bold text-center text-gray-700 dark:text-white">Mock Stocks</h2>
 
@@ -52,7 +55,7 @@ const Auth = () => {
 
           <p className="mt-1 text-center text-gray-500 dark:text-gray-400">{isSignup ? "Create an account." : "Login to your account."}</p>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} name="auth_form">
             {isSignup &&
               <>
                 <div className="w-full mt-4">
@@ -90,35 +93,35 @@ const Auth = () => {
             }
 
             <div className="flex items-center justify-center mt-4">
-              <button className="w-full px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none" type="submit" onClick={handleSubmit}>
+              <button className="w-full px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 dark:bg-gray-500 rounded hover:bg-gray-600 focus:outline-none" type="submit" onClick={handleSubmit}>
                 {isSignup ? "Create Account" : "Login"}
               </button>
             </div>
           </form>
 
-          <div class="flex items-center justify-between mt-4">
-            <span class="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
+          <div className="flex items-center justify-between mt-4">
+            <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
 
-            <span class="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login with Social Media</span>
+            <span className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login with Social Media</span>
 
-            <span class="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
+            <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
           </div>
 
-          <div class="flex items-center mt-6 -mx-2">
+          <div className="flex items-center mt-6 -mx-2">
             <button type="button"
-              class="disabled:opacity-10 flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none" disabled>
-              <svg class="w-4 h-4 mx-2 fill-current" viewBox="0 0 24 24">
+              className="disabled:opacity-10 flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none" disabled>
+              <svg className="w-4 h-4 mx-2 fill-current" viewBox="0 0 24 24">
                 <path
                   d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z">
                 </path>
               </svg>
 
-              <span class="hidden mx-2 sm:inline">Sign in with Google</span>
+              <span className="hidden mx-2 sm:inline">Sign in with Google</span>
             </button>
           </div>
         </div>
 
-        <div className="flex items-center justify-center py-4 text-center bg-gray-300 dark:bg-gray-700">
+        <div className="flex items-center justify-center py-4 text-center bg-gray-300 dark:bg-gray-900">
           <span className="text-sm text-gray-600 dark:text-gray-200">Don't have an account? </span>
 
           <button onClick={switchMode} className="mx-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-500">Register</button>
