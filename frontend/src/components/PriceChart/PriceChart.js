@@ -14,8 +14,8 @@ const PriceChart = (props) => {
       datasets: [{
         data: [currPrice || 0],
         label: 'Price',
-        backgroundColor: '#00ff00',
-        borderColor: '#00ff00'
+        backgroundColor: '#10B981',
+        borderColor: '#10B981'
       }]
     }
 
@@ -47,16 +47,16 @@ const PriceChart = (props) => {
     socket.on(ticker, msg => {
       if (mounted) {
         let length = data.labels.length;
-        if (length >= 20) {
+        if (length >= 5) {
           data.datasets[0].data.shift()
           data.labels.shift()
         }
         if(msg > prevMsg) {
-          data.datasets[0].borderColor = '#00ff00';
-          data.datasets[0].backgroundColor = '#00ff00';
+          data.datasets[0].borderColor = '#10B981';
+          data.datasets[0].backgroundColor = '#10B981';
         } else {
-          data.datasets[0].borderColor = '#ff0000';
-          data.datasets[0].backgroundColor = '#ff0000';
+          data.datasets[0].borderColor = '#EF4444';
+          data.datasets[0].backgroundColor = '#EF4444';
         }
         prevMsg = msg;
         data.labels.push(new Date().getTime())
