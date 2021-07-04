@@ -31,7 +31,7 @@ const Navigation = () => {
 	}, [user?.token, location, logout, dispatch]);
 
 	return (
-		<nav className="bg-white shadow dark:bg-gray-900">
+		<nav className="fixed bg-white shadow dark:bg-gray-900 w-full z-50">
 			<div className="container px-6 py-4 mx-auto">
 				<div className="md:flex md:items-center md:justify-between">
 					<div className="flex items-center justify-between">
