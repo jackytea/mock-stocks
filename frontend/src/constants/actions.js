@@ -1,6 +1,7 @@
 //stock market actions
 export const GET_ALL_STOCKS = 'GET_ALL_STOCKS';
 export const GET_ONE_STOCK = 'GET_ONE_STOCK';
+export const SORT_STOCKS_BY_FIELD = 'SORT_STOCKS_BY_FIELD';
 
 //purchasing stock actions
 export const GET_ALL_PURCHASED = 'GET_ALL_PURCHASED';

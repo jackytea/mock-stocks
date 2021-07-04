@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
 import ListViewSkeleton from './ListViewSkeleton';
 import CurrentPrice from "../../../CurrentPrice/CurrentPrice";
 import PriceChart from "../../../PriceChart/PriceChart";
+import { SORT_STOCKS_BY_FIELD } from '../../../../constants/actions';
 
 const ListView = (props) => {
-  const { user, socket, stocks, purchases, errors } = props;
+  const { user, socket, stocks, purchases } = props;
+  const [sortByName, setSortByName] = useState(true);
+  const [sortByTicker, setSortByTicker] = useState(true);
+  const [sortByPrice, setSortByPrice] = useState(true);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const detailPage = (id) => {
     history.push(`/stock/${id}`);
+  }
+
+  const sortByField = (field, reverse) => {
+    console.log(reverse)
+    dispatch({ type: SORT_STOCKS_BY_FIELD, payload: { field: field, reverse: reverse } });
   }
 
   return (
@@ -39,13 +50,13 @@ const ListView = (props) => {
                     <th scope="col" className="w-1/12 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-white text-left text-sm uppercase font-normal">
                       #
                     </th>
-                    <th scope="col" className="hidden md:table-cell w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
+                    <th onClick={() => { sortByField("name", sortByName); setSortByName((prevSortByName) => !prevSortByName); }} scope="col" className="cursor-pointer hidden md:table-cell w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
                       Name
                     </th>
-                    <th scope="col" className="w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+                    <th onClick={() => { sortByField("ticker", sortByTicker); setSortByTicker((prevSortByTicker) => !prevSortByTicker); }} scope="col" className="cursor-pointer w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                       Ticker
                     </th>
-                    <th scope="col" className="w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+                    <th onClick={() => { sortByField("currentPrice", sortByPrice); setSortByPrice((prevSortByPrice) => !prevSortByPrice); }} scope="col" className="cursor-pointer w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                       Current Price
                     </th>
                     <th scope="col" className="hidden md:table-cell w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
@@ -97,7 +108,7 @@ const ListView = (props) => {
                             </td>
                           }
                           <td className="px-5 py-5 border-b border-gray-200 dark:border-gray-800   text-sm">
-                            <Link to={`/transaction/${stock._id}`} class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
+                            <Link to={`/transaction/${stock._id}`} className="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
                               Buy
                             </Link>
                           </td>

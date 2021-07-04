@@ -1,4 +1,4 @@
-import { GET_ALL_PURCHASED, GET_ONE_PURCHASED, ADD_PURCHASED, UPDATE_PURCHASED, REMOVE_PURCHASED, PURCHASED_ERROR_OCCURRED } from '../constants/actions';
+import { GET_ALL_PURCHASED, GET_ONE_PURCHASED, ADD_PURCHASED, UPDATE_PURCHASED, REMOVE_PURCHASED } from '../constants/actions';
 import { purchasedStocks, purchasedStock, addPurchasedStock, updatePurchasedStock, removePurchasedStock } from '../api/index.js';
 
 // GET /purchased
