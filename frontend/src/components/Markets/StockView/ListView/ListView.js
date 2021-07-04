@@ -7,7 +7,7 @@ import PriceChart from "../../../PriceChart/PriceChart";
 import { SORT_STOCKS_BY_FIELD } from '../../../../constants/actions';
 
 const ListView = (props) => {
-  const { user, socket, stocks, purchases } = props;
+  const { socket, stocks } = props;
   const [sortByName, setSortByName] = useState(true);
   const [sortByTicker, setSortByTicker] = useState(true);
   const [sortByPrice, setSortByPrice] = useState(true);
@@ -62,11 +62,6 @@ const ListView = (props) => {
                     <th scope="col" className="hidden md:table-cell w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                       Chart
                     </th>
-                    {user?.result &&
-                      <th scope="col" className="px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
-                        Status
-                      </th>
-                    }
                     <th scope="col" className="w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
 
                     </th>
@@ -102,14 +97,12 @@ const ListView = (props) => {
                           <td onClick={() => detailPage(stock._id)} className="hidden md:table-cell px-5 py-5 border-b border-gray-200 dark:border-gray-800   text-sm cursor-pointer">
                             <PriceChart id={stock.ticker} legendDisplay={false} xDisplay={false} yDisplay={false} socket={socket} ticker={stock.ticker} currPrice={stock.currentPrice} styleSet={{ width: "100px", height: "80px" }} />
                           </td>
-                          {user?.result &&
-                            <td className="px-5 py-5 border-b border-gray-200 dark:border-gray-800  text-sm">
-                              {purchases?.length && purchases.find(p => p.stock === stock._id) ? <div style={{ color: "red" }}>Bought</div> : <div></div>}
-                            </td>
-                          }
                           <td className="px-5 py-5 border-b border-gray-200 dark:border-gray-800   text-sm">
                             <Link to={`/transaction/${stock._id}`} className="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
                               Buy
+                            </Link>
+                            <Link to={`/stock/${stock._id}`} className="ml-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">
+                              Details
                             </Link>
                           </td>
                         </tr>
