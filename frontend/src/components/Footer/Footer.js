@@ -5,14 +5,12 @@ const Footer = () => {
   return (
     <footer className="bg-gray-200 dark:bg-gray-900">
       <div className="container px-6 py-4 mx-auto">
-        <div className="lg:flex">
-          <div className="w-full -mx-6 lg:w-2/5">
+        <div className="lg:flex justify-center items-center">
+          <div className="w-full -mx-6 lg:w-3/5">
             <div className="px-6">
               <div>
                 <Link to="/" className="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Mock Stocks</Link>
               </div>
-
-              <p className="max-w-md mt-2 text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, nisi! Id.</p>
 
               <div className="flex mt-4 -mx-2">
                 <Link to="/" className="mx-2 text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="Linkedin">
