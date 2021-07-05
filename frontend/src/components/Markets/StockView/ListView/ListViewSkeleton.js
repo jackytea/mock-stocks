@@ -8,7 +8,7 @@ const ListViewSkeleton = () => {
               <div className="p-4 max-w-sm w-full mx-auto">
                 <div className="flex-1 space-y-4 py-1">
                   <div className="space-y-2">
-                    <div className="h-4 bg-blue-400 dark:bg-gray-500 rounded"></div>
+                    <div className="h-4 bg-gray-200 dark:bg-gray-500 rounded"></div>
                   </div>
                 </div>
               </div>
@@ -19,7 +19,7 @@ const ListViewSkeleton = () => {
               <div className="p-4 max-w-sm w-full mx-auto">
                 <div className="flex-1 space-y-4 py-1">
                   <div className="space-y-2">
-                    <div className="h-4 bg-blue-400 dark:bg-gray-500 rounded"></div>
+                    <div className="h-4 bg-gray-200 dark:bg-gray-500 rounded"></div>
                   </div>
                 </div>
               </div>
@@ -30,7 +30,7 @@ const ListViewSkeleton = () => {
               <div className="p-4 max-w-sm w-full mx-auto">
                 <div className="flex-1 space-y-4 py-1">
                   <div className="space-y-2">
-                    <div className="h-4 bg-blue-400 dark:bg-gray-500 rounded"></div>
+                    <div className="h-4 bg-gray-200 dark:bg-gray-500 rounded"></div>
                   </div>
                 </div>
               </div>
@@ -41,7 +41,7 @@ const ListViewSkeleton = () => {
               <div className="p-4 max-w-sm w-full mx-auto">
                 <div className="flex-1 space-y-4 py-1">
                   <div className="space-y-2">
-                    <div className="h-4 bg-blue-400 dark:bg-gray-500 rounded"></div>
+                    <div className="h-4 bg-gray-200 dark:bg-gray-500 rounded"></div>
                   </div>
                 </div>
               </div>
@@ -52,7 +52,7 @@ const ListViewSkeleton = () => {
               <div className="p-4 max-w-sm w-full mx-auto">
                 <div className="flex-1 space-y-4 py-1">
                   <div className="space-y-2">
-                    <div className="h-4 bg-blue-400 dark:bg-gray-500 rounded"></div>
+                    <div className="h-4 bg-gray-200 dark:bg-gray-500 rounded"></div>
                   </div>
                 </div>
               </div>
@@ -63,7 +63,7 @@ const ListViewSkeleton = () => {
               <div className="p-4 max-w-sm w-full mx-auto">
                 <div className="flex-1 space-y-4 py-1">
                   <div className="space-y-2">
-                    <div className="h-4 bg-blue-400 dark:bg-gray-500 rounded"></div>
+                    <div className="h-4 bg-gray-200 dark:bg-gray-500 rounded"></div>
                   </div>
                 </div>
               </div>

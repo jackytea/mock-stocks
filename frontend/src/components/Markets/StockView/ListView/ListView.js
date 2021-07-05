@@ -95,7 +95,7 @@ const ListView = (props) => {
                             <CurrentPrice currentPrice={stock.currentPrice} ticker={stock.ticker} socket={socket} />
                           </td>
                           <td onClick={() => detailPage(stock._id)} className="hidden md:table-cell px-5 py-5 border-b border-gray-200 dark:border-gray-800   text-sm cursor-pointer">
-                            <PriceChart id={stock.ticker} legendDisplay={false} xDisplay={false} yDisplay={false} socket={socket} ticker={stock.ticker} currPrice={stock.currentPrice} styleSet={{ width: "100px", height: "80px" }} />
+                            <PriceChart id={stock.ticker} legendDisplay={false} xDisplay={false} yDisplay={false} socket={socket} ticker={stock.ticker} currPrice={stock.currentPrice} styleSet={"h-16 w-32"} />
                           </td>
                           <td className="px-5 py-5 border-b border-gray-200 dark:border-gray-800   text-sm">
                             <Link to={`/transaction/${stock._id}`} className="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-gray-800 hover:bg-blue-500 dark:hover:bg-gray-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-gray-700">

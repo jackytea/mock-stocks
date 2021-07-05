@@ -16,11 +16,13 @@ const StockView = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    socket.connect();
     dispatch({ type: MARKET_ERROR_OCCURRED, payload: "" });
     return () => {
+      socket.disconnect();
       dispatch({ type: MARKET_ERROR_OCCURRED, payload: "" });
     }
-  }, [dispatch]);
+  }, [socket, dispatch]);
 
   return (
     <ListView stocks={stocks} errors={errors} socket={socket} />

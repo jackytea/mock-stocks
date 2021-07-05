@@ -11,8 +11,12 @@ const PurchasedStocks = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    socket.connect();
     dispatch(getPurchases());
-  }, [dispatch]);
+    return () => {
+      socket.disconnect();
+    }
+  }, [dispatch, socket]);
 
   return (
     !purchases?.length ? <div>loading purchases</div> : (

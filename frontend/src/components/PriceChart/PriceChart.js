@@ -10,9 +10,9 @@ const PriceChart = (props) => {
 
     const ctx = document.getElementById(id);
     const data = {
-      labels: [currPrice || 0],
+      labels: [currPrice.toFixed(2) || 0],
       datasets: [{
-        data: [currPrice || 0],
+        data: [currPrice.toFixed(2) || 0],
         label: 'Price',
         backgroundColor: '#10B981',
         borderColor: '#10B981'
@@ -74,7 +74,7 @@ const PriceChart = (props) => {
 
 
   return (
-    <div style={styleSet}>
+    <div className={styleSet}>
       <canvas id={id}></canvas>
     </div>
   );
