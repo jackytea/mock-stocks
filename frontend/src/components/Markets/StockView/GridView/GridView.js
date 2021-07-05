@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
-import ListViewSkeleton from './ListViewSkeleton';
+import GridViewSkeleton from './GridViewSkeleton';
 import CurrentPrice from "../../../CurrentPrice/CurrentPrice";
 import PriceChart from "../../../PriceChart/PriceChart";
 import { SORT_STOCKS_BY_FIELD } from '../../../../constants/actions';
 
-const ListView = (props) => {
+const GridView = (props) => {
   const { socket, stocks } = props;
   const [searchFilter, setSearchFilter] = useState("");
   const [sortByName, setSortByName] = useState(true);
@@ -78,7 +78,7 @@ const ListView = (props) => {
                 </thead>
                 <tbody>
                   {!filteredStocks?.length ?
-                    <ListViewSkeleton />
+                    <GridViewSkeleton />
                     :
                     <>
                       {filteredStocks.map((stock, index) => (
@@ -127,5 +127,5 @@ const ListView = (props) => {
     </div>
   );
 }
-
-export default ListView;
+ 
+export default GridView;

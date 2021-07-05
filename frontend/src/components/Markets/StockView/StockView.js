@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import socketIOClient from "socket.io-client";
 import { getStocks } from "../../../actions/stocks";
 import { MARKET_ERROR_OCCURRED } from '../../../constants/actions';
 import ListView from "./ListView/ListView";
+import GridView from "./GridView/GridView";
 
 const StockView = () => {
-  const errors = useSelector((state) => state.marketErrorsReducer);
   const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
+  const errors = useSelector((state) => state.marketErrorsReducer);
   const stocks = useSelector((state) => state.stocksReducer);
+  const [isListMode, setIsListMode] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +27,10 @@ const StockView = () => {
   }, [socket, dispatch]);
 
   return (
-    <ListView stocks={stocks} errors={errors} socket={socket} />
+    isListMode ?
+      <ListView stocks={stocks} errors={errors} socket={socket} />
+      :
+      <GridView stocks={stocks} errors={errors} socket={socket} />
   );
 }
 
