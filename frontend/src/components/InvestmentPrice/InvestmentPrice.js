@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const InvestmentPrice = (props) => {
   const { socket, shares, ticker, initialInvestment } = props;
-  const [price, setPrice] = useState(initialInvestment.toFixed(2));
+  const [price, setPrice] = useState(initialInvestment);
 
   useEffect(() => {
     let mounted = true;
