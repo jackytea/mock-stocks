@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 const InvestmentPrice = (props) => {
-  const { shares, ticker, socket } = props;
-  const [price, setPrice] = useState(0.00);
+  const { socket, shares, ticker, initialInvestment } = props;
+  const [price, setPrice] = useState(initialInvestment.toFixed(2));
 
   useEffect(() => {
     let mounted = true;
@@ -12,17 +12,15 @@ const InvestmentPrice = (props) => {
       }
     });
     return () => {
-      mounted = false
+      mounted = false;
     }
   }, [socket, ticker]);
 
 
   return (
-    price === 0.00 ? <div>Loading investment</div> :
-      <div>
-        Total Value: {price * shares}
-        Stock Price: {price} 
-      </div>
+    <>
+      ${price * shares}
+    </>
   );
 }
 

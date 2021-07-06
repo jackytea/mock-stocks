@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import socketIOClient from "socket.io-client";
 import { getPurchases } from '../../actions/purchased';
 import { useDispatch, useSelector } from 'react-redux';
-import InvestmentPrice from "../InvestmentPrice/InvestmentPrice";
-import { Link } from "react-router-dom";
+import PurchaseListView from "./PurchaseListView/PurchaseListView";
+import PurchaseOverview from "./PurchaseOverview/PurchaseOverview";
 
 const PurchasedStocks = () => {
   const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
@@ -19,6 +19,29 @@ const PurchasedStocks = () => {
   }, [dispatch, socket]);
 
   return (
+    <div className="bg-white dark:bg-gray-800">
+      <div className="container mx-auto px-4 sm:px-8 w-full">
+        <div className="py-8">
+          {
+            !purchases?.length ?
+              <>
+
+              </>
+              :
+              <>
+                <PurchaseOverview purchases={purchases} />
+                <PurchaseListView purchases={purchases} socket={socket} />
+              </>
+          }
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default PurchasedStocks;
+
+/*
     !purchases?.length ? <div>loading purchases</div> : (
       <div>
         {purchases.map((p) => (
@@ -35,7 +58,4 @@ const PurchasedStocks = () => {
         ))}
       </div>
     )
-  );
-}
-
-export default PurchasedStocks;
+*/
