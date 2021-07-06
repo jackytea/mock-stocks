@@ -13,12 +13,16 @@ const StockDetails = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.connect();
     dispatch(getStock(id));
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    socket.connect();
     return () => {
       socket.disconnect();
     }
-  }, [id, dispatch, socket]);
+  }, [dispatch, socket]);
+
 
   return (
     !stock?._id ?

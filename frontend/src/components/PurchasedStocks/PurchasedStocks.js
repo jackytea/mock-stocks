@@ -11,12 +11,15 @@ const PurchasedStocks = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.connect();
     dispatch(getPurchases());
+  }, [dispatch]);
+
+  useEffect(() => {
+    socket.connect();
     return () => {
       socket.disconnect();
     }
-  }, [dispatch, socket]);
+  }, [socket]);
 
   return (
     <div className="bg-white dark:bg-gray-800">
@@ -25,7 +28,7 @@ const PurchasedStocks = () => {
           {
             !purchases?.length ?
               <>
-
+                <div className="h-screen">oops</div>
               </>
               :
               <>

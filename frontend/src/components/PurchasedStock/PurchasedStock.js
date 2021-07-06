@@ -12,13 +12,15 @@ const PurchasedStock = () => {
 	const { id } = useParams();
 
 	useEffect(() => {
-		socket.connect();
 		dispatch(getPurchase(id));
-		return () => {
-      socket.disconnect();
-    }
-	}, [dispatch, id, socket]);
+	}, [dispatch, id]);
 
+	useEffect(() => {
+		socket.connect();
+		return () => {
+			socket.disconnect();
+		}
+	}, [dispatch, socket]);
 
 	return (
 		!purchase ? <div>No purchased stock here.</div> :
