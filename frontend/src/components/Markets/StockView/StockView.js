@@ -11,6 +11,7 @@ const StockView = () => {
   const errors = useSelector((state) => state.marketErrorsReducer);
   const stocks = useSelector((state) => state.stocksReducer);
   const [isListMode, setIsListMode] = useState(true);
+  const [searchFilter, setSearchFilter] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,11 +27,33 @@ const StockView = () => {
     }
   }, [socket, dispatch]);
 
+  const searchStocks = (e) => {
+    setSearchFilter(e.target.value);
+  }
+
+  const filteredStocks = stocks?.length ? stocks.filter((stock) => {
+    return stock.name.toLowerCase().includes(searchFilter.toLowerCase()) ||
+      stock.ticker.toLowerCase().includes(searchFilter.toLowerCase())
+  }) : null;
+
   return (
-    isListMode ?
-      <ListView stocks={stocks} errors={errors} socket={socket} />
-      :
-      <GridView stocks={stocks} errors={errors} socket={socket} />
+    isListMode ? (
+      <ListView
+        filteredStocks={filteredStocks}
+        errors={errors}
+        socket={socket}
+        searchStocks={searchStocks}
+        setIsListMode={setIsListMode}
+      />
+    ) : (
+      <GridView
+        filteredStocks={filteredStocks}
+        errors={errors}
+        socket={socket}
+        searchStocks={searchStocks}
+        setIsListMode={setIsListMode}
+      />
+    )
   );
 }
 
