@@ -72,7 +72,7 @@ const PurchaseListView = (props) => {
                       <Link to={`/purchased/${purchase._id}`} className="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-500 rounded-md dark:bg-gray-800 hover:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-700">
                         Details
                       </Link>
-                      <Link to={`/transaction/${purchase.stock}`} className="ml-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-yellow-600 rounded-md dark:bg-yellow-600 hover:bg-yellow-500 dark:hover:bg-yellow-700 focus:outline-none focus:bg-yellow-500 dark:focus:bg-yellow-700">
+                      <Link to={`/transaction/${purchase.stock}`} className="ml-2 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-yellow-500 rounded-md dark:bg-yellow-600 hover:bg-yellow-500 dark:hover:bg-yellow-700 focus:outline-none focus:bg-yellow-500 dark:focus:bg-yellow-700">
                         Update
                       </Link>
                     </td>

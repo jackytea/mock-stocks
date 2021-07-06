@@ -3,7 +3,9 @@ import socketIOClient from "socket.io-client";
 import { getPurchases } from '../../actions/purchased';
 import { useDispatch, useSelector } from 'react-redux';
 import PurchaseListView from "./PurchaseListView/PurchaseListView";
+import PurchaseListViewSkeleton from "./PurchaseListView/PurchaseListViewSkeleton";
 import PurchaseOverview from "./PurchaseOverview/PurchaseOverview";
+import PurchaseOverviewSkeleton from "./PurchaseOverview/PurchaseOverviewSkeleton";
 
 const PurchasedStocks = () => {
   const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
@@ -28,7 +30,8 @@ const PurchasedStocks = () => {
           {
             !purchases?.length ?
               <>
-                <div className="h-screen">oops</div>
+                <PurchaseOverviewSkeleton />
+                <PurchaseListViewSkeleton />
               </>
               :
               <>
@@ -43,22 +46,3 @@ const PurchasedStocks = () => {
 }
 
 export default PurchasedStocks;
-
-/*
-    !purchases?.length ? <div>loading purchases</div> : (
-      <div>
-        {purchases.map((p) => (
-          <Link key={p._id} to={`/purchased/${p.stock}`}>
-            <div style={{ marginTop: "20px", backgroundColor: "lightgray" }}>Shares: {p.shares}
-              init invest: {p.initialInvestment}
-              ticker: {p.tickerBought}
-              <InvestmentPrice shares={p.shares} ticker={p.tickerBought} socket={socket} />
-              {p.stock}
-              <br />
-              <br />
-            </div>
-          </Link>
-        ))}
-      </div>
-    )
-*/
