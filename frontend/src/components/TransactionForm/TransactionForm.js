@@ -60,17 +60,17 @@ const TransactionForm = () => {
         purchase ?
           <div className="bg-white dark:bg-gray-800 pt-36 sm:pt-12">
             <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
-              <div class="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-                <h1 class="text-3xl font-semibold text-center text-gray-700 dark:text-white">Updating {stock.exchange}:{stock.ticker}</h1>
-                <form class="mt-6" onSubmit={handleSubmitUpdatePurchase}>
+              <div className="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+                <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">Updating {stock.exchange}:{stock.ticker}</h1>
+                <form className="mt-6" onSubmit={handleSubmitUpdatePurchase}>
                   <div>
-                    <label for="shares" class="block text-sm text-gray-800 dark:text-gray-200">Shares</label>
+                    <label for="shares" className="block text-sm text-gray-800 dark:text-gray-200">Shares</label>
                     <input type="number" min="1" max="100" onChange={handleChange}
-                      class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                   </div>
-                  <div class="mt-6">
+                  <div className="mt-6">
                     <button
-                      class="w-full px-20 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-600">
+                      className="w-full px-20 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-600">
                       Update
                     </button>
                   </div>
@@ -81,17 +81,17 @@ const TransactionForm = () => {
           :
           <div className="bg-white dark:bg-gray-800 pt-36 sm:pt-12">
             <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
-              <div class="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-                <h1 class="text-3xl font-semibold text-center text-gray-700 dark:text-white">Buying {stock.exchange}:{stock.ticker}</h1>
-                <form class="mt-6" onSubmit={handleSubmitNewPurchase}>
+              <div className="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+                <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">Buying {stock.exchange}:{stock.ticker}</h1>
+                <form className="mt-6" onSubmit={handleSubmitNewPurchase}>
                   <div>
-                    <label for="shares" class="block text-sm text-gray-800 dark:text-gray-200">Shares</label>
+                    <label for="shares" className="block text-sm text-gray-800 dark:text-gray-200">Shares</label>
                     <input type="number" min="1" max="100" onChange={handleChange}
-                      class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
                   </div>
-                  <div class="mt-6">
+                  <div className="mt-6">
                     <button
-                      class="w-full px-20 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-600">
+                      className="w-full px-20 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-600">
                       Buy
                     </button>
                   </div>
