@@ -10,7 +10,7 @@ const TopInfoSection = () => {
           </span>
         </h2>
         <p className="text-xl mt-4 max-w-md mx-auto text-gray-400">
-          See our selection of the biggest names in the tech industry.
+          See our selection of the biggest names in the Fortune 500.
         </p>
       </div>
     </div>
