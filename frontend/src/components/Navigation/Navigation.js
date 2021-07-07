@@ -21,11 +21,6 @@ const Navigation = () => {
 	);
 
 	useEffect(() => {
-		dispatch(getUserInfo());
-		setUser(JSON.parse(localStorage.getItem('profile')));
-	}, [dispatch]);
-
-	useEffect(() => {
 		const token = user?.token;
 		if (token) {
 			const decodedToken = decode(token);
@@ -33,6 +28,7 @@ const Navigation = () => {
 				logout();
 			}
 		}
+		dispatch(getUserInfo());
 		setUser(JSON.parse(localStorage.getItem('profile')));
 	}, [user?.token, location, logout, dispatch]);
 

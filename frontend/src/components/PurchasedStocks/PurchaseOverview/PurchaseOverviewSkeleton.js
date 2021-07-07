@@ -9,17 +9,15 @@ const PurchaseOverviewSkeleton = () => {
             Loading your investments...
           </span>
         </h2>
-        <p className="text-xl mt-4 max-w-md mx-auto text-gray-400">
-          <div className="animate-pulse flex space-x-4">
-            <div className="p-4 max-w-sm w-full mx-auto">
-              <div className="flex-1 space-y-4 py-1">
-                <div className="space-y-2">
-                  <div className="h-4 bg-gray-200 dark:bg-gray-500 rounded"></div>
-                </div>
+        <div className="animate-pulse flex space-x-4">
+          <div className="p-4 max-w-sm w-full mx-auto">
+            <div className="flex-1 space-y-4 py-1">
+              <div className="space-y-2">
+                <div className="h-4 bg-gray-200 dark:bg-gray-500 rounded"></div>
               </div>
             </div>
           </div>
-        </p>
+        </div>
       </div>
     </div>
   );
