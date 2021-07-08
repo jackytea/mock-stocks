@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useParams } from "react-router";
 import { getStock } from '../../actions/stocks';
 import { getUserInfo } from "../../actions/auth";
 import { getPurchase, addPurchase, updatePurchase, removePurchase } from '../../actions/purchased';
+import { PURCHASED_ERROR_OCCURRED } from "../../constants/actions";
 
 
 const initialState = { stockId: null, sharesBought: 0 };
 
 const TransactionForm = () => {
   const { id } = useParams();
+  const history = useHistory();
+  const dispatch = useDispatch();
   const stock = useSelector((state) => state.stocksReducer);
   const purchase = useSelector((state) => state.purchasedReducer);
+  const errors = useSelector((state) => state.purchasedErrorsReducer);
   const [form, setForm] = useState(initialState);
   const [isSell, setIsSell] = useState(false);
   const [shares, setShares] = useState(0);
-  const dispatch = useDispatch();
-  const history = useHistory();
+
+  useEffect(() => {
+    dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "" });
+    return () => {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "" });
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getStock(id));
@@ -29,16 +39,18 @@ const TransactionForm = () => {
 
   const handleSubmitNewPurchase = (e) => {
     e.preventDefault();
+    dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "" });
     dispatch(addPurchase(form, history));
     dispatch(getUserInfo());
   };
 
   const handleSubmitUpdatePurchase = (e) => {
     e.preventDefault();
+    dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "" });
     if (isSell) {
-      dispatch(updatePurchase(id, form, history));
-    } else {
       dispatch(removePurchase(id, history));
+    } else {
+      dispatch(updatePurchase(id, form, history));
     }
     dispatch(getUserInfo());
   };
@@ -60,57 +72,181 @@ const TransactionForm = () => {
       </div>
       : (
         purchase ?
-          <div className="bg-white dark:bg-gray-800 pt-36 sm:pt-12">
+          <div className="bg-gray-100 dark:bg-gray-800 pt-36 sm:pt-12">
             <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
-              <div className="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-900">
-                <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">Updating {stock.exchange}:{stock.ticker}</h1>
-                <form className="mt-6" onSubmit={handleSubmitUpdatePurchase}>
-                  <div>
-                    <label htmlFor="shares" className="block text-sm text-gray-800 dark:text-gray-200">Shares</label>
-                    <input type="number" name="sharesBought" min="-100" max="100" onChange={handleChange}
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+              <section class="w-full max-w-2xl px-6 py-4 mx-auto bg-white rounded-md shadow-md dark:bg-gray-900">
+                <h2 class="text-3xl font-semibold text-center text-gray-800 dark:text-white">Buying {stock.name} stock.</h2>
+                <p class="mt-3 text-center text-gray-600 dark:text-gray-400">Enter a <strong>negative value</strong> to sell shares.</p>
+
+                <div class="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-4">
+                  <div class="flex flex-col items-center px-4 py-3 text-gray-700 rounded-md dark:text-gray-200 ">
+                    <div>
+                      <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                        <span aria-hidden="true" className="absolute inset-0 bg-blue-200 dark:bg-blue-700 opacity-50 rounded-full">
+                        </span>
+                        <span className="relative text-blue-500 dark:text-blue-400">
+                          {stock.ticker}
+                        </span>
+                      </span>
+                    </div>
+                    <span class="mt-2">Ticker</span>
                   </div>
-                  <p className="mt-4 text-sm text-center text-gray-700 dark:text-white">{shares > 0 ? "Buying" : "Selling"} {shares} shares of {stock.exchange}:{stock.ticker}
-                    <br />
-                    Cost: ${(stock.currentPrice * shares).toFixed(2)}
-                  </p>
-                  <div className="mt-6">
-                    <button type="submit" onClick={() => switchSellOrBuy(true)}
-                      className="w-full px-20 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-yellow-500 rounded-md dark:bg-yellow-700 hover:bg-yellow-600 dark:hover:bg-yellow-600 focus:outline-none focus:bg-yellow-500 dark:focus:bg-yellow-600">
-                      Buy / Sell More
-                    </button>
-                    <button type="submit" onClick={() => switchSellOrBuy(false)}
-                      className="mt-2 w-full px-20 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-red-500 rounded-md dark:bg-red-700 hover:bg-red-600 dark:hover:bg-red-600 focus:outline-none focus:bg-red-500 dark:focus:bg-red-600">
-                      Sell All
-                    </button>
+
+                  <div class="flex flex-col items-center px-4 py-3 text-gray-700 rounded-md dark:text-gray-200 ">
+                    <div>
+                      <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                        <span aria-hidden="true" className="absolute inset-0 bg-blue-200 dark:bg-blue-700 opacity-50 rounded-full">
+                        </span>
+                        <span className="relative text-blue-500 dark:text-blue-400">
+                          {shares}
+                        </span>
+                      </span>
+                    </div>
+                    <span class="mt-2">Shares</span>
+                  </div>
+
+                  {purchase?._id &&
+                    <div class="flex flex-col items-center px-4 py-3 text-gray-700 rounded-md dark:text-gray-200 ">
+                      <div>
+                        <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                          <span aria-hidden="true" className="absolute inset-0 bg-blue-200 dark:bg-blue-700 opacity-50 rounded-full">
+                          </span>
+                          <span className="relative text-blue-500 dark:text-blue-400">
+                            {purchase.shares}
+                          </span>
+                        </span>
+                      </div>
+                      <span class="mt-2">Shares Owned</span>
+                    </div>
+                  }
+
+                  <div class="flex flex-col items-center px-4 py-3 text-gray-700 rounded-md dark:text-gray-200 ">
+                    <div>
+                      <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                        <span aria-hidden="true" className="absolute inset-0 bg-blue-200 dark:bg-blue-700 opacity-50 rounded-full">
+                        </span>
+                        <span className="relative text-blue-500 dark:text-blue-400">
+                          ${parseFloat(shares * stock.currentPrice).toFixed(2)}
+                        </span>
+                      </span>
+                    </div>
+                    <span class="mt-2">Cost</span>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmitUpdatePurchase}>
+                  <div class="mt-2">
+                    <div class="items-center -mx-2 md:flex">
+                      <div class="w-full mx-0 sm:mx-2">
+                        <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Shares</label>
+                        <input onChange={handleChange} class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" type="number" name="sharesBought" min="1" max="100" />
+                      </div>
+                    </div>
+                    {errors &&
+                      <div class="flex mt-6 w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+                        <div class="flex items-center justify-center w-12 bg-red-500">
+                          <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z" />
+                          </svg>
+                        </div>
+
+                        <div class="px-4 py-2 -mx-3">
+                          <div class="mx-3">
+                            <span class="font-semibold text-red-500 dark:text-red-400">Error</span>
+                            <p class="text-sm text-gray-600 dark:text-gray-200">{errors}</p>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                    <div class="flex justify-center mt-6 flex-col sm:flex-row">
+                      <button onClick={() => switchSellOrBuy(false)} type="submit" class="w-full px-4 py-2 text-white transition-colors duration-200 transform bg-yellow-500 rounded-md dark:bg-yellow-700 hover:bg-yellow-600 dark:hover:bg-yellow-600 focus:outline-none focus:bg-yellow-500 dark:focus:bg-yellow-600">Buy / Sell More</button>
+                      <button onClick={() => switchSellOrBuy(true)} class="ml-0 sm:ml-4 mt-2 sm:mt-0 w-full px-4 py-2 text-white transition-colors duration-200 transform bg-red-500 rounded-md dark:bg-red-700 hover:bg-red-600 dark:hover:bg-red-600 focus:outline-none focus:bg-red-500 dark:focus:bg-red-600">Sell All</button>
+                      <Link to={`/stock/${stock._id}`} class="text-center ml-0 sm:ml-4 mt-2 sm:mt-0 w-full px-4 py-2 text-white transition-colors duration-200 transform bg-gray-500 rounded-md dark:bg-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600">Cancel</Link>
+                    </div>
                   </div>
                 </form>
-              </div>
+              </section>
             </div>
           </div>
           :
-          <div className="bg-white dark:bg-gray-800 pt-36 sm:pt-12">
+          <div className="bg-gray-100 dark:bg-gray-800 pt-36 sm:pt-12">
             <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
-              <div className="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-900">
-                <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">Buying {stock.exchange}:{stock.ticker}</h1>
-                <form className="mt-6" onSubmit={handleSubmitNewPurchase}>
-                  <div>
-                    <label htmlFor="shares" className="block text-sm text-gray-800 dark:text-gray-200">Shares</label>
-                    <input type="number" name="sharesBought" min="1" max="100" onChange={handleChange}
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+              <section class="w-full max-w-2xl px-6 py-4 mx-auto bg-white rounded-md shadow-md dark:bg-gray-900">
+                <h2 class="text-3xl font-semibold text-center text-gray-800 dark:text-white">Buying {stock.name} stock.</h2>
+                <p class="mt-3 text-center text-gray-600 dark:text-gray-400">Limit of <strong>100</strong> shares per transaction.</p>
+
+                <div class="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-3">
+                  <div class="flex flex-col items-center px-4 py-3 text-gray-700 rounded-md dark:text-gray-200 ">
+                    <div>
+                      <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                        <span aria-hidden="true" className="absolute inset-0 bg-blue-200 dark:bg-blue-700 opacity-50 rounded-full">
+                        </span>
+                        <span className="relative text-blue-500 dark:text-blue-400">
+                          {stock.ticker}
+                        </span>
+                      </span>
+                    </div>
+                    <span class="mt-2">Ticker</span>
                   </div>
-                  <p className="mt-4 text-sm text-center text-gray-700 dark:text-white">Buying {shares} shares of {stock.exchange}:{stock.ticker}
-                    <br />
-                    Cost: ${(stock.currentPrice * shares).toFixed(2)}
-                  </p>
-                  <div className="mt-6">
-                    <button type="submit"
-                      className="w-full px-20 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-600">
-                      Buy
-                    </button>
+
+                  <div class="flex flex-col items-center px-4 py-3 text-gray-700 rounded-md dark:text-gray-200 ">
+                    <div>
+                      <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                        <span aria-hidden="true" className="absolute inset-0 bg-blue-200 dark:bg-blue-700 opacity-50 rounded-full">
+                        </span>
+                        <span className="relative text-blue-500 dark:text-blue-400">
+                          {shares}
+                        </span>
+                      </span>
+                    </div>
+                    <span class="mt-2">Shares</span>
+                  </div>
+
+                  <div class="flex flex-col items-center px-4 py-3 text-gray-700 rounded-md dark:text-gray-200 ">
+                    <div>
+                      <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                        <span aria-hidden="true" className="absolute inset-0 bg-blue-200 dark:bg-blue-700 opacity-50 rounded-full">
+                        </span>
+                        <span className="relative text-blue-500 dark:text-blue-400">
+                          ${parseFloat(shares * stock.currentPrice).toFixed(2)}
+                        </span>
+                      </span>
+                    </div>
+                    <span class="mt-2">Cost</span>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmitNewPurchase}>
+                  <div class="mt-2">
+                    <div class="items-center -mx-2 md:flex">
+                      <div class="w-full mx-0 sm:mx-2">
+                        <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Shares</label>
+                        <input onChange={handleChange} class="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" type="number" name="sharesBought" min="1" max="100" />
+                      </div>
+                    </div>
+                    {errors &&
+                      <div class="flex mt-6 w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+                        <div class="flex items-center justify-center w-12 bg-red-500">
+                          <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z" />
+                          </svg>
+                        </div>
+
+                        <div class="px-4 py-2 -mx-3">
+                          <div class="mx-3">
+                            <span class="font-semibold text-red-500 dark:text-red-400">Error</span>
+                            <p class="text-sm text-gray-600 dark:text-gray-200">{errors}</p>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                    <div class="flex justify-center mt-6">
+                      <button type="submit" class="w-full px-4 py-2 text-white transition-colors duration-200 transform bg-blue-500 rounded-md dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-600">Buy Shares</button>
+                      <Link to={`/stock/${stock._id}`} class="text-center ml-4 w-full px-4 py-2 text-white transition-colors duration-200 transform bg-gray-500 rounded-md dark:bg-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600">Cancel</Link>
+                    </div>
                   </div>
                 </form>
-              </div>
+              </section>
             </div>
           </div>
       )
@@ -118,3 +254,4 @@ const TransactionForm = () => {
 }
 
 export default TransactionForm;
+

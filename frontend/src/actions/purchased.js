@@ -1,4 +1,4 @@
-import { GET_ALL_PURCHASED, GET_ONE_PURCHASED, ADD_PURCHASED, UPDATE_PURCHASED, REMOVE_PURCHASED } from '../constants/actions';
+import { GET_ALL_PURCHASED, GET_ONE_PURCHASED, ADD_PURCHASED, UPDATE_PURCHASED, REMOVE_PURCHASED, PURCHASED_ERROR_OCCURRED } from '../constants/actions';
 import { purchasedStocks, purchasedStock, addPurchasedStock, updatePurchasedStock, removePurchasedStock } from '../api/index.js';
 
 // GET /purchased
@@ -7,7 +7,11 @@ export const getPurchases = () => async (dispatch) => {
     const { data } = await purchasedStocks();
     dispatch({ type: GET_ALL_PURCHASED, payload: data });
   } catch (error) {
-    console.log(error?.message);
+    if (error.response) {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: error.response.data.message });
+    } else {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "Investment server is down!" });
+    }
   }
 };
 
@@ -17,7 +21,11 @@ export const getPurchase = (id) => async (dispatch) => {
     const { data } = await purchasedStock(id);
     dispatch({ type: GET_ONE_PURCHASED, payload: data });
   } catch (error) {
-    console.log(error?.message);
+    if (error.response) {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: error.response.data.message });
+    } else {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "Investment server is down!" });
+    }
   }
 };
 
@@ -28,7 +36,11 @@ export const addPurchase = (formInput, router) => async (dispatch) => {
     dispatch({ type: ADD_PURCHASED, payload: data });
     router.push({ pathname: `/purchased/${data.stock}`, state: { detail: true } });
   } catch (error) {
-    console.log(error?.message);
+    if (error.response) {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: error.response.data.message });
+    } else {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "Investment server is down!" });
+    }
   }
 };
 
@@ -39,7 +51,11 @@ export const updatePurchase = (id, formInput, router) => async (dispatch) => {
     dispatch({ type: UPDATE_PURCHASED, payload: data });
     router.push({ pathname: `/purchased/${id}`, state: { detail: true } });
   } catch (error) {
-    console.log(error?.message);
+    if (error.response) {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: error.response.data.message });
+    } else {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "Investment server is down!" });
+    }
   }
 };
 
@@ -50,6 +66,10 @@ export const removePurchase = (id, router) => async (dispatch) => {
     dispatch({ type: REMOVE_PURCHASED, payload: null });
     router.push({ pathname: '/purchased/', state: { detail: true } });
   } catch (error) {
-    console.log(error?.message);
+    if (error.response) {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: error.response.data.message });
+    } else {
+      dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: "Investment server is down!" });
+    }
   }
 };

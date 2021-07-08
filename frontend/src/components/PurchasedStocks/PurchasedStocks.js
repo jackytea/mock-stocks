@@ -28,7 +28,7 @@ const PurchasedStocks = () => {
       <div className="container mx-auto px-4 sm:px-8 w-full">
         <div className="py-8">
           {
-            !purchases?.length ?
+            !purchases ?
               <>
                 <PurchaseOverviewSkeleton />
                 <PurchaseListViewSkeleton />

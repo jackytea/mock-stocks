@@ -1,5 +1,5 @@
 
-import { AUTH_ERROR_OCCURRED, MARKET_ERROR_OCCURRED } from '../constants/actions';
+import { AUTH_ERROR_OCCURRED, MARKET_ERROR_OCCURRED, PURCHASED_ERROR_OCCURRED } from '../constants/actions';
 
 const authErrorsReducer = (state = [], action) => {
   switch (action.type) {
@@ -19,5 +19,14 @@ const marketErrorsReducer = (state = [], action) => {
   }
 };
 
+const purchasedErrorsReducer = (state = [], action) => {
+  switch (action.type) {
+    case PURCHASED_ERROR_OCCURRED:
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
-export { authErrorsReducer, marketErrorsReducer };
+
+export { authErrorsReducer, marketErrorsReducer, purchasedErrorsReducer };
