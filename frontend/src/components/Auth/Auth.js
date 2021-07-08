@@ -47,7 +47,7 @@ const Auth = () => {
 
   return (
     <div className="bg-white dark:bg-gray-800 h-screen my-auto flex items-center">
-      <div className="w-full max-w-sm mx-auto overflow-hidden bg-gray-100 rounded-lg shadow-md dark:bg-gray-700">
+      <div className="w-full max-w-sm mx-auto overflow-hidden bg-gray-100 rounded-lg shadow-md dark:bg-gray-900">
         <div className="px-6 py-4">
           <h2 className="text-3xl font-bold text-center text-gray-700 dark:text-white">Mock Stocks</h2>
 
@@ -121,7 +121,7 @@ const Auth = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center py-4 text-center bg-gray-300 dark:bg-gray-900">
+        <div className="flex items-center justify-center py-4 text-center bg-gray-300 dark:bg-gray-700">
           <span className="text-sm text-gray-600 dark:text-gray-200">Don't have an account? </span>
 
           <button onClick={switchMode} className="mx-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-500">Register</button>
