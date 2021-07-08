@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStock } from '../../actions/stocks';
 import StockDetailsSkeleton from "./StockDetailsSkeleton";
 import CurrentPrice from "../CurrentPrice/CurrentPrice"
+import PriceChart from "../PriceChart/PriceChart";
 
 const StockDetails = (props) => {
   const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
@@ -32,20 +33,22 @@ const StockDetails = (props) => {
         <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
           <div className="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
             <div className="max-w-lg lg:mx-12 lg:order-2">
-              <h1 className="text-3xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">{stock.name} - {stock.exchange}:{stock.ticker}</h1>
+              <h1 className="text-3xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">{stock.name} - <strong>{stock.exchange} : {stock.ticker}</strong></h1>
               <p className="mt-4 text-gray-600 dark:text-gray-300">{stock.description}</p>
-              <div className="flex">
+              <div className="flex items-center">
                 <div className="block">
                   <div className="mt-6">
+                    <h1 className="text-xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl mb-2">Current Price</h1>
                     <CurrentPrice currentPrice={stock.currentPrice} ticker={stock.ticker} socket={socket} />
                   </div>
                   <div className="mt-6">
+                    <h1 className="text-xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl mb-2">All Time Change</h1>
                     {(stock.currentPrice / stock.initialPrice).toFixed(2) > 1 ?
                       <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                         <span aria-hidden="true" className="absolute inset-0 bg-green-200 dark:bg-green-700 opacity-50 rounded-full">
                         </span>
                         <span className="relative text-green-500 dark:text-green-400">
-                          + %{(stock.currentPrice / stock.initialPrice * 100).toFixed(2)} up all time.
+                          + %{Math.abs((1 - (stock.currentPrice / stock.initialPrice)) * 100).toFixed(2)} up all time.
                         </span>
                       </span>
                       :
@@ -53,11 +56,15 @@ const StockDetails = (props) => {
                         <span aria-hidden="true" className="absolute inset-0 bg-red-200 dark:bg-red-700 opacity-50 rounded-full">
                         </span>
                         <span className="relative text-red-500 dark:text-red-400">
-                          - %{(stock.currentPrice / stock.initialPrice * 100).toFixed(2)} down all time.
+                          - %{Math.abs((1 - (stock.currentPrice / stock.initialPrice)) * 100).toFixed(2)} down all time.
                         </span>
                       </span>
                     }
                   </div>
+                </div>
+                <div className="ml-8">
+                  <h1 className="text-xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl mb-2">Trend Chart</h1>
+                  <PriceChart id={stock.ticker} legendDisplay={false} xDisplay={false} yDisplay={false} socket={socket} ticker={stock.ticker} currPrice={stock.currentPrice} styleSet={"h-24 w-64"} />
                 </div>
               </div>
             </div>
@@ -75,6 +82,23 @@ const StockDetails = (props) => {
               </div>
 
               <div className="px-6 py-4">
+
+                <div className="flex items-center text-gray-700 dark:text-gray-200">
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M16.2721 10.2721C16.2721 12.4813 14.4813 14.2721 12.2721 14.2721C10.063 14.2721 8.27214 12.4813 8.27214 10.2721C8.27214 8.063 10.063 6.27214 12.2721 6.27214C14.4813 6.27214 16.2721 8.063 16.2721 10.2721ZM14.2721 10.2721C14.2721 11.3767 13.3767 12.2721 12.2721 12.2721C11.1676 12.2721 10.2721 11.3767 10.2721 10.2721C10.2721 9.16757 11.1676 8.27214 12.2721 8.27214C13.3767 8.27214 14.2721 9.16757 14.2721 10.2721Z" /><path fillRule="evenodd" clipRule="evenodd" d="M5.79417 16.5183C2.19424 13.0909 2.05438 7.3941 5.48178 3.79418C8.90918 0.194258 14.6059 0.0543983 18.2059 3.48179C21.8058 6.90919 21.9457 12.606 18.5183 16.2059L12.3124 22.7241L5.79417 16.5183ZM17.0698 14.8268L12.243 19.8965L7.17324 15.0698C4.3733 12.404 4.26452 7.9732 6.93028 5.17326C9.59603 2.37332 14.0268 2.26454 16.8268 4.93029C19.6267 7.59604 19.7355 12.0269 17.0698 14.8268Z" />
+                  </svg>
+
+                  <h1 className="px-2 text-sm">Ticker: {stock.ticker}</h1>
+                </div>
+
+                <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M16.2721 10.2721C16.2721 12.4813 14.4813 14.2721 12.2721 14.2721C10.063 14.2721 8.27214 12.4813 8.27214 10.2721C8.27214 8.063 10.063 6.27214 12.2721 6.27214C14.4813 6.27214 16.2721 8.063 16.2721 10.2721ZM14.2721 10.2721C14.2721 11.3767 13.3767 12.2721 12.2721 12.2721C11.1676 12.2721 10.2721 11.3767 10.2721 10.2721C10.2721 9.16757 11.1676 8.27214 12.2721 8.27214C13.3767 8.27214 14.2721 9.16757 14.2721 10.2721Z" /><path fillRule="evenodd" clipRule="evenodd" d="M5.79417 16.5183C2.19424 13.0909 2.05438 7.3941 5.48178 3.79418C8.90918 0.194258 14.6059 0.0543983 18.2059 3.48179C21.8058 6.90919 21.9457 12.606 18.5183 16.2059L12.3124 22.7241L5.79417 16.5183ZM17.0698 14.8268L12.243 19.8965L7.17324 15.0698C4.3733 12.404 4.26452 7.9732 6.93028 5.17326C9.59603 2.37332 14.0268 2.26454 16.8268 4.93029C19.6267 7.59604 19.7355 12.0269 17.0698 14.8268Z" />
+                  </svg>
+
+                  <h1 className="px-2 text-sm">Exchange: {stock.exchange}</h1>
+                </div>
+
                 <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
                   <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14 11H10V13H14V11Z" /><path fillRule="evenodd" clipRule="evenodd" d="M7 5V4C7 2.89545 7.89539 2 9 2H15C16.1046 2 17 2.89545 17 4V5H20C21.6569 5 23 6.34314 23 8V18C23 19.6569 21.6569 21 20 21H4C2.34314 21 1 19.6569 1 18V8C1 6.34314 2.34314 5 4 5H7ZM9 4H15V5H9V4ZM4 7C3.44775 7 3 7.44769 3 8V14H21V8C21 7.44769 20.5522 7 20 7H4ZM3 18V16H21V18C21 18.5523 20.5522 19 20 19H4C3.44775 19 3 18.5523 3 18Z" />
