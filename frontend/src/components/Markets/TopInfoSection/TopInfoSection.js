@@ -9,8 +9,8 @@ const TopInfoSection = () => {
             Browse our stocks.
           </span>
         </h2>
-        <p className="text-xl mt-4 max-w-md mx-auto text-gray-400">
-          See our selection of the biggest names in the Fortune 500.
+        <p className="text-xl mt-4 max-w-full mx-auto text-gray-400">
+          See our selection of the biggest names in the industry.
         </p>
       </div>
     </div>
