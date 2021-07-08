@@ -3,7 +3,7 @@ import React from 'react';
 const Features = () => {
   return (
     <section className="bg-white dark:bg-gray-800">
-      <div className="container px-6 py-8 mx-auto">
+      <div className="container px-32 py-32 mx-auto">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <svg className="w-8 h-8" viewBox="0 0 30 30" fill="none">
