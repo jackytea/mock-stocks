@@ -8,7 +8,7 @@ import { getPurchase } from '../../actions/purchased';
 import { useParams } from "react-router";
 import CurrentPrice from "../CurrentPrice/CurrentPrice";
 import InvestmentPrice from "../InvestmentPrice/InvestmentPrice";
-import StockDetailsSkeleton from "../StockDetails/StockDetailsSkeleton";
+import PurchasedStockDetailsSkeleton from "./PurchasedStockDetailsSkeleton";
 
 const PurchasedStockDetails = (props) => {
 	const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
@@ -34,7 +34,7 @@ const PurchasedStockDetails = (props) => {
 	}, [dispatch, socket]);
 
 	return (
-		!purchase && !stock ? <div>No purchased stock here.</div> :
+		!purchase?._id || !stock?._id ? <PurchasedStockDetailsSkeleton /> :
 			<div className="bg-white dark:bg-gray-800 pt-36 sm:pt-12">
 				<div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
 					<div className="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
