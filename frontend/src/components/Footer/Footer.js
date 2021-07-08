@@ -3,58 +3,67 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-200 dark:bg-gray-900">
-      <div className="container px-6 py-4 mx-auto">
-        <div className="lg:flex justify-center items-center">
-          <div className="w-full -mx-6 lg:w-3/5">
-            <div className="px-6">
+    <footer class="bg-gray-200 dark:bg-gray-900 py-12">
+      <div class="container px-6 py-4 mx-auto">
+        <div class="lg:flex">
+          <div class="w-full -mx-6 lg:w-2/5">
+            <div class="px-6">
               <div>
-                <Link to="/" className="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Mock Stocks</Link>
+                <a href="#" class="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Mock Stocks</a>
               </div>
 
-              <div className="flex mt-4 -mx-2">
-                <Link to="/" className="mx-2 text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="Linkedin">
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 512 512">
-                    <path d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z" />
-                  </svg>
-                </Link>
+              <p class="max-w-md mt-2 text-gray-500 dark:text-gray-400">The investment platform for all.</p>
 
-                <Link to="/" className="mx-2 text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="Facebook">
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 512 512">
-                    <path d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z" />
+              <div class="flex mt-4 -mx-2">
+                <a href="https://github.com/JackyTea" class="mx-2 text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="GitHub">
+                  <svg className="text-gray-800 dark:text-white h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z"></path>
                   </svg>
-                </Link>
+                </a>
 
-                <Link to="/" className="mx-2 text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="Twitter">
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 512 512">
-                    <path d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z" />
+                <a href="https://jackytea.com/" class="mx-2 text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400" aria-label="Personal Website">
+                  <svg className="text-gray-800 dark:text-white h-4 w-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.001 20H6.00098C4.89641 20 4.00098 19.1046 4.00098 18V7C4.00098 5.89543 4.89641 5 6.00098 5H10.001V7H6.00098V18H17.001V14H19.001V18C19.001 19.1046 18.1055 20 17.001 20ZM11.701 13.707L10.291 12.293L16.584 6H13.001V4H20.001V11H18.001V7.415L11.701 13.707Z"></path>
                   </svg>
-                </Link>
+
+                </a>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 lg:mt-0 lg:flex-1">
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
+          <div class="mt-6 lg:mt-0 lg:flex-1">
+            <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
               <div>
-                <h3 className="text-gray-700 uppercase dark:text-white">About</h3>
-                <Link to="/" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Company</Link>
-                <Link to="/" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Careers</Link>
+                <h3 class="text-gray-700 uppercase dark:text-white">About</h3>
+                <Link to="/about" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Company</Link>
+                <Link to="/careers" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Careers</Link>
               </div>
 
               <div>
-                <h3 className="text-gray-700 uppercase dark:text-white">Contact</h3>
-                <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">+1 526 654 8965</span>
-                <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">example@email.com</span>
+                <h3 class="text-gray-700 uppercase dark:text-white">Stack</h3>
+                <a href="https://www.mongodb.com/mern-stack" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">MERN</a>
+                <a href="https://socket.io/" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Socket.IO</a>
+              </div>
+
+              <div>
+                <h3 class="text-gray-700 uppercase dark:text-white">Projects</h3>
+                <a href="https://jackytea.github.io/GH_Gridlock_Pathfinder/" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Pathfinder</a>
+                <a href="https://silly-shirley-309cb3.netlify.app/" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">WebGL FPS</a>
+              </div>
+
+              <div>
+                <h3 class="text-gray-700 uppercase dark:text-white">Portfolio</h3>
+                <a href="https://github.com/JackyTea" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">GitHub</a>
+                <a href="https://jackytea.com/" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Personal Site</a>
               </div>
             </div>
           </div>
         </div>
 
-        <hr className="h-px my-6 bg-gray-300 border-none dark:bg-gray-700" />
+        <hr class="h-px my-6 bg-gray-300 border-none dark:bg-gray-700" />
 
         <div>
-          <p className="text-center text-gray-800 dark:text-white">© Mock Stocks {new Date().getFullYear()}</p>
+          <p class="text-center text-gray-800 dark:text-white">© Mock Stocks {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>
