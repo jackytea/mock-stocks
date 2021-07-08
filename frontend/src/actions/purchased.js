@@ -26,7 +26,7 @@ export const addPurchase = (formInput, router) => async (dispatch) => {
   try {
     const { data } = await addPurchasedStock(formInput);
     dispatch({ type: ADD_PURCHASED, payload: data });
-    router.push(`/purchased/${data.stock}`);
+    router.push({ pathname: `/purchased/${data.stock}`, state: { detail: true } });
   } catch (error) {
     console.log(error?.message);
   }
@@ -37,7 +37,7 @@ export const updatePurchase = (id, formInput, router) => async (dispatch) => {
   try {
     const { data } = await updatePurchasedStock(id, formInput);
     dispatch({ type: UPDATE_PURCHASED, payload: data });
-    router.push(`/purchased/${id}`);
+    router.push({ pathname: `/purchased/${id}`, state: { detail: true } });
   } catch (error) {
     console.log(error?.message);
   }
@@ -48,7 +48,7 @@ export const removePurchase = (id, router) => async (dispatch) => {
   try {
     await removePurchasedStock(id);
     dispatch({ type: REMOVE_PURCHASED, payload: null });
-    router.push('/purchased/');
+    router.push({ pathname: '/purchased/', state: { detail: true } });
   } catch (error) {
     console.log(error?.message);
   }
