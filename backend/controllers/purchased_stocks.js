@@ -87,7 +87,7 @@ export const updatePurchasedStock = async (req, res) => {
     const user = await User.findById(req.userId);
     const purchased = await PurchasedStock.findOne({ userId: req.userId, stock: stock });
 
-    if ((purchased.shares + bought) < 0) {
+    if ((purchased.shares + bought) <= 0) {
       const profit = user.coins + (stock.currentPrice * purchased.shares);
       await User.findByIdAndUpdate(req.userId, { coins: profit });
       await PurchasedStock.findOneAndDelete({ userId: req.userId, stock: stock });
