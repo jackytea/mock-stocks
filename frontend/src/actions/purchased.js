@@ -45,10 +45,14 @@ export const addPurchase = (formInput, router) => async (dispatch) => {
 };
 
 // PATCH /purchased/:id
-export const updatePurchase = (id, formInput, router) => async (dispatch) => {
+export const updatePurchase = (id, formInput, router, sharesBought, sharesHeld) => async (dispatch) => {
   try {
     const { data } = await updatePurchasedStock(id, formInput);
     dispatch({ type: UPDATE_PURCHASED, payload: data });
+    if (sharesBought < 0 && (Math.abs(sharesBought) >= sharesHeld)) {
+      router.push({ pathname: '/purchased/', state: { detail: true } });
+      return;
+    }
     router.push({ pathname: `/purchased/${id}`, state: { detail: true } });
   } catch (error) {
     if (error.response) {

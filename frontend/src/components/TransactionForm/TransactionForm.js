@@ -50,7 +50,7 @@ const TransactionForm = () => {
     if (isSell) {
       dispatch(removePurchase(id, history));
     } else {
-      dispatch(updatePurchase(id, form, history));
+      dispatch(updatePurchase(id, form, history, shares, purchase.shares));
     }
     dispatch(getUserInfo());
   };
@@ -75,7 +75,7 @@ const TransactionForm = () => {
           <div className="bg-gray-100 dark:bg-gray-800 pt-36 sm:pt-12">
             <div className="container flex flex-col px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
               <section className="w-full max-w-2xl px-6 py-4 mx-auto bg-white rounded-md shadow-md dark:bg-gray-900">
-                <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-white">Buying {stock.name} stock.</h2>
+                <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-white">{shares < 0 ? "Selling" : "Buying"} {stock.name} stock.</h2>
                 <p className="mt-3 text-center text-gray-600 dark:text-gray-400">Enter a <strong>negative value</strong> to sell shares.</p>
 
                 <div className="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-4">
@@ -139,9 +139,25 @@ const TransactionForm = () => {
                     <div className="items-center -mx-2 md:flex">
                       <div className="w-full mx-0 sm:mx-2">
                         <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">Shares</label>
-                        <input onChange={handleChange} className="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" type="number" name="sharesBought" min="1" max="100" />
+                        <input onChange={handleChange} className="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" type="number" name="sharesBought" min="-100" max="100" />
                       </div>
                     </div>
+                    {(shares < 0 && (Math.abs(shares) >= purchase.shares)) &&
+                      <div class="flex mt-6 w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+                        <div class="flex items-center justify-center w-12 bg-yellow-400">
+                          <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z" />
+                          </svg>
+                        </div>
+
+                        <div class="px-4 py-2 -mx-3">
+                          <div class="mx-3">
+                            <span class="font-semibold text-yellow-400 dark:text-yellow-300">Warning</span>
+                            <p class="text-sm text-gray-600 dark:text-gray-200">Entering a negative value less or equal to your current shares will sell your entire investment!</p>
+                          </div>
+                        </div>
+                      </div>
+                    }
                     {errors &&
                       <div className="flex mt-6 w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                         <div className="flex items-center justify-center w-12 bg-red-500">
