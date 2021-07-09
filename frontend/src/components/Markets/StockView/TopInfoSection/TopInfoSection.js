@@ -1,6 +1,7 @@
 import React from 'react';
 
-const TopInfoSection = () => {
+const TopInfoSection = (props) => {
+  const { count } = props;
   return (
     <div className="bg-white dark:bg-gray-800 pt-12">
       <div className="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
@@ -10,7 +11,7 @@ const TopInfoSection = () => {
           </span>
         </h2>
         <p className="text-xl mt-4 max-w-full mx-auto text-gray-400">
-          See our selection of the biggest names in the industry.
+          See our selection of the biggest names in the industry. <br/> Currently {count} stocks available for purchase.
         </p>
       </div>
     </div>
