@@ -87,7 +87,7 @@ const StockView = () => {
               </>
             }
           </div>
-          <span className="mt-4 w-full relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+          <span className="mt-4 text-center w-full relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
             <span aria-hidden="true" className="absolute inset-0 bg-blue-200 dark:bg-blue-700 opacity-50 rounded-full">
             </span>
             <span className="relative text-blue-500 dark:text-blue-400">
