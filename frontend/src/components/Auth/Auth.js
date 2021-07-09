@@ -98,6 +98,25 @@ const Auth = () => {
               </button>
             </div>
           </form>
+
+          <div className="flex items-center justify-between mt-4">
+            <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
+
+            <span className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline">or login with Guest Account</span>
+
+            <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
+          </div>
+
+          <div className="flex items-center mt-6 -mx-2">
+            <button type="button"
+              className="disabled:opacity-10 flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+
+              <span className="hidden mx-2 sm:inline">Try with Guest Account</span>
+            </button>
+          </div>
         </div>
 
         <div className="flex items-center justify-center py-4 text-center bg-gray-300 dark:bg-gray-700">
