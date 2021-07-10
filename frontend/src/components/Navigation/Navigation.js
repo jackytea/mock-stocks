@@ -5,6 +5,7 @@ import decode from 'jwt-decode';
 import ToggleTheme from '../ToggleTheme/ToggleTheme';
 import { getUserInfo } from "../../actions/auth";
 import { LOGOUT } from '../../constants/actions';
+import DefaultAvatarImage from '../../assets/images/avatar.jpg';
 
 const Navigation = () => {
 	const dispatch = useDispatch();
@@ -101,8 +102,8 @@ const Navigation = () => {
 								<>
 									<Link onClick={() => setMenuHidden(true)} to="/dashboard">
 										<div className="flex flex-row items-center w-full hover:gray-100 dark:hover-gray-700 md:hidden block px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200">
-											<div className="mr-4 w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-												<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" className="object-cover w-full h-full" alt="avatar" />
+											<div className="mr-4 w-8 h-8 overflow-hidden rounded-full">
+												<img src={DefaultAvatarImage} className="object-cover w-full h-full" alt="avatar" />
 											</div>
 											{String(user?.result.name).split(" ")[0]} &nbsp;&nbsp;&nbsp; ${user?.result.coins.toFixed(2)}
 										</div>
@@ -123,8 +124,8 @@ const Navigation = () => {
 									<span className="sm:w-full px-2 py-1 mr-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200">{String(user?.result.name).split(" ")[0]}</span>
 
 									<div ref={container} className="sm:w-full relative inline-block focus:outline-none" aria-label="toggle profile dropdown" onClick={() => setShowDropdown(!showDropdown)}>
-										<div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-											<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" className="object-cover w-full h-full" alt="avatar" />
+										<div className="w-8 h-8 overflow-hidden rounded-full">
+											<img src={DefaultAvatarImage} className="object-fill w-full h-full" alt="avatar" />
 										</div>
 										{
 											showDropdown &&
