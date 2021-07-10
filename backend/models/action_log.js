@@ -13,8 +13,7 @@ const actionLogSchema = mongoose.Schema({
     type: String,
   },
   shares: {
-    type: Number,
-    min: 0
+    type: Number
   },
   loggedAt: {
     type: Date,

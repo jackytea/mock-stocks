@@ -16,7 +16,6 @@ const transactionSchema = mongoose.Schema({
   shares: {
     type: Number,
     required: true,
-    min: 0
   },
   investment: {
     type: Number,
