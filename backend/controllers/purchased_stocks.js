@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import User from '../models/user.js';
 import Stock from '../models/stock.js';
 import Transaction from '../models/transaction.js';
-import ActionLog from '../models/action_log.js';
 import PurchasedStock from '../models/purchased_stock.js';
 
 const router = express.Router();
@@ -72,14 +71,6 @@ export const addPurchasedStock = async (req, res) => {
     });
     await transactionLog.save();
 
-    const buyLog = new ActionLog({
-      userId: req.userId,
-      tickerBought: stock.ticker,
-      shares: sharesBought,
-      logAction: "BUY"
-    });
-    await buyLog.save();
-
     res.status(200).json(newPurchasedStock);
   } catch (error) {
     res.status(404).json({ message: "An error has occurred purchasing stock." });
@@ -114,14 +105,6 @@ export const updatePurchasedStock = async (req, res) => {
       investment: (stock.currentPrice * purchased.shares)
     });
     await transactionLog.save();
-
-    const adjustLog = new ActionLog({
-      userId: req.userId,
-      tickerBought: stock.ticker,
-      shares: bought,
-      logAction: "ADJUST"
-    });
-    await adjustLog.save();
 
     if ((purchased.shares + bought) <= 0) {
       const profit = user.coins + (stock.currentPrice * purchased.shares);
@@ -176,14 +159,6 @@ export const removePurchasedStock = async (req, res) => {
       investment: profit
     });
     await transactionLog.save();
-
-    const adjustLog = new ActionLog({
-      userId: req.userId,
-      tickerBought: stock.ticker,
-      shares: sold.shares,
-      logAction: "SELL"
-    });
-    await adjustLog.save();
 
     res.status(200).json({ message: "Stock fully sold!" });
   } catch (error) {
