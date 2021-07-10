@@ -1,15 +1,28 @@
 import React, { useState } from "react";
+import General from "./General/General";
+import Account from "./Account/Account";
+import Insights from "./Insights/Insights";
+import Transactions from "./Transactions/Transactions";
+import Logs from "./Logs/Logs";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const [user] = useState(JSON.parse(localStorage.getItem('profile')));
   const [currentTab, setCurrentTab] = useState("Account");
 
   const shownTab = (tab) => {
     switch (tab) {
       case "Account":
-        return null;
+        return <Account user={user}/>;
+      case "General":
+        return <General/>
+      case "Insights":
+        return <Insights/>
+      case "Transactions":
+        return <Transactions/>
+      case "Logs":
+        return <Logs/>
       default:
-        return "Account";
+        return <Account/>;
     }
   }
 
@@ -17,60 +30,76 @@ const Dashboard = () => {
     <div className="bg-gray-100 dark:bg-gray-800 pt-36 sm:pt-12">
       <div className="container flex flex-col justify-center px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
 
-        <section class="bg-white dark:bg-gray-900 p-12 rounded shadow">
-          <div class="container px-6 py-8 mx-auto">
-            <div class="items-center lg:flex">
-              <div class="lg:w-1/2">
-                <div class="px-4 py-5 sm:px-6 w-full">
-                  <h3 class="text-2xl leading-6 font-medium text-gray-900 dark:text-white">
+        <section className="bg-white dark:bg-gray-900 px-12 rounded shadow">
+          <div className="container px-6 pb-8 pt-2 mx-auto">
+            <div className="items-center lg:flex">
+              <div className="lg:w-1/2">
+                <div className="px-4 py-5 sm:px-6 w-full">
+                  <h3 className="text-2xl leading-6 font-medium text-gray-900 dark:text-white">
                     Welcome back, {user?.result && user.result.name}
                   </h3>
-                  <p class="mt-1 max-w-2xl text-md text-gray-500 dark:text-gray-200">
+                  <p className="mt-1 max-w-2xl text-md text-gray-500 dark:text-gray-200">
                     Adjust your preferred settings here.
                   </p>
                 </div>
-                <div class="container flex flex-col mx-auto w-full items-center justify-center bg-white dark:bg-gray-900 rounded-lg">
-                  <ul class="flex flex-col w-full divide">
-                    <li class="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
-                      <div class="select-none cursor-pointer flex flex-1 items-center p-4">
-                        <div class="flex-1 pl-1 mr-16">
-                          <div class="font-medium dark:text-white">
+                <div className="container flex flex-col mx-auto w-full items-center justify-center bg-white dark:bg-gray-900 rounded-lg">
+                  <ul className="flex flex-col w-full divide">
+                    <li onClick={() => setCurrentTab("General")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                      <div className="select-none cursor-pointer flex flex-1 items-center p-4">
+                        <div className="flex-1 pl-1 mr-16">
+                          <div className="font-medium dark:text-white flex flex-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
                             General
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li class="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
-                      <div class="select-none cursor-pointer flex flex-1 items-center p-4">
-                        <div class="flex-1 pl-1 mr-16">
-                          <div class="font-medium dark:text-white">
+                    <li onClick={() => setCurrentTab("Account")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                      <div className="select-none cursor-pointer flex flex-1 items-center p-4">
+                        <div className="flex-1 pl-1 mr-16">
+                          <div className="font-medium dark:text-white flex flex-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
                             Account
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li class="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
-                      <div class="select-none cursor-pointer flex flex-1 items-center p-4">
-                        <div class="flex-1 pl-1 mr-16">
-                          <div class="font-medium dark:text-white">
+                    <li onClick={() => setCurrentTab("Insights")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                      <div className="select-none cursor-pointer flex flex-1 items-center p-4">
+                        <div className="flex-1 pl-1 mr-16">
+                          <div className="font-medium dark:text-white flex flex-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                            </svg>
                             Insights
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li class="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
-                      <div class="select-none cursor-pointer flex flex-1 items-center p-4">
-                        <div class="flex-1 pl-1 mr-16">
-                          <div class="font-medium dark:text-white">
+                    <li onClick={() => setCurrentTab("Transactions")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                      <div className="select-none cursor-pointer flex flex-1 items-center p-4">
+                        <div className="flex-1 pl-1 mr-16">
+                          <div className="font-medium dark:text-white flex flex-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
                             Transactions
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li class="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
-                      <div class="select-none cursor-pointer flex flex-1 items-center p-4">
-                        <div class="flex-1 pl-1 mr-16">
-                          <div class="font-medium dark:text-white">
+                    <li onClick={() => setCurrentTab("Logs")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                      <div className="select-none cursor-pointer flex flex-1 items-center p-4">
+                        <div className="flex-1 pl-1 mr-16">
+                          <div className="font-medium dark:text-white flex flex-row">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                            </svg>
                             Logs
                           </div>
                         </div>
@@ -80,10 +109,10 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div class="mt-8 lg:mt-0 lg:w-1/2">
-                <div class="flex items-center justify-center lg:justify-end">
-                  <div class="max-w-lg w-96">
-
+              <div className="mt-8 lg:mt-0 lg:w-1/2">
+                <div className="flex items-center justify-center lg:justify-end">
+                  <div className="max-w-lg w-96">
+                    {shownTab(currentTab)}
                   </div>
                 </div>
               </div>
