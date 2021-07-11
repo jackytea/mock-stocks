@@ -3,7 +3,7 @@ import React from "react";
 const Showcase = () => {
   return (
     <div className="bg-white dark:bg-gray-800">
-      <div className="container px-32 py-32 mx-auto">
+      <div className="container sm:px-32 py-16 sm:py-24 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-8 lg:-mx-4 lg:flex-row lg:items-stretch lg:space-y-0">
           <div className="flex flex-col w-full max-w-sm p-8 space-y-8 text-center bg-white border-2 border-gray-200 rounded-lg lg:mx-4 dark:bg-gray-800 dark:border-gray-700">
             <div className="flex-shrink-0">

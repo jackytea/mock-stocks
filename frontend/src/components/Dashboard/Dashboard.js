@@ -27,7 +27,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 pt-36 sm:pt-12">
+    <div className="bg-gray-100 dark:bg-gray-800 pt-24 lg:pt-16 md:pt-32 sm:pt-32">
       <div className="container flex flex-col justify-center px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
         <section className="bg-white dark:bg-gray-900 px-12 rounded shadow w-full">
           <div className="container px-6 pb-8 pt-2 mx-auto">
