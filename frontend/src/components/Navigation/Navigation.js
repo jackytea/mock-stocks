@@ -97,7 +97,6 @@ const Navigation = () => {
 							<Link onClick={() => setMenuHidden(true)} to="/" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Home</Link>
 							<Link onClick={() => setMenuHidden(true)} to="/markets" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Markets</Link>
 							{user?.result && <Link onClick={() => setMenuHidden(true)} to="/purchased" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Investments</Link>}
-							<Link onClick={() => setMenuHidden(true)} to="/about" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">About</Link>
 							{user?.result ?
 								<>
 									<Link onClick={() => setMenuHidden(true)} to="/dashboard">
