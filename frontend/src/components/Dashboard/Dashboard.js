@@ -12,17 +12,17 @@ const Dashboard = () => {
   const shownTab = (tab) => {
     switch (tab) {
       case "Account":
-        return <Account user={user}/>;
+        return <Account user={user} />;
       case "General":
-        return <General/>
+        return <General />
       case "Insights":
-        return <Insights/>
+        return <Insights />
       case "Transactions":
-        return <Transactions/>
+        return <Transactions />
       case "Logs":
-        return <Logs/>
+        return <Logs />
       default:
-        return <Account/>;
+        return <Account />;
     }
   }
 
@@ -34,8 +34,8 @@ const Dashboard = () => {
             <div className="items-center lg:flex">
               <div className="lg:w-1/2">
                 <div className="px-4 py-5 sm:px-6 w-full">
-                  <h3 className="text-2xl leading-6 font-medium text-gray-900 dark:text-white">
-                    Welcome back, {user?.result && user.result.name}
+                  <h3 className="text-xl leading-6 font-medium text-gray-900 dark:text-white">
+                    Hi, {user?.result && user.result.name}
                   </h3>
                   <p className="mt-1 max-w-2xl text-md text-gray-500 dark:text-gray-200">
                     Adjust your preferred settings here.
@@ -68,18 +68,6 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </li>
-                    <li onClick={() => setCurrentTab("Insights")} className={currentTab === "Insights" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
-                      <div className="select-none cursor-pointer flex flex-1 items-center p-4">
-                        <div className="flex-1 pl-1 mr-16">
-                          <div className="font-medium dark:text-white flex flex-row">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                            </svg>
-                            Insights
-                          </div>
-                        </div>
-                      </div>
-                    </li>
                     <li onClick={() => setCurrentTab("Transactions")} className={currentTab === "Transactions" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
                       <div className="select-none cursor-pointer flex flex-1 items-center p-4">
                         <div className="flex-1 pl-1 mr-16">
@@ -87,7 +75,7 @@ const Dashboard = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
-                            Transactions
+                            Transaction History
                           </div>
                         </div>
                       </div>
@@ -99,7 +87,26 @@ const Dashboard = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                             </svg>
-                            Logs
+                            Activity Logs
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li onClick={() => setCurrentTab("Insights")} className={currentTab === "Insights" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
+                      <div className="select-none cursor-pointer flex flex-1 items-center p-4">
+                        <div className="flex-1 pl-1 mr-16">
+                          <div className="font-medium dark:text-white flex flex-row items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                            </svg>
+                            Insights
+                            <span className="relative inline-block px-3 py-1 font-semibold text-indigo-900 leading-tight ml-2">
+                              <span aria-hidden="true" className="absolute inset-0 bg-indigo-200 dark:bg-indigo-700 opacity-50 rounded-full">
+                              </span>
+                              <span className="text-sm relative text-indigo-600 dark:text-indigo-400">
+                                BETA
+                              </span>
+                            </span>
                           </div>
                         </div>
                       </div>
