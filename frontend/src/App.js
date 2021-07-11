@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import PurchasedStocks from "./components/PurchasedStocks/PurchasedStocks";
 import TransactionForm from "./components/TransactionForm/TransactionForm";
 import PurchasedStockDetails from "./components/PurchasedStockDetails/PurchasedStockDetails";
+import ConfirmationPage from "./components/ConfirmationPage/ConfirmationPage";
 import Dashboard from "./components/Dashboard/Dashboard";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         <ProtectedRoute exact path='/purchased' comp={PurchasedStocks} />
         <ProtectedRoute exact path='/purchased/:id' comp={PurchasedStockDetails} />
         <ProtectedRoute exact path='/transaction/:id' comp={TransactionForm} />
+        <ProtectedRoute exact path='/confirmation/' comp={ConfirmationPage} />
         <Route render={() => (<NotFound />)} />
       </Switch>
       <Footer/>

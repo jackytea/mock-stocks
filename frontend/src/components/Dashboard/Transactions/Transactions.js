@@ -14,7 +14,7 @@ const Transactions = () => {
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="container px-4 py-4 mx-auto">
-        <h2 class="text-left text-lg font-semibold text-gray-700 capitalize dark:text-gray-200 mb-2">Transactions</h2>
+        <h2 className="text-left text-lg font-semibold text-gray-700 capitalize dark:text-gray-200 mb-2">Transactions</h2>
         {!transactions?.length ? <TransactionsSkeleton/>
           :
           <div className="text-xs overflow-auto max-h-96 shadow">

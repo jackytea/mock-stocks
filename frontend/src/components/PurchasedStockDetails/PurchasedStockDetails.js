@@ -16,7 +16,6 @@ const PurchasedStockDetails = (props) => {
 	const stock = useSelector((state) => state.stocksReducer);
 	const dispatch = useDispatch();
 	const { id } = useParams();
-	const { state } = useLocation();
 
 	useEffect(() => {
 		dispatch(getPurchase(id));
