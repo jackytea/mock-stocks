@@ -92,10 +92,10 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </li>
-                    <li onClick={() => setCurrentTab("Insights")} className={currentTab === "Insights" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
-                      <div className="select-none cursor-pointer flex flex-1 items-center p-4">
+                    <li className={currentTab === "Insights" ? "cursor-not-allowed flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "cursor-not-allowed flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
+                      <div className="select-none cursor-not-allowed flex flex-1 items-center p-4">
                         <div className="flex-1 pl-1 mr-16">
-                          <div className="font-medium dark:text-white flex flex-row items-center">
+                          <div className="font-medium text-gray-400 dark:text-gray-700 flex flex-row items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                             </svg>
@@ -104,7 +104,7 @@ const Dashboard = () => {
                               <span aria-hidden="true" className="absolute inset-0 bg-indigo-200 dark:bg-indigo-700 opacity-50 rounded-full">
                               </span>
                               <span className="text-sm relative text-indigo-600 dark:text-indigo-400">
-                                BETA
+                                COMING SOON
                               </span>
                             </span>
                           </div>
