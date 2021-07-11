@@ -71,7 +71,7 @@ const Navigation = () => {
 				<div className="md:flex md:items-center md:justify-between">
 					<div className="flex items-center justify-between">
 						<div className="text-xl font-semibold text-gray-700">
-							<Link className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300" to="/">Mock Stocks</Link>
+							<Link className="text-xl font-bold text-gray-800 dark:text-white lg:text-xl hover:text-gray-700 dark:hover:text-gray-300" to="/">Mock Stocks</Link>
 						</div>
 
 						<div className="flex md:hidden">

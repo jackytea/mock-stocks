@@ -34,7 +34,7 @@ export const addPurchase = (formInput, router) => async (dispatch) => {
   try {
     const { data } = await addPurchasedStock(formInput);
     dispatch({ type: ADD_PURCHASED, payload: data });
-    router.push({ pathname: `/purchased/${data.stock}`, state: { detail: true } });
+    router.push({ pathname: `/purchased/${data.stock}`, state: { updated: true } });
   } catch (error) {
     if (error.response) {
       dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: error.response.data.message });
@@ -50,10 +50,10 @@ export const updatePurchase = (id, formInput, router, sharesBought, sharesHeld) 
     const { data } = await updatePurchasedStock(id, formInput);
     dispatch({ type: UPDATE_PURCHASED, payload: data });
     if (sharesBought < 0 && (Math.abs(sharesBought) >= sharesHeld)) {
-      router.push({ pathname: '/purchased/', state: { detail: true } });
+      router.push({ pathname: '/purchased/', state: { updated: true } });
       return;
     }
-    router.push({ pathname: `/purchased/${id}`, state: { detail: true } });
+    router.push({ pathname: `/purchased/${id}`, state: { updated: true } });
   } catch (error) {
     if (error.response) {
       dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: error.response.data.message });
@@ -68,7 +68,7 @@ export const removePurchase = (id, router) => async (dispatch) => {
   try {
     await removePurchasedStock(id);
     dispatch({ type: REMOVE_PURCHASED, payload: null });
-    router.push({ pathname: '/purchased/', state: { detail: true } });
+    router.push({ pathname: '/purchased/', state: { updated: true } });
   } catch (error) {
     if (error.response) {
       dispatch({ type: PURCHASED_ERROR_OCCURRED, payload: error.response.data.message });

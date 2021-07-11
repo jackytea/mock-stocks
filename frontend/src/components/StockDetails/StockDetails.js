@@ -8,8 +8,8 @@ import CurrentPrice from "../CurrentPrice/CurrentPrice"
 import PriceChart from "../PriceChart/PriceChart";
 
 const StockDetails = (props) => {
-  const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
   const { id } = props;
+  const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
   const stock = useSelector((state) => state.stocksReducer);
   const dispatch = useDispatch();
 
