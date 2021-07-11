@@ -3,18 +3,22 @@ import stocksReducer from './stocks';
 import authReducer from './auth';
 import purchasedReducer from './purchased';
 import transactionsReducer from './transactions';
-import { authErrorsReducer, marketErrorsReducer, purchasedErrorsReducer, userErrorsReducer } from './error';
+import logsReducer from './logs';
+import { authErrorsReducer, marketErrorsReducer, purchasedErrorsReducer, userErrorsReducer, transactionErrorsReducer, logsErrorsReducer } from './error';
 import { LOGOUT } from '../constants/actions';
 
 const appReducer = combineReducers({ 
   stocksReducer, 
   authReducer, 
   purchasedReducer,
-  transactionsReducer, 
+  transactionsReducer,
+  logsReducer, 
   authErrorsReducer, 
   marketErrorsReducer,
   purchasedErrorsReducer,
-  userErrorsReducer
+  userErrorsReducer,
+  transactionErrorsReducer,
+  logsErrorsReducer
 });
 
 export const reducer = (state, action) => {

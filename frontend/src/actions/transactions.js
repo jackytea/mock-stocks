@@ -10,7 +10,7 @@ export const getTransactions = () => async (dispatch) => {
     if (error.response) {
       dispatch({ type: TRANSACTION_ERROR_OCCURRED, payload: error.response.data.message });
     } else {
-      dispatch({ type: TRANSACTION_ERROR_OCCURRED, payload: "Markets are down!" });
+      dispatch({ type: TRANSACTION_ERROR_OCCURRED, payload: "Transaction server is down!" });
     }
   }
 };

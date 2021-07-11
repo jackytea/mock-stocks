@@ -29,3 +29,6 @@ export const removePurchasedStock = (id) => api.delete(`/purchased/${id}`);
 
 // transactions
 export const fetchTransactions = () => api.get('/transactions');
+
+//logs
+export const fetchLogs = () => api.get('/logs');
