@@ -31,6 +31,12 @@ const Auth = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
   };
 
+  const handleSubmitGuestAccount = (e) => {
+    e.preventDefault();
+    dispatch({ type: AUTH_ERROR_OCCURRED, payload: "" });
+    dispatch(loginUser({ email: atob(process.env.REACT_APP_GUEST_EMAIL), password: atob(process.env.REACT_APP_GUEST_PASS) }, history, state));
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: AUTH_ERROR_OCCURRED, payload: "" });
@@ -93,7 +99,7 @@ const Auth = () => {
             }
 
             <div className="flex items-center justify-center mt-4">
-              <button className="w-full px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 dark:bg-gray-500 rounded hover:bg-gray-600 focus:outline-none" type="submit" onClick={handleSubmit}>
+              <button className="w-full px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 dark:bg-gray-500 rounded hover:bg-gray-600 focus:outline-none" type="submit">
                 {isSignup ? "Create Account" : "Login"}
               </button>
             </div>
@@ -107,15 +113,16 @@ const Auth = () => {
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
           </div>
 
-          <div className="flex items-center mt-6 -mx-2">
-            <button type="button"
-              className="disabled:opacity-10 flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none" disabled>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-
-              <span className="hidden mx-2 sm:inline">Try with Guest Account</span>
-            </button>
+          <div className="flex items-center justify-center mt-6">
+            <form onSubmit={handleSubmitGuestAccount} className="w-full">
+              <button type="submit"
+                className="flex items-center justify-center w-full px-6 py-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span className="hidden mx-2 sm:inline">Try with Guest Account</span>
+              </button>
+            </form>
           </div>
         </div>
 
