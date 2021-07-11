@@ -10,12 +10,15 @@ export const ADD_PURCHASED = 'ADD_PURCHASED';
 export const UPDATE_PURCHASED = 'UPDATE_PURCHASED';
 export const REMOVE_PURCHASED = 'REMOVE_PURCHASED';
 
-//authentication actions
+//authentication and user actions
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
 export const USER_INFO = 'USER_INFO';
+export const USER_UPDATE_NAME = 'USER_UPDATE_NAME';
+export const DELETE_USER = 'DELETE_USER';
 
 //error actions
 export const AUTH_ERROR_OCCURRED = 'AUTH_ERROR_OCCURRED';
 export const MARKET_ERROR_OCCURRED = 'MARKET_ERROR_OCCURRED';
 export const PURCHASED_ERROR_OCCURRED = 'PURCHASED_ERROR_OCCURRED';
+export const USER_ERROR_OCCURRED = 'USER_ERROR_OCCURRED';

@@ -29,7 +29,6 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 pt-36 sm:pt-12">
       <div className="container flex flex-col justify-center px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
-
         <section className="bg-white dark:bg-gray-900 px-12 rounded shadow">
           <div className="container px-6 pb-8 pt-2 mx-auto">
             <div className="items-center lg:flex">
@@ -44,7 +43,7 @@ const Dashboard = () => {
                 </div>
                 <div className="container flex flex-col mx-auto w-full items-center justify-center bg-white dark:bg-gray-900 rounded-lg">
                   <ul className="flex flex-col w-full divide">
-                    <li onClick={() => setCurrentTab("General")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                    <li onClick={() => setCurrentTab("General")} className={currentTab === "General" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
                       <div className="select-none cursor-pointer flex flex-1 items-center p-4">
                         <div className="flex-1 pl-1 mr-16">
                           <div className="font-medium dark:text-white flex flex-row">
@@ -57,7 +56,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </li>
-                    <li onClick={() => setCurrentTab("Account")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                    <li onClick={() => setCurrentTab("Account")} className={currentTab === "Account" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
                       <div className="select-none cursor-pointer flex flex-1 items-center p-4">
                         <div className="flex-1 pl-1 mr-16">
                           <div className="font-medium dark:text-white flex flex-row">
@@ -69,7 +68,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </li>
-                    <li onClick={() => setCurrentTab("Insights")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                    <li onClick={() => setCurrentTab("Insights")} className={currentTab === "Insights" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
                       <div className="select-none cursor-pointer flex flex-1 items-center p-4">
                         <div className="flex-1 pl-1 mr-16">
                           <div className="font-medium dark:text-white flex flex-row">
@@ -81,7 +80,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </li>
-                    <li onClick={() => setCurrentTab("Transactions")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                    <li onClick={() => setCurrentTab("Transactions")} className={currentTab === "Transactions" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
                       <div className="select-none cursor-pointer flex flex-1 items-center p-4">
                         <div className="flex-1 pl-1 mr-16">
                           <div className="font-medium dark:text-white flex flex-row">
@@ -93,7 +92,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </li>
-                    <li onClick={() => setCurrentTab("Logs")} className="flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+                    <li onClick={() => setCurrentTab("Logs")} className={currentTab === "Logs" ? "flex flex-row my-2 bg-blue-300 dark:bg-blue-900 hover:bg-blue-400 dark:hover:bg-blue-700 rounded" : "flex flex-row my-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"}>
                       <div className="select-none cursor-pointer flex flex-1 items-center p-4">
                         <div className="flex-1 pl-1 mr-16">
                           <div className="font-medium dark:text-white flex flex-row">
@@ -109,7 +108,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="mt-8 lg:mt-0 lg:w-1/2">
+              <div className="lg:w-1/2">
                 <div className="flex items-center justify-center lg:justify-end">
                   <div className="max-w-lg w-96">
                     {shownTab(currentTab)}

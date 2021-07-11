@@ -84,11 +84,12 @@ export const updateUserName = async (req, res) => {
     }
 
     if (req.userId === process.env.GUEST_ID) {
-      return res.status(400).send("Not allowed to modify guest account!");
+      return res.status(400).send({message: "Not allowed to modify guest account!"});
     }
 
     await User.findByIdAndUpdate(req.userId, { name: `${firstName} ${lastName}` });
-    res.status(200).json({ message: "Username successfully updated!" });
+    const updatedUser = await User.findById(req.userId);
+    res.status(200).json(updatedUser);
   } catch (error) {
     res.status(404).json({ message: "An error has occurred updating your username." });
   }
@@ -103,7 +104,7 @@ export const updateUserPassword = async (req, res) => {
     }
 
     if (req.userId === process.env.GUEST_ID) {
-      return res.status(400).send("Not allowed to modify guest account!");
+      return res.status(400).send({message: "Not allowed to modify guest account!"});
     }
 
     if (newPassword !== newPasswordConfirmed) {
@@ -134,7 +135,7 @@ export const removeUser = async (req, res) => {
     }
 
     if (req.userId === process.env.GUEST_ID) {
-      return res.status(400).send("Not allowed to modify guest account!");
+      return res.status(400).send({message: "Not allowed to modify guest account!"});
     }
 
     await ActionLog.deleteMany({ userId: req.userId });
