@@ -104,7 +104,7 @@ const Navigation = () => {
 											<div className="cursor-pointer mr-4 w-8 h-8 overflow-hidden rounded-full">
 												<img src={DefaultAvatarImage} className="object-cover w-full h-full" alt="avatar" />
 											</div>
-											{String(user?.result.name).split(" ")[0]} &nbsp;&nbsp;&nbsp; 									
+											{String(user?.result.name).split(" ")[0] || String(user?.result.name).split(" ")[1]} &nbsp;&nbsp;&nbsp; 									
 											<span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
 												<span aria-hidden="true" className="absolute inset-0 bg-yellow-200 dark:bg-yellow-700 opacity-50 rounded-full">
 												</span>
@@ -133,7 +133,7 @@ const Navigation = () => {
 										</span>
 									</span>
 
-									<span className="sm:w-full px-2 py-1 mr-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200">{String(user?.result.name).split(" ")[0]}</span>
+									<span className="sm:w-full px-2 py-1 mr-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200">{String(user?.result.name).split(" ")[0] || String(user?.result.name).split(" ")[1]}</span>
 
 									<div ref={container} className="sm:w-full relative inline-block focus:outline-none" aria-label="toggle profile dropdown" onClick={() => setShowDropdown(!showDropdown)}>
 										<div className="cursor-pointer w-8 h-8 overflow-hidden rounded-full">

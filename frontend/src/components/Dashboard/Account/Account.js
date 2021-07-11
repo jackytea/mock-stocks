@@ -45,12 +45,12 @@ const Account = (props) => {
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <div>
                 <label className="text-gray-700 dark:text-gray-200" htmlFor="firstName">First Name</label>
-                <input onChange={handleChange} id="firstName" type="text" name="firstName" placeholder={String(user?.result.name).split(" ")[0]} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                <input onChange={handleChange} required id="firstName" type="text" name="firstName" placeholder={String(user?.result.name).split(" ")[0]} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
               </div>
 
               <div>
                 <label className="text-gray-700 dark:text-gray-200" htmlFor="lastName">Last Name</label>
-                <input onChange={handleChange} id="lastName" type="text" name="lastName" placeholder={String(user?.result.name).split(" ")[1]} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                <input onChange={handleChange} required id="lastName" type="text" name="lastName" placeholder={String(user?.result.name).split(" ")[1]} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
               </div>
             </div>
 
