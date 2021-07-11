@@ -29,7 +29,7 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 pt-36 sm:pt-12">
       <div className="container flex flex-col justify-center px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
-        <section className="bg-white dark:bg-gray-900 px-12 rounded shadow">
+        <section className="bg-white dark:bg-gray-900 px-12 rounded shadow w-full">
           <div className="container px-6 pb-8 pt-2 mx-auto">
             <div className="items-center lg:flex">
               <div className="lg:w-1/2">
@@ -117,7 +117,7 @@ const Dashboard = () => {
 
               <div className="lg:w-1/2">
                 <div className="flex items-center justify-center lg:justify-end">
-                  <div className="max-w-lg w-96">
+                  <div className="w-full sm:w-5/6">
                     {shownTab(currentTab)}
                   </div>
                 </div>

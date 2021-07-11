@@ -26,3 +26,6 @@ export const purchasedStock = (id) => api.get(`/purchased/${id}`);
 export const addPurchasedStock = (formInput) => api.post('/purchased', formInput);
 export const updatePurchasedStock = (id, formInput) => api.patch(`/purchased/${id}`, formInput);
 export const removePurchasedStock = (id) => api.delete(`/purchased/${id}`);
+
+// transactions
+export const fetchTransactions = () => api.get('/transactions');

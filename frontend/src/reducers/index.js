@@ -2,13 +2,15 @@ import { combineReducers } from 'redux';
 import stocksReducer from './stocks';
 import authReducer from './auth';
 import purchasedReducer from './purchased';
+import transactionsReducer from './transactions';
 import { authErrorsReducer, marketErrorsReducer, purchasedErrorsReducer, userErrorsReducer } from './error';
 import { LOGOUT } from '../constants/actions';
 
 const appReducer = combineReducers({ 
   stocksReducer, 
   authReducer, 
-  purchasedReducer, 
+  purchasedReducer,
+  transactionsReducer, 
   authErrorsReducer, 
   marketErrorsReducer,
   purchasedErrorsReducer,
