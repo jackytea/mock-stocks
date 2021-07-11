@@ -2,7 +2,7 @@ const GridViewSkeleton = () => {
   return (
     <>
       {[...Array(8).keys()].map(index => (
-        <div className="animate-pulse max-w-xs mx-auto overflow-hidden bg-gray-200 rounded-lg shadow-lg dark:bg-gray-900 mt-4 w-96">
+        <div key={index} className="animate-pulse max-w-xs mx-auto overflow-hidden bg-gray-200 rounded-lg shadow-lg dark:bg-gray-900 mt-4 w-96">
           <div className="animate-pulse flex space-x-4">
             <div className="p-4 max-w-sm w-full mx-auto">
               <div className="flex-1 space-y-4 py-1">
