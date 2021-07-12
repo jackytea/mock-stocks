@@ -12,6 +12,18 @@ dotenv.config();
 const jwtSecret = process.env.JWT_SECRET;
 const router = express.Router();
 
+// remove first transaction after a certain amount to keep logs clean
+async function clearFirstLog(res, userId) {
+  try {
+    const countLogs = await ActionLog.find({ userId: userId }).countDocuments();
+    if (countLogs > 20) {
+      await ActionLog.findOneAndDelete({ userId: userId }, { sort: { loggedAt: 1 } });
+    }
+  } catch (error) {
+    res.status(400).json({ message: "Failure to cleanup logs!" });
+  }
+}
+
 export const registerUser = async (req, res) => {
   try {
     const { email, password, firstName, lastName } = req.body;
@@ -30,6 +42,7 @@ export const registerUser = async (req, res) => {
       logAction: "REGISTER"
     });
     await registerLog.save();
+    clearFirstLog(res, createdUser._id);
 
     res.status(201).json({ result: createdUser, token: token });
   } catch (error) {
@@ -59,6 +72,7 @@ export const loginUser = async (req, res) => {
       logAction: "LOGIN"
     });
     await loginLog.save();
+    clearFirstLog(res, existingUser._id);
 
     res.status(200).json({ result: existingUser, token: token });
   } catch (err) {
@@ -84,7 +98,7 @@ export const updateUserName = async (req, res) => {
     }
 
     if (req.userId === process.env.GUEST_ID) {
-      return res.status(400).send({message: "Not allowed to modify guest account!"});
+      return res.status(400).send({ message: "Not allowed to modify guest account!" });
     }
 
     await User.findByIdAndUpdate(req.userId, { name: `${firstName} ${lastName}` });
@@ -104,7 +118,7 @@ export const updateUserPassword = async (req, res) => {
     }
 
     if (req.userId === process.env.GUEST_ID) {
-      return res.status(400).send({message: "Not allowed to modify guest account!"});
+      return res.status(400).send({ message: "Not allowed to modify guest account!" });
     }
 
     if (newPassword !== newPasswordConfirmed) {
@@ -135,7 +149,7 @@ export const removeUser = async (req, res) => {
     }
 
     if (req.userId === process.env.GUEST_ID) {
-      return res.status(400).send({message: "Not allowed to modify guest account!"});
+      return res.status(400).send({ message: "Not allowed to modify guest account!" });
     }
 
     await ActionLog.deleteMany({ userId: req.userId });

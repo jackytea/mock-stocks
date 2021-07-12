@@ -7,6 +7,18 @@ import PurchasedStock from '../models/purchased_stock.js';
 
 const router = express.Router();
 
+// remove first transaction after a certain amount to keep logs clean
+async function clearFirstTransactionLog(res, userId) {
+  try {
+    const countTransactions = await Transaction.find({ userId: userId }).countDocuments();
+    if (countTransactions > 20) {
+      await Transaction.findOneAndDelete({ userId: userId }, { sort: { transactedAt: 1 } });
+    }
+  } catch (error) {
+    res.status(400).json({ message: "Failure to cleanup transaction logs!" });
+  }
+}
+
 // GET
 export const getPurchasedStocks = async (req, res) => {
   try {
@@ -70,6 +82,7 @@ export const addPurchasedStock = async (req, res) => {
       investment: initialInvestment
     });
     await transactionLog.save();
+    clearFirstTransactionLog(res, req.userId);
 
     res.status(200).json(newPurchasedStock);
   } catch (error) {
@@ -105,6 +118,7 @@ export const updatePurchasedStock = async (req, res) => {
       investment: (stock.currentPrice * purchased.shares)
     });
     await transactionLog.save();
+    clearFirstTransactionLog(res, req.userId);
 
     if ((purchased.shares + bought) <= 0) {
       const profit = user.coins + (stock.currentPrice * purchased.shares);
@@ -159,6 +173,7 @@ export const removePurchasedStock = async (req, res) => {
       investment: profit
     });
     await transactionLog.save();
+    clearFirstTransactionLog(res, req.userId);
 
     res.status(200).json({ message: "Stock fully sold!" });
   } catch (error) {
