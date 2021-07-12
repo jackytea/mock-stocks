@@ -8,6 +8,7 @@ Mock Stocks is a trading and investment platform simulation built with the [MERN
 
 - [Tech](#tech)<br/>
 - [Data](#data)<br/>
+- [Developing](#developing)<br/>
 - [Architecture](#architecture)<br/>
 - [Demos](#demo-gifs)<br/>
 
@@ -38,6 +39,75 @@ This project utilizes the [MERN](https://www.mongodb.com/mern-stack) stack and [
 ## Data
 
 Stock data in this project was generated via [Mockaroo](https://www.mockaroo.com/) and is not reflective of real world market prices.
+
+## Developing
+
+To run this application locally, you will need the following prerequisite programs: 
+
+- [Node.JS and NPM](https://nodejs.org/en/)
+- [Create React App](https://github.com/facebook/create-react-app)
+- [MongoDB](https://www.mongodb.com/)
+
+**Back-End Setup**
+
+First, install the necessary packages via:
+```
+npm i
+```
+Refer to the [`package.json`](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/package.json) in the [`/backend`](https://github.com/JackyTea/Mock-Stocks/tree/main/backend) directory for more information about what is being installed.
+
+Then, setup the `.env` file in the root of the [`/backend`](https://github.com/JackyTea/Mock-Stocks/tree/main/backend) directory. (**Note**: this will be gitignored)
+
+```bash
+# for mongodb connection
+MONGO_CONNECTION_STRING=mongo_secret_here
+
+# for authentication via signing tokens
+JWT_SECRET=jwt_secret_here
+
+# for guest account login (mongo objectID)
+GUEST_ID=guest_id_here
+```
+
+Now you can spin up the backend. Default port is `5000`. This can be changed in [index.js](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/index.js#L54).
+
+```bash
+# start server
+node .
+
+# explicit command
+node index.js
+```
+
+**Front-End Setup**
+
+First, install the necessary packages via:
+```
+npm i
+```
+
+Refer to the [`package.json`](https://github.com/JackyTea/Mock-Stocks/blob/main/frontend/package.json) in the [`/frontend`](https://github.com/JackyTea/Mock-Stocks/tree/main/frontend) directory for more information about what is being installed.
+
+Then, setup the `.env` file in the root of the [`/frontend`](https://github.com/JackyTea/Mock-Stocks/tree/main/frontend) directory. (**Note**: this will be gitignored) Also see that `REACT_APP_GUEST_EMAIL` and `REACT_APP_GUEST_PASS` take [base64](https://en.wikipedia.org/wiki/Base64) encoded strings. You can easily encode your credentials using this [site](https://www.base64encode.org/) or with the [`btoa()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa) function.
+
+```bash
+# backend connection to REST API
+REACT_APP_STOCKS_API=api_url
+
+# email of the guest account (encoded)
+REACT_APP_GUEST_EMAIL=base64_encoded_string
+
+# password of the guest account (encoded)
+REACT_APP_GUEST_PASS=base64_encoded_string
+```
+
+Now you can spin up the backend. Default port is `3000` for a [`create-react-app`](https://github.com/facebook/create-react-app) project.
+
+
+```bash
+# start react app
+npm start
+```
 
 ## Architecture
 
