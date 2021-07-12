@@ -60,10 +60,13 @@ MongoDB database structure using [normalized data models.](https://docs.mongodb.
 ![Home Page](./demo_gifs/MockStocksHomePage.gif "Home Page")
 
 **Browsing Markets**
+
 ![Markets](./demo_gifs/MockStocksBrowsing.gif "Markets")
 
 **Buying A Stock**
+
 ![Buying](./demo_gifs/MockStocksBuying.gif "Buying")
 
 **User Settings and Logging**
+
 ![Settings](./demo_gifs/MockStocksSettings.gif "Settings")
