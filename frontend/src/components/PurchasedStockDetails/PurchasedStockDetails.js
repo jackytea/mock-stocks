@@ -41,7 +41,7 @@ const PurchasedStockDetails = (props) => {
 						<div className="max-w-lg lg:mx-12 lg:order-2">
 							<h1 className="text-2xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">Investing {purchase.shares}  {purchase.shares > 0 ? "shares" : "share"} in <strong>{stock.exchange} : {purchase.tickerBought}</strong>.</h1>
 							<p className="mt-4 text-gray-600 dark:text-gray-300">{stock.description}</p>
-							<div className="flex items-center">
+							<div className="flex items-start sm:items-center flex-col p-6 sm:p-0 sm:flex-row ">
 								<div className="block">
 									<div className="mt-6">
 										<h1 className="text-xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl mb-2">Initial Investment</h1>
@@ -58,7 +58,7 @@ const PurchasedStockDetails = (props) => {
 										<InvestmentPrice shares={purchase.shares} ticker={purchase.tickerBought} initialInvestment={purchase.initialInvestment} socket={socket} />
 									</div>
 								</div>
-								<div className="ml-8 block">
+								<div className="ml-0 sm:ml-8 block">
 									<div className="mt-6">
 										<h1 className="text-xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl mb-2">Shares Bought</h1>
 										<span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
@@ -83,7 +83,7 @@ const PurchasedStockDetails = (props) => {
 							</div>
 							{
 								state &&
-								<div onClick={() => {window.history.replaceState({}, document.title); window.location.reload();}} className="cursor-pointer mt-6 flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+								<div onClick={() => { window.history.replaceState({}, document.title); window.location.reload(); }} className="cursor-pointer mt-6 flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
 									<div className="flex items-center justify-center w-12 bg-blue-500">
 										<svg className="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
 											<path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z" />
@@ -129,7 +129,7 @@ const PurchasedStockDetails = (props) => {
 										</span>
 									}
 								</div>
-								<div className="mt-6 mb-2 text-gray-700 dark:text-gray-200 text-center">
+								<div className="mt-6 mb-2 text-gray-700 dark:text-gray-200 text-center flex sm:block">
 									<Link to={`/transaction/${stock._id}`} className="w-full px-20 sm:px-32 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-600">
 										Buy More Shares
 									</Link>

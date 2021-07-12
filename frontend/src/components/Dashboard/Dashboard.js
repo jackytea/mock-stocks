@@ -29,8 +29,8 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 pt-24 lg:pt-16 md:pt-32 sm:pt-32">
       <div className="container flex flex-col justify-center px-6 py-4 mx-auto space-y-6 lg:h-128 lg:py-16 lg:flex-row lg:items-center lg:space-x-6">
-        <section className="bg-white dark:bg-gray-900 px-12 rounded shadow w-full">
-          <div className="container px-6 pb-8 pt-2 mx-auto">
+        <section className="bg-white dark:bg-gray-900 px-4 sm:px-12 rounded shadow w-full">
+          <div className="container pb-8 pt-2 mx-auto">
             <div className="items-center lg:flex">
               <div className="lg:w-1/2">
                 <div className="px-4 py-5 sm:px-6 w-full">
