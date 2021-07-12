@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Markets from "./components/Markets/Markets";
 import Navigation from './components/Navigation/Navigation';
 import Home from "./components/Home/Home";
@@ -16,19 +17,21 @@ import Dashboard from "./components/Dashboard/Dashboard";
 const App = () => {
   return (
     <div className="font-inter">
-      <Navigation />
-      <Switch>
-        <Route exact path='/' render={() => (<Home />)} />
-        <Route exact path='/markets' render={() => (<Markets />)} />
-        <Route exact path='/auth' render={() => (<Auth />)} />
-        <Route exact path='/stock/:id' render={(props) => (<StockDetails id={props.match.params.id} />)} />
-        <ProtectedRoute exact path='/dashboard' comp={Dashboard} />
-        <ProtectedRoute exact path='/purchased' comp={PurchasedStocks} />
-        <ProtectedRoute exact path='/purchased/:id' comp={PurchasedStockDetails} />
-        <ProtectedRoute exact path='/transaction/:id' comp={TransactionForm} />
-        <Route render={() => (<NotFound />)} />
-      </Switch>
-      <Footer/>
+      <ScrollToTop>
+        <Navigation />
+        <Switch>
+          <Route exact path='/' render={() => (<Home />)} />
+          <Route exact path='/markets' render={() => (<Markets />)} />
+          <Route exact path='/auth' render={() => (<Auth />)} />
+          <Route exact path='/stock/:id' render={(props) => (<StockDetails id={props.match.params.id} />)} />
+          <ProtectedRoute exact path='/dashboard' comp={Dashboard} />
+          <ProtectedRoute exact path='/purchased' comp={PurchasedStocks} />
+          <ProtectedRoute exact path='/purchased/:id' comp={PurchasedStockDetails} />
+          <ProtectedRoute exact path='/transaction/:id' comp={TransactionForm} />
+          <Route render={() => (<NotFound />)} />
+        </Switch>
+        <Footer />
+      </ScrollToTop>
     </div>
   );
 }
