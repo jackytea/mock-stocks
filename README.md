@@ -40,9 +40,36 @@ This project utilizes the [MERN](https://www.mongodb.com/mern-stack) stack and [
 
 Stock data in this project was generated via [Mockaroo](https://www.mockaroo.com/) and is not reflective of real world market prices.
 
+**Design**
+
+Refer to the `Database Architecture` diagram in the [Architecture](#architecture)<br/> section below to see the various data models used in the database. See the [`/backend/models`](https://github.com/JackyTea/Mock-Stocks/tree/main/backend/models) directory for implementation details.
+
+**Stock**
+
+This project uses [JSON](https://www.json.org/json-en.html) to represent stock data in the form of:
+
+```json
+// stock model
+"id": 0,
+"ticker": "String",
+"exchange": "String",
+"name": "String",
+"initialPrice": 0.00,
+"currentPrice": 0.00,
+"description": "String",
+"ipoDate": "String",
+"siteURL": "String",
+"industries": ["String", "String"],
+"icon": "URL",
+"favorited": true,
+"timesBought": 0
+```
+
+The [schema](https://mongoosejs.com/docs/guide.html) of this model can be found [here.](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/models/stock.js)
+
 ## Developing
 
-To run this application locally, you will need the following prerequisite programs: 
+To run this application locally, you will need the following prerequisite programs:
 
 - [Node.JS and NPM](https://nodejs.org/en/)
 - [Create React App](https://github.com/facebook/create-react-app)
@@ -51,9 +78,11 @@ To run this application locally, you will need the following prerequisite progra
 **Back-End Setup**
 
 First, install the necessary packages via:
+
 ```
 npm i
 ```
+
 Refer to the [`package.json`](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/package.json) in the [`/backend`](https://github.com/JackyTea/Mock-Stocks/tree/main/backend) directory for more information about what is being installed.
 
 Then, setup the `.env` file in the root of the [`/backend`](https://github.com/JackyTea/Mock-Stocks/tree/main/backend) directory. (**Note**: this will be gitignored)
@@ -82,6 +111,7 @@ node index.js
 **Front-End Setup**
 
 First, install the necessary packages via:
+
 ```
 npm i
 ```
@@ -102,7 +132,6 @@ REACT_APP_GUEST_PASS=base64_encoded_string
 ```
 
 Now you can spin up the frontend. Default port is `3000` for a [`create-react-app`](https://github.com/facebook/create-react-app) project.
-
 
 ```bash
 # start react app
