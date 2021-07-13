@@ -25,6 +25,7 @@ const Auth = () => {
   }, [dispatch]);
 
   const switchMode = (e) => {
+    setIsLoading(false);
     dispatch({ type: AUTH_ERROR_OCCURRED, payload: "" });
     const inputs = document.forms["auth_form"].getElementsByTagName("input");
     for (let i = 0; i < inputs.length; i++) {
