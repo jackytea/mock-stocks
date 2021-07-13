@@ -101,7 +101,7 @@ REACT_APP_GUEST_EMAIL=base64_encoded_string
 REACT_APP_GUEST_PASS=base64_encoded_string
 ```
 
-Now you can spin up the backend. Default port is `3000` for a [`create-react-app`](https://github.com/facebook/create-react-app) project.
+Now you can spin up the frontend. Default port is `3000` for a [`create-react-app`](https://github.com/facebook/create-react-app) project.
 
 
 ```bash
