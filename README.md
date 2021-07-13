@@ -119,7 +119,7 @@ Big picture view of the application at a glance.
 
 **Database Architecture**
 
-MongoDB database structure using [normalized data models.](https://docs.mongodb.com/manual/core/data-model-design/#normalized-data-models)
+MongoDB database structure following [normalized data models.](https://docs.mongodb.com/manual/core/data-model-design/#normalized-data-models)
 
 ![Database Architecture](./architecture_diagrams/MockStocksDatabase.png "Database Architecture")
 
