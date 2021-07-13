@@ -69,7 +69,7 @@ JWT_SECRET=jwt_secret_here
 GUEST_ID=guest_id_here
 ```
 
-Now you can spin up the backend. Default port is `5000`. This can be changed in [index.js](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/index.js#L54).
+Now you can spin up the backend. Default port is `5000`. This can be changed in [`index.js`](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/index.js#L54).
 
 ```bash
 # start server
