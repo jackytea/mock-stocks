@@ -49,20 +49,24 @@ Refer to the `Database Architecture` diagram in the [Architecture](#architecture
 This project uses [JSON](https://www.json.org/json-en.html) to represent stock data in the form of:
 
 ```json
-// stock model
-"id": 0,
-"ticker": "String",
-"exchange": "String",
-"name": "String",
-"initialPrice": 0.00,
-"currentPrice": 0.00,
-"description": "String",
-"ipoDate": "String",
-"siteURL": "String",
-"industries": ["String", "String"],
-"icon": "URL",
-"favorited": true,
-"timesBought": 0
+// stock object
+[
+  {
+    "id": 0,
+    "ticker": "String",
+    "exchange": "String",
+    "name": "String",
+    "initialPrice": 0.00,
+    "currentPrice": 0.00,
+    "description": "String",
+    "ipoDate": "String",
+    "siteURL": "String",
+    "industries": ["String", "String"],
+    "icon": "URL",
+    "favorited": true,
+    "timesBought": 0
+  }
+]
 ```
 
 The [schema](https://mongoosejs.com/docs/guide.html) of this model can be found [here.](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/models/stock.js)
