@@ -14,7 +14,7 @@ const store = createStore(reducer, compose(applyMiddleware(thunk)));
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <App />
       </BrowserRouter>
     </ThemeProvider>
