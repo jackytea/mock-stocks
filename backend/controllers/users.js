@@ -44,7 +44,12 @@ export const registerUser = async (req, res) => {
     await registerLog.save();
     clearFirstLog(res, createdUser._id);
 
-    res.status(201).json({ result: createdUser, token: token });
+    const userResponse = {
+      name: createdUser.name,
+      coins: createdUser.coins,
+    }
+
+    res.status(201).json({ result: userResponse, token: token });
   } catch (error) {
     res.status(500).json({ message: "An error occurred while registering the user." });
   }
@@ -74,7 +79,12 @@ export const loginUser = async (req, res) => {
     await loginLog.save();
     clearFirstLog(res, existingUser._id);
 
-    res.status(200).json({ result: existingUser, token: token });
+    const userResponse = {
+      name: existingUser.name,
+      coins: existingUser.coins,
+    }
+
+    res.status(200).json({ result: userResponse, token: token });
   } catch (err) {
     res.status(500).json({ message: "An error occurred while registering the user." });
   }
@@ -83,7 +93,13 @@ export const loginUser = async (req, res) => {
 export const getUserInfo = async (req, res) => {
   try {
     const userData = await User.findById(req.userId);
-    res.status(200).json(userData);
+
+    const userResponse = {
+      name: userData.name,
+      coins: userData.coins,
+    }
+
+    res.status(200).json(userResponse);
   } catch (error) {
     res.status(404).json({ message: "An error has occurred fetching the user requested." });
   }
@@ -103,7 +119,14 @@ export const updateUserName = async (req, res) => {
 
     await User.findByIdAndUpdate(req.userId, { name: `${firstName} ${lastName}` });
     const updatedUser = await User.findById(req.userId);
-    res.status(200).json(updatedUser);
+
+
+    const userResponse = {
+      name: updatedUser.name,
+      coins: updatedUser.coins,
+    }
+
+    res.status(200).json(userResponse);
   } catch (error) {
     res.status(404).json({ message: "An error has occurred updating your username." });
   }

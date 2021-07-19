@@ -114,7 +114,7 @@ export const updatePurchasedStock = async (req, res) => {
       userId: req.userId,
       transactionType: "ADJUST",
       tickerBought: stock.ticker,
-      shares: purchased.shares,
+      shares: bought,
       investment: (stock.currentPrice * purchased.shares)
     });
     await transactionLog.save();
