@@ -5,7 +5,7 @@ const router = express.Router();
 
 export const getStocks = async (req, res) => {
   try {
-    const allStocks = await Stock.find();
+    const allStocks = await Stock.find().sort({ id: 1 });
     res.status(200).json(allStocks);
   } catch (error) {
     res.status(404).json({ message: "An error has occurred fetching stocks." });
