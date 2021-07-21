@@ -29,7 +29,7 @@ const ListView = (props) => {
           <thead>
             <tr>
               <th scope="col" className="w-1/12 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-white text-left text-sm uppercase font-normal">
-                #
+                ID
               </th>
               <th onClick={() => { sortByField("name", sortByName); setSortByName((prevSortByName) => !prevSortByName); }} scope="col" className="cursor-pointer hidden md:table-cell w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
                 Name
@@ -53,11 +53,11 @@ const ListView = (props) => {
               <ListViewSkeleton />
               :
               <>
-                {filteredStocks.map((stock, index) => (
+                {filteredStocks.map((stock) => (
                   <tr key={stock._id} className="bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                     <td onClick={() => detailPage(stock._id)} className="px-5 py-5 border-b border-gray-200 dark:border-gray-800  text-sm cursor-pointer">
                       <p className="text-gray-900 dark:text-white whitespace-no-wrap">
-                        {index + 1}
+                        {stock.id}
                       </p>
                     </td>
                     <td onClick={() => detailPage(stock._id)} className="hidden md:table-cell px-5 py-5 border-b border-gray-200 dark:border-gray-800 text-sm cursor-pointer">

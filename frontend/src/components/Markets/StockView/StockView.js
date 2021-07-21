@@ -6,6 +6,7 @@ import { SORT_STOCKS_BY_FIELD, MARKET_ERROR_OCCURRED } from '../../../constants/
 import ListView from "./ListView/ListView";
 import GridView from "./GridView/GridView";
 import TopInfoSection from "./TopInfoSection/TopInfoSection";
+import Pagination from "../../Pagination/Pagination";
 
 const StockView = () => {
   const socket = socketIOClient(process.env.REACT_APP_STOCKS_API, { transports: ['websocket', 'polling', 'flashsocket'] });
@@ -16,6 +17,8 @@ const StockView = () => {
   const [sortByName, setSortByName] = useState(true);
   const [sortByTicker, setSortByTicker] = useState(true);
   const [sortByPrice, setSortByPrice] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [stocksPerPage] = useState(12);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,8 +44,15 @@ const StockView = () => {
   }
 
   const searchStocks = (e) => {
+    setCurrentPage(1);
     setSearchFilter(e.target.value);
   }
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  const indexOfLastPost = currentPage * stocksPerPage;
+  const indexOfFirstPost = indexOfLastPost - stocksPerPage;
+  const currentStocks = filteredStocks?.length ? filteredStocks.slice(indexOfFirstPost, indexOfLastPost) : null;
 
   return (
     <>
@@ -109,7 +119,7 @@ const StockView = () => {
             }
             {isListMode ? (
               <ListView
-                filteredStocks={filteredStocks}
+                filteredStocks={currentStocks}
                 errors={errors}
                 socket={socket}
                 searchStocks={searchStocks}
@@ -124,13 +134,19 @@ const StockView = () => {
               />
             ) : (
               <GridView
-                filteredStocks={filteredStocks}
+                filteredStocks={currentStocks}
                 errors={errors}
                 socket={socket}
                 searchStocks={searchStocks}
                 setIsListMode={setIsListMode}
               />
             )}
+            <Pagination
+              currentPage={currentPage}
+              stocksPerPage={stocksPerPage}
+              totalStocks={filteredStocks?.length ? filteredStocks.length : 0}
+              paginate={paginate}
+            />
           </div>
         </div>
       </div>
