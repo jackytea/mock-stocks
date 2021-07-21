@@ -193,7 +193,7 @@ const TransactionForm = () => {
                     <div className="flex justify-center mt-6 flex-col sm:flex-row">
                       <button onClick={() => switchSellOrBuy(false)} type="submit" className="w-full px-4 py-2 text-white transition-colors duration-200 transform bg-yellow-500 rounded-md dark:bg-yellow-700 hover:bg-yellow-600 dark:hover:bg-yellow-600 focus:outline-none focus:bg-yellow-500 dark:focus:bg-yellow-600">Buy / Sell More</button>
                       <button onClick={() => switchSellOrBuy(true)} className="ml-0 sm:ml-4 mt-2 sm:mt-0 w-full px-4 py-2 text-white transition-colors duration-200 transform bg-red-500 rounded-md dark:bg-red-700 hover:bg-red-600 dark:hover:bg-red-600 focus:outline-none focus:bg-red-500 dark:focus:bg-red-600">Sell All</button>
-                      <Link to={`/stock/${stock._id}`} className="text-center ml-0 sm:ml-4 mt-2 sm:mt-0 w-full px-4 py-2 text-white transition-colors duration-200 transform bg-gray-500 rounded-md dark:bg-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600">Cancel</Link>
+                      <Link to={`/purchased/${stock._id}`} className="text-center ml-0 sm:ml-4 mt-2 sm:mt-0 w-full px-4 py-2 text-white transition-colors duration-200 transform bg-gray-500 rounded-md dark:bg-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600">Cancel</Link>
                     </div>
                   </div>
                 </form>
