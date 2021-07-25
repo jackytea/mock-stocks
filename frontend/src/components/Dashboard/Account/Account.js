@@ -29,7 +29,10 @@ const Account = (props) => {
   const handleSubmitRemoveAccount = (e) => {
     e.preventDefault();
     dispatch({ type: USER_ERROR_OCCURRED, payload: "" });
-    dispatch(removeUserAccount(history));
+    const confirmAccountRemoval = window.confirm("[WARNING] Are you sure you want to remove this account? This action cannot be undone!");
+    if (confirmAccountRemoval) {
+      dispatch(removeUserAccount(history));
+    }
   };
 
   const handleChange = (e) => {
@@ -81,7 +84,7 @@ const Account = (props) => {
             <div className="flex flex-col mt-6">
               <button type="submit" className="w-full px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">Delete Account</button>
               <button disabled className="cursor-not-allowed disabled:opacity-50 mt-2 w-full px-6 py-2 leading-5 text-gray-200 transition-colors duration-200 transform bg-red-900 rounded-md hover:bg-red-900 focus:outline-none focus:bg-red-600">Archive Account</button>
-              
+
               {errors &&
                 <div className="mt-4 flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
                   <div className="flex items-center justify-center w-12 bg-red-500 dark:bg-red-900">
