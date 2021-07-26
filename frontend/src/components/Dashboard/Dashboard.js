@@ -33,7 +33,7 @@ const Dashboard = () => {
           <div className="container pb-8 pt-2 mx-auto">
             <div className="items-center lg:flex">
               <div className="lg:w-1/2">
-                <div className="px-4 py-5 sm:px-6 w-full">
+                <div className="py-5 w-full flex flex-col items-center sm:block">
                   <h3 className="text-xl leading-6 font-medium text-gray-900 dark:text-white">
                     Hi, {user?.result && user.result.name}
                   </h3>
