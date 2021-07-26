@@ -46,6 +46,7 @@ export const registerUser = async (req, res) => {
 
     const userResponse = {
       name: createdUser.name,
+      email: createdUser.email,
       coins: createdUser.coins,
     }
 
@@ -81,6 +82,7 @@ export const loginUser = async (req, res) => {
 
     const userResponse = {
       name: existingUser.name,
+      email: existingUser.email,
       coins: existingUser.coins,
     }
 
@@ -96,6 +98,7 @@ export const getUserInfo = async (req, res) => {
 
     const userResponse = {
       name: userData.name,
+      email: userData.email,
       coins: userData.coins,
     }
 
@@ -123,6 +126,7 @@ export const updateUserName = async (req, res) => {
 
     const userResponse = {
       name: updatedUser.name,
+      email: updatedUser.email,
       coins: updatedUser.coins,
     }
 
