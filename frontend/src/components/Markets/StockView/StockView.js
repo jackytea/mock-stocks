@@ -14,6 +14,7 @@ const StockView = () => {
   const stocks = useSelector((state) => state.stocksReducer);
   const [isListMode, setIsListMode] = useState(true);
   const [searchFilter, setSearchFilter] = useState("");
+  const [sortById, setSortById] = useState(true);
   const [sortByName, setSortByName] = useState(true);
   const [sortByTicker, setSortByTicker] = useState(true);
   const [sortByPrice, setSortByPrice] = useState(true);
@@ -75,7 +76,14 @@ const StockView = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                     </svg>
                   </button>
-
+                  <button
+                    onClick={() => { sortByField("id", sortById); setSortById((prevSortById) => !prevSortById); }} className="ml-4 flex items-center px-2 py-2 font-medium tracking-wide text-black dark:text-gray-200 capitalize transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700">
+                    <div className="text-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                      </svg>
+                    </div>
+                  </button>
                   <button onClick={() => { sortByField("name", sortByName); setSortByName((prevSortByName) => !prevSortByName); }} className="ml-4 flex items-center px-2 py-2 font-medium tracking-wide text-black dark:text-gray-200 capitalize transition-colors duration-200 transform bg-white rounded-md dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-700">
                     <div className="text-center">
                       {sortByName ?
@@ -125,9 +133,11 @@ const StockView = () => {
                 searchStocks={searchStocks}
                 setIsListMode={setIsListMode}
                 sortByField={sortByField}
+                sortById={sortById}
                 sortByName={sortByName}
                 sortByTicker={sortByTicker}
                 sortByPrice={sortByPrice}
+                setSortById={setSortById}
                 setSortByName={setSortByName}
                 setSortByTicker={setSortByTicker}
                 setSortByPrice={setSortByPrice}

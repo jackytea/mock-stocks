@@ -9,9 +9,11 @@ const ListView = (props) => {
     socket, 
     filteredStocks,
     sortByField,
+    sortById,
     sortByName,
     sortByTicker,
     sortByPrice,
+    setSortById,
     setSortByName,
     setSortByTicker,
     setSortByPrice 
@@ -28,7 +30,7 @@ const ListView = (props) => {
         <table className="table-fixed min-w-xl sm:min-w-full leading-normal">
           <thead>
             <tr>
-              <th scope="col" className="w-1/12 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-white text-left text-sm uppercase font-normal">
+              <th onClick={() => { sortByField("id", sortById); setSortById((prevSortById) => !prevSortById); }} scope="col" className="cursor-pointer w-1/12 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-white text-left text-sm uppercase font-normal">
                 ID
               </th>
               <th onClick={() => { sortByField("name", sortByName); setSortByName((prevSortByName) => !prevSortByName); }} scope="col" className="cursor-pointer hidden md:table-cell w-1/5 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
