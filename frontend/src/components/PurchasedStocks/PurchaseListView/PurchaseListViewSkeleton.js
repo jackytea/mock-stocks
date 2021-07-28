@@ -5,22 +5,22 @@ const PurchaseListViewSkeleton = () => {
         <table className="table-fixed min-w-xl sm:min-w-full leading-normal">
           <thead>
             <tr>
-              <th scope="col" className="hidden md:table-cell w-1/12 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-white text-left text-sm uppercase font-normal">
+              <th scope="col" className="hidden md:table-cell w-1/12 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-white text-left text-sm uppercase font-normal">
                 #
               </th>
-              <th scope="col" className="cursor-pointer w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
+              <th scope="col" className="cursor-pointer w-1/5 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
                 Ticker
               </th>
-              <th scope="col" className="hidden md:table-cell cursor-pointer w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+              <th scope="col" className="hidden md:table-cell cursor-pointer w-1/5 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                 Shares
               </th>
-              <th scope="col" className="hidden md:table-cell cursor-pointer w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+              <th scope="col" className="hidden md:table-cell cursor-pointer w-1/5 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                 Investment
               </th>
-              <th scope="col" className="w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+              <th scope="col" className="w-1/6 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                 Gain
               </th>
-              <th scope="col" className="w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+              <th scope="col" className="w-1/6 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
 
               </th>
             </tr>

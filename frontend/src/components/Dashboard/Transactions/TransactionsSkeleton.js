@@ -5,16 +5,16 @@ const TransactionsSkeleton = () => {
         <table className="table-auto leading-normal">
           <thead>
             <tr>
-              <th scope="col" className="w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-xs uppercase font-normal">
+              <th scope="col" className="w-1/6 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-xs uppercase font-normal">
                 Type
               </th>
-              <th scope="col" className=" hidden md:table-cell w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-xs uppercase font-normal">
+              <th scope="col" className=" hidden md:table-cell w-1/6 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-xs uppercase font-normal">
                 Shares
               </th>
-              <th scope="col" className="w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-xs uppercase font-normal">
+              <th scope="col" className="w-1/6 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-xs uppercase font-normal">
                 Ticker
               </th>
-              <th scope="col" className="w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-xs uppercase font-normal">
+              <th scope="col" className="w-1/6 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-xs uppercase font-normal">
                 Date
               </th>
             </tr>

@@ -28,22 +28,22 @@ const ListView = (props) => {
         <table className="table-fixed min-w-xl sm:min-w-full leading-normal">
           <thead>
             <tr>
-              <th scope="col" className="w-1/12 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-white text-left text-sm uppercase font-normal">
+              <th scope="col" className="w-1/12 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-white text-left text-sm uppercase font-normal">
                 ID
               </th>
-              <th onClick={() => { sortByField("name", sortByName); setSortByName((prevSortByName) => !prevSortByName); }} scope="col" className="cursor-pointer hidden md:table-cell w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
+              <th onClick={() => { sortByField("name", sortByName); setSortByName((prevSortByName) => !prevSortByName); }} scope="col" className="cursor-pointer hidden md:table-cell w-1/5 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  dark:text-white text-left text-sm uppercase font-normal">
                 Name
               </th>
-              <th onClick={() => { sortByField("ticker", sortByTicker); setSortByTicker((prevSortByTicker) => !prevSortByTicker); }} scope="col" className="cursor-pointer w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+              <th onClick={() => { sortByField("ticker", sortByTicker); setSortByTicker((prevSortByTicker) => !prevSortByTicker); }} scope="col" className="cursor-pointer w-1/5 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                 Ticker
               </th>
-              <th onClick={() => { sortByField("currentPrice", sortByPrice); setSortByPrice((prevSortByPrice) => !prevSortByPrice); }} scope="col" className="cursor-pointer w-1/5 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+              <th onClick={() => { sortByField("currentPrice", sortByPrice); setSortByPrice((prevSortByPrice) => !prevSortByPrice); }} scope="col" className="cursor-pointer w-1/5 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                 Current Price
               </th>
-              <th scope="col" className="hidden md:table-cell w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+              <th scope="col" className="hidden md:table-cell w-1/6 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
                 Chart
               </th>
-              <th scope="col" className="w-1/6 px-5 py-3 bg-white dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
+              <th scope="col" className="w-1/6 px-5 py-3 bg-gray-50 dark:bg-gray-900  border-b border-gray-200 dark:border-gray-800 text-gray-800  text-left dark:text-white text-sm uppercase font-normal">
 
               </th>
             </tr>

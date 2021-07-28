@@ -42,7 +42,7 @@ const Account = (props) => {
   return (
     <div className="bg-white dark:bg-gray-900 pt-6">
       <div className="container flex flex-col justify-center">
-        <section className="max-w-4xl p-6 mx-auto bg-white dark:bg-gray-900 divide divide-y">
+        <section className="w-full p-6 mx-auto bg-white dark:bg-gray-900 divide divide-y">
           <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-gray-200">Change Name</h2>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
