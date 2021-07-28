@@ -20,6 +20,7 @@ This project utilizes the [MERN](https://www.mongodb.com/mern-stack) stack and [
 
 - [React](https://reactjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
+- [Chart.JS](https://www.chartjs.org/)
 
 **Back-End**
 
