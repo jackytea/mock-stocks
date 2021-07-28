@@ -35,7 +35,7 @@ const Dashboard = () => {
               <div className="lg:w-1/2">
                 <div className="py-5 w-full flex flex-col items-center sm:block">
                   <h3 className="text-xl leading-6 font-medium text-gray-900 dark:text-white">
-                    Hi, {user?.result && user.result.name}
+                    Hi, {user?.result && user.result.name} ({user?.result && user.result.email})
                   </h3>
                   <p className="mt-1 max-w-2xl text-md text-gray-500 dark:text-gray-200">
                     Adjust your preferred settings here.
