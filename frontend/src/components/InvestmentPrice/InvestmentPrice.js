@@ -18,7 +18,7 @@ const InvestmentPrice = (props) => {
 
   const gain = (parseFloat(price * shares).toFixed(2) - parseFloat(initialInvestment).toFixed(2)) > 0;
   const value = parseFloat(shares * price).toFixed(2);
-  const diff = ((parseFloat(price * shares).toFixed(2) - parseFloat(initialInvestment).toFixed(2)) / 100).toFixed(2);
+  const diff = ((parseFloat(price * shares).toFixed(2) - parseFloat(initialInvestment).toFixed(2))).toFixed(2);
 
   return (
     <>
