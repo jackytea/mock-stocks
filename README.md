@@ -70,7 +70,7 @@ This project uses [JSON](https://www.json.org/json-en.html) to represent stock d
 ]
 ```
 
-The [schema](https://mongoosejs.com/docs/guide.html) of this model can be found [here.](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/models/stock.js)
+The [schema](https://mongoosejs.com/docs/guide.html) of this model can be found in [/backend/models/stock.js](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/models/stock.js)
 
 ## Developing
 
@@ -123,7 +123,7 @@ npm i
 
 Refer to the [`package.json`](https://github.com/JackyTea/Mock-Stocks/blob/main/frontend/package.json) in the [`/frontend`](https://github.com/JackyTea/Mock-Stocks/tree/main/frontend) directory for more information about what is being installed.
 
-Then, setup the `.env` file in the root of the [`/frontend`](https://github.com/JackyTea/Mock-Stocks/tree/main/frontend) directory. (**Note**: this will be gitignored) Also see that `REACT_APP_GUEST_EMAIL` and `REACT_APP_GUEST_PASS` take [base64](https://en.wikipedia.org/wiki/Base64) encoded strings. You can easily encode your credentials using this [site](https://www.base64encode.org/) or with the [`btoa()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa) function.
+Then, setup the `.env` file in the root of the [`/frontend`](https://github.com/JackyTea/Mock-Stocks/tree/main/frontend) directory. (**Note**: this will be gitignored) Also see that `REACT_APP_GUEST_EMAIL` and `REACT_APP_GUEST_PASS` take [base64](https://en.wikipedia.org/wiki/Base64) encoded strings. You can easily encode your credentials using this [site](https://www.base64encode.org/) or with the [btoa()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa) function.
 
 ```bash
 # backend connection to REST API
@@ -136,7 +136,7 @@ REACT_APP_GUEST_EMAIL=base64_encoded_string
 REACT_APP_GUEST_PASS=base64_encoded_string
 ```
 
-Now you can spin up the frontend. Default port is `3000` for a [`create-react-app`](https://github.com/facebook/create-react-app) project.
+Now you can spin up the frontend. Default port is `3000` for a [create-react-app](https://github.com/facebook/create-react-app) project.
 
 ```bash
 # start react app
