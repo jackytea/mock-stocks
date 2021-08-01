@@ -70,7 +70,7 @@ This project uses [JSON](https://www.json.org/json-en.html) to represent stock d
 ]
 ```
 
-The [schema](https://mongoosejs.com/docs/guide.html) of this model can be found in [/backend/models/stock.js](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/models/stock.js)
+The [schema](https://mongoosejs.com/docs/guide.html) of this model can be found in [`/backend/models/stock.js`](https://github.com/JackyTea/Mock-Stocks/blob/main/backend/models/stock.js)
 
 ## Developing
 
