@@ -104,7 +104,7 @@ const Navigation = () => {
 											<div className="cursor-pointer mr-4 w-8 h-8 overflow-hidden rounded-full">
 												<img src={DefaultAvatarImage} className="object-cover w-full h-full" alt="avatar" />
 											</div>
-											{String(user?.result.name).split(" ")[0] || String(user?.result.name).split(" ")[1]} &nbsp;&nbsp;&nbsp; 									
+											{String(user?.result.name).split(" ")[0] || String(user?.result.name).split(" ")[1]} &nbsp;&nbsp;&nbsp;          
 											<span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
 												<span aria-hidden="true" className="absolute inset-0 bg-yellow-200 dark:bg-yellow-700 opacity-50 rounded-full">
 												</span>
@@ -144,6 +144,9 @@ const Navigation = () => {
 											<div className="z-50 hidden md:inline-block absolute right-0 w-32 top-12 origin-top-right bg-white dark:bg-gray-900 divide-y divide-gray-100 dark:divide-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 												<Link to="/dashboard" className="text-sm text-center w-full block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-100 text-gray-800 dark:text-gray-200">
 													Profile
+												</Link>
+												<Link to="/purchased" className="text-sm text-center w-full block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-100 text-gray-800 dark:text-gray-200">
+													Investments
 												</Link>
 												<button onClick={() => { setMenuHidden(true); logout(); }} className="text-sm w-full block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-100 text-gray-800 dark:text-gray-200">
 													Logout
