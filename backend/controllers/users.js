@@ -35,7 +35,7 @@ export const registerUser = async (req, res) => {
     const salt = await bcrypt.genSalt(12);
     const passwordHashed = await bcrypt.hash(password, salt);
     const createdUser = await User.create({ email: email, password: passwordHashed, name: `${firstName} ${lastName}`, coins: 100000 });
-    const token = jwt.sign({ email: createdUser.email, id: createdUser._id }, jwtSecret, { expiresIn: "1h" });
+    const token = jwt.sign({ email: createdUser.email, id: createdUser._id }, jwtSecret, { expiresIn: "15m" });
 
     const registerLog = new ActionLog({
       userId: createdUser._id,
@@ -71,7 +71,7 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid login credentials." });
     }
 
-    const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, jwtSecret, { expiresIn: "1h" });
+    const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, jwtSecret, { expiresIn: "15m" });
 
     const loginLog = new ActionLog({
       userId: existingUser._id,
