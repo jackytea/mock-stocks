@@ -32,7 +32,13 @@ const Footer = () => {
           </div>
 
           <div className="mt-6 lg:mt-0 lg:flex-1">
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-3">
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+              <div>
+                <h3 className="text-gray-700 uppercase dark:text-white">Info</h3>
+                <Link to="/guide" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Guide</Link>
+                <Link to="/careers" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Careers</Link>
+              </div>
+
               <div>
                 <h3 className="text-gray-700 uppercase dark:text-white">Stack</h3>
                 <a href="https://www.mongodb.com/mern-stack" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline" target="_blank" rel="noopener noreferrer">MERN</a>
@@ -40,7 +46,7 @@ const Footer = () => {
               </div>
 
               <div>
-                <h3 className="text-gray-700 uppercase dark:text-white">Other Projects</h3>
+                <h3 className="text-gray-700 uppercase dark:text-white">Projects</h3>
                 <a href="https://jackytea.github.io/GH_Gridlock_Pathfinder/" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline" target="_blank" rel="noopener noreferrer">Pathfinder</a>
                 <a href="https://silly-shirley-309cb3.netlify.app/" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline" target="_blank" rel="noopener noreferrer">WebGL FPS</a>
               </div>

@@ -13,6 +13,8 @@ import PurchasedStocks from "./components/PurchasedStocks/PurchasedStocks";
 import TransactionForm from "./components/TransactionForm/TransactionForm";
 import PurchasedStockDetails from "./components/PurchasedStockDetails/PurchasedStockDetails";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Guide from "./components/Guide/Guide";
+import Careers from "./components/Careers/Careers";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
         <Navigation />
         <Switch>
           <Route exact path='/' render={() => (<Home />)} />
+          <Route exact path='/guide' render={() => (<Guide />)} />
+          <Route exact path='/careers' render={() => (<Careers />)} />
           <Route exact path='/markets' render={() => (<Markets />)} />
           <Route exact path='/auth' render={() => (<Auth />)} />
           <Route exact path='/stock/:id' render={(props) => (<StockDetails id={props.match.params.id} />)} />
