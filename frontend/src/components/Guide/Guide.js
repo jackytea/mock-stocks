@@ -22,7 +22,7 @@ const Guide = () => {
       </div>
       <section className="bg-white dark:bg-gray-800">
         <div className="container px-16 sm:px-32 py-16 sm:py-16 mx-auto">
-          <div className="items-center flex flex-col sm:flex-row">
+          <div className="items-center flex flex-col lg:flex-row">
             <div className="lg:w-1/2 dark:bg-gray-900 p-8 rounded-lg shadow">
               <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Step 1: Log Into Mock Stocks</h2>
               <p className="my-4 text-gray-500 dark:text-gray-400 lg:max-w-full">
@@ -44,7 +44,7 @@ const Guide = () => {
       </section>
       <section className="bg-white dark:bg-gray-800">
         <div className="container px-16 sm:px-32 py-16 sm:py-16 mx-auto">
-          <div className="items-center flex flex-col-reverse sm:flex-row">
+          <div className="items-center flex flex-col-reverse lg:flex-row">
             <div className="mt-8 lg:mt-0 lg:w-1/2">
               <div className="flex items-center justify-center lg:justify-start">
                 <div className="max-w-md">
@@ -66,7 +66,7 @@ const Guide = () => {
       </section>
       <section className="bg-white dark:bg-gray-800">
         <div className="container px-16 sm:px-32 py-16 sm:py-16 mx-auto">
-          <div className="items-center flex flex-col sm:flex-row">
+          <div className="items-center flex flex-col lg:flex-row">
             <div className="lg:w-1/2 dark:bg-gray-900 p-8 rounded-lg shadow">
               <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Step 3: Make a Transaction</h2>
               <p className="mt-4 text-gray-500 dark:text-gray-400 lg:max-w-full">
@@ -85,7 +85,7 @@ const Guide = () => {
       </section>
       <section className="bg-white dark:bg-gray-800">
         <div className="container px-16 sm:px-32 py-16 sm:py-16 mx-auto">
-          <div className="items-center flex flex-col-reverse sm:flex-row">
+          <div className="items-center flex flex-col-reverse lg:flex-row">
             <div className="mt-8 lg:mt-0 lg:w-1/2">
               <div className="flex items-center justify-center lg:justify-start">
                 <div className="max-w-md">
