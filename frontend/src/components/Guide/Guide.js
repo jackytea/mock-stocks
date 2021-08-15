@@ -29,7 +29,7 @@ const Guide = () => {
                 Log in to your Mock Stocks account. If you don't have an account, you can create one by clicking the button below.
               </p>
               <Link to="/auth" className="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md dark:bg-blue-800 hover:bg-blue-500 dark:hover:bg-blue-700 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-700">
-                Login or Register Here
+                Login
               </Link>
             </div>
             <div className="mt-8 lg:mt-0 lg:w-1/2">
