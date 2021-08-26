@@ -1,4 +1,4 @@
-# Mock Stocks Trading Platform
+# [Mock Stocks Trading Platform](https://epic-swanson-085a9a.netlify.app/)
 
 ## Overview
 
