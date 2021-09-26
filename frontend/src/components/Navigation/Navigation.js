@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 import ToggleTheme from '../ToggleTheme/ToggleTheme';
@@ -94,10 +94,10 @@ const Navigation = () => {
 
 					<div className={menuHidden ? "flex-1 md:flex md:items-center md:justify-between hidden" : "flex-1 md:flex md:items-center md:justify-between"}>
 						<div className="flex flex-col -mx-4 md:flex-row md:items-center md:mx-8">
-							<Link onClick={() => setMenuHidden(true)} to="/" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Home</Link>
-							<Link onClick={() => setMenuHidden(true)} to="/guide" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Guide</Link>
-							<Link onClick={() => setMenuHidden(true)} to="/markets" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Markets</Link>
-							{user?.result && <Link onClick={() => setMenuHidden(true)} to="/purchased" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Investments</Link>}
+							<NavLink onClick={() => setMenuHidden(true)} exact to="/" activeClassName="bg-gray-200 dark:bg-blue-900 px-2 py-1 mx-2 mt-2 text-sm font-medium transition-colors duration-200 transform rounded-md md:mt-0 hover:bg-gray-400 dark:hover:bg-gray-600" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Home</NavLink>
+							<NavLink onClick={() => setMenuHidden(true)} exact to="/guide" activeClassName="bg-gray-200 dark:bg-blue-900 px-2 py-1 mx-2 mt-2 text-sm font-medium transition-colors duration-200 transform rounded-md md:mt-0 hover:bg-gray-400 dark:hover:bg-gray-600" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Guide</NavLink>
+							<NavLink onClick={() => setMenuHidden(true)} exact to="/markets" activeClassName="bg-gray-200 dark:bg-blue-900 px-2 py-1 mx-2 mt-2 text-sm font-medium transition-colors duration-200 transform rounded-md md:mt-0 hover:bg-gray-400 dark:hover:bg-gray-600" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Markets</NavLink>
+							{user?.result && <NavLink onClick={() => setMenuHidden(true)} exact to="/purchased" activeClassName="bg-gray-200 dark:bg-blue-900 px-2 py-1 mx-2 mt-2 text-sm font-medium transition-colors duration-200 transform rounded-md md:mt-0 hover:bg-gray-400 dark:hover:bg-gray-600" className="px-2 py-1 mx-2 mt-2 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded-md md:mt-0 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700">Investments</NavLink>}
 							{user?.result ?
 								<>
 									<Link onClick={() => setMenuHidden(true)} to="/dashboard">
@@ -105,7 +105,7 @@ const Navigation = () => {
 											<div className="cursor-pointer mr-4 w-8 h-8 overflow-hidden rounded-full">
 												<img src={DefaultAvatarImage} className="object-cover w-full h-full" alt="avatar" />
 											</div>
-											{String(user?.result.name).split(" ")[0] || String(user?.result.name).split(" ")[1]} &nbsp;&nbsp;&nbsp;          
+											{String(user?.result.name).split(" ")[0] || String(user?.result.name).split(" ")[1]} &nbsp;&nbsp;&nbsp;
 											<span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
 												<span aria-hidden="true" className="absolute inset-0 bg-yellow-200 dark:bg-yellow-700 opacity-50 rounded-full">
 												</span>
