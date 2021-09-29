@@ -131,7 +131,7 @@ const PurchasedStockDetails = (props) => {
 								</div>
                 <div className="mt-6 mb-2 text-gray-700 dark:text-gray-200 text-center flex flex-wrap sm:block">
 									<Link to={`/transaction/${stock._id}`} className="w-full px-10 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md dark:bg-blue-700 hover:bg-blue-600 dark:hover:bg-blue-600 focus:outline-none focus:bg-blue-500 dark:focus:bg-blue-600">
-										Buy More Shares
+										Buy / Sell Shares
 									</Link>
 									<Link to={`/stock/${stock._id}`} className="mt-2 sm:mt-0 ml-0 sm:ml-2 w-full px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-400 rounded-md dark:bg-gray-700 hover:bg-gray-500 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600">
 										Stock Details
