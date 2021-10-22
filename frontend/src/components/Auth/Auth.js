@@ -143,9 +143,9 @@ const Auth = () => {
         </div>
 
         <div className="flex items-center justify-center py-4 text-center bg-gray-300 dark:bg-gray-700">
-          <span className="text-sm text-gray-600 dark:text-gray-200">Don't have an account? </span>
+          <span className="text-sm text-gray-600 dark:text-gray-200">{!isSignup ? "Don't have an account?" : "Already have an account?"} </span>
 
-          <button onClick={switchMode} className="mx-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-500">Register</button>
+          <button onClick={switchMode} className="mx-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-500">{!isSignup ? "Register" : "Login"}</button>
         </div>
       </div>
     </div>
