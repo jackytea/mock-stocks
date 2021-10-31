@@ -51,9 +51,9 @@ const StockView = () => {
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  const indexOfLastPost = currentPage * stocksPerPage;
-  const indexOfFirstPost = indexOfLastPost - stocksPerPage;
-  const currentStocks = filteredStocks?.length ? filteredStocks.slice(indexOfFirstPost, indexOfLastPost) : null;
+  const indexOfLastStock = currentPage * stocksPerPage;
+  const indexOfFirstStock = indexOfLastStock - stocksPerPage;
+  const currentStocks = filteredStocks?.length ? filteredStocks.slice(indexOfFirstStock, indexOfLastStock) : null;
 
   return (
     <>
