@@ -71,4 +71,3 @@ export const removeUserAccount = (router) => async (dispatch) => {
     }
   }
 };
-

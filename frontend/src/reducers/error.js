@@ -1,6 +1,6 @@
-
 import { AUTH_ERROR_OCCURRED, MARKET_ERROR_OCCURRED, PURCHASED_ERROR_OCCURRED, USER_ERROR_OCCURRED, TRANSACTION_ERROR_OCCURRED, LOG_ERROR_OCCURRED } from '../constants/actions';
 
+// errors for authentication
 const authErrorsReducer = (state = [], action) => {
   switch (action.type) {
     case AUTH_ERROR_OCCURRED:
@@ -10,6 +10,7 @@ const authErrorsReducer = (state = [], action) => {
   }
 };
 
+// errors for stock market
 const marketErrorsReducer = (state = [], action) => {
   switch (action.type) {
     case MARKET_ERROR_OCCURRED:
@@ -19,6 +20,7 @@ const marketErrorsReducer = (state = [], action) => {
   }
 };
 
+// errors for purchase details
 const purchasedErrorsReducer = (state = [], action) => {
   switch (action.type) {
     case PURCHASED_ERROR_OCCURRED:
@@ -28,7 +30,7 @@ const purchasedErrorsReducer = (state = [], action) => {
   }
 };
 
-
+// errors for updating profile
 const userErrorsReducer = (state = [], action) => {
   switch (action.type) {
     case USER_ERROR_OCCURRED:
@@ -38,6 +40,7 @@ const userErrorsReducer = (state = [], action) => {
   }
 };
 
+// errors for transactions
 const transactionErrorsReducer = (state = [], action) => {
   switch (action.type) {
     case TRANSACTION_ERROR_OCCURRED:
@@ -47,7 +50,7 @@ const transactionErrorsReducer = (state = [], action) => {
   }
 };
 
-
+// errors for action logs
 const logsErrorsReducer = (state = [], action) => {
   switch (action.type) {
     case LOG_ERROR_OCCURRED:
@@ -56,7 +59,5 @@ const logsErrorsReducer = (state = [], action) => {
       return state;
   }
 };
-
-
 
 export { authErrorsReducer, marketErrorsReducer, purchasedErrorsReducer, userErrorsReducer, transactionErrorsReducer, logsErrorsReducer };

@@ -1,5 +1,4 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Markets from "./components/Markets/Markets";
 import Navigation from './components/Navigation/Navigation';
@@ -15,6 +14,7 @@ import PurchasedStockDetails from "./components/PurchasedStockDetails/PurchasedS
 import Dashboard from "./components/Dashboard/Dashboard";
 import Guide from "./components/Guide/Guide";
 import Careers from "./components/Careers/Careers";
+import { Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (

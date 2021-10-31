@@ -1,7 +1,7 @@
 import { fetchTransactions } from '../api/index.js';
 import { GET_ALL_TRANSACTIONS, TRANSACTION_ERROR_OCCURRED } from '../constants/actions';
 
-// GET /stocks
+// GET /transactions
 export const getTransactions = () => async (dispatch) => {
   try {
     const { data } = await fetchTransactions();

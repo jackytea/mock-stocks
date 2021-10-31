@@ -1,5 +1,6 @@
 import { AUTH, DELETE_USER, LOGOUT, USER_INFO, USER_UPDATE_NAME } from '../constants/actions';
 
+// handle user actions
 const authReducer = (state = { authData: null }, action) => {
   switch (action.type) {
     case AUTH:

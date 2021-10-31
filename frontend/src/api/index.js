@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+// axios instance
 const api = axios.create({ baseURL: process.env.REACT_APP_STOCKS_API });
 
+// send jwt token in request if user is logged in
 api.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
     req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;

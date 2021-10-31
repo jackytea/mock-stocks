@@ -1,5 +1,5 @@
-import { GET_ALL_PURCHASED, GET_ONE_PURCHASED, ADD_PURCHASED, UPDATE_PURCHASED, REMOVE_PURCHASED, PURCHASED_ERROR_OCCURRED } from '../constants/actions';
 import { purchasedStocks, purchasedStock, addPurchasedStock, updatePurchasedStock, removePurchasedStock } from '../api/index.js';
+import { GET_ALL_PURCHASED, GET_ONE_PURCHASED, ADD_PURCHASED, UPDATE_PURCHASED, REMOVE_PURCHASED, PURCHASED_ERROR_OCCURRED } from '../constants/actions';
 
 // GET /purchased
 export const getPurchases = () => async (dispatch) => {
@@ -29,7 +29,7 @@ export const getPurchase = (id) => async (dispatch) => {
   }
 };
 
-// POST /purchased/
+// POST /purchased
 export const addPurchase = (formInput, router) => async (dispatch) => {
   try {
     const { data } = await addPurchasedStock(formInput);
