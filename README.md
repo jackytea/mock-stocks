@@ -9,7 +9,9 @@ Mock Stocks is a trading and investment platform simulation built with the [MERN
 - [Tech](#tech)<br/>
 - [Data](#data)<br/>
 - [Developing](#developing)<br/>
-- [Architecture](#architecture)<br/>
+- [Architecture Diagrams](#architecture-diagrams)<br/>
+- [Front-End System Design, Decisions and Improvements To Make](#front-end-system-design-and-decisions)<br/>
+- [Back-End System Design, Decisions and Improvements To Make](#back-end-system-design-and-decisions)<br/>
 - [Demos](#demo-gifs)<br/>
 
 ## Tech
@@ -144,7 +146,7 @@ Now you can spin up the frontend. Default port is `3000` for a [create-react-app
 npm start
 ```
 
-## Architecture
+## Architecture Diagrams
 
 **System Architecture**
 
@@ -157,6 +159,70 @@ Big picture view of the application at a glance.
 MongoDB database structure following [normalized data models.](https://docs.mongodb.com/manual/core/data-model-design/#normalized-data-models)
 
 ![Database Architecture](./architecture_diagrams/MockStocksDatabase.png "Database Architecture")
+
+**Back-End Architecture**
+
+[MVC-like](https://codedec.com/tutorials/workflow-and-folder-structure-for-mern-application/) architecture for manipulating, reading and writing data to the database, returning it as JSON responses to the frontend.
+
+![Back-End Architecture](./architecture_diagrams/MockStocksBackend.png "Back-End Architecture")
+
+**Front-End Architecture**
+
+[Component hierarchy](https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy) of the React application that splits the UI into reusable components to avoid code duplication and increase maintainability.
+
+![Front-End Architecture](./architecture_diagrams/MockStocksFrontend.png "Front-End Architecture")
+
+## Front-End System Design and Decisions
+
+**Technical Decisions**
+
+Todo...
+
+**Maintainability**
+
+Todo...
+
+**Scalability**
+
+Todo...
+
+**Performance**
+
+Todo...
+
+**Security**
+
+Todo...
+
+**Accessibility**
+
+Todo...
+
+**User Experience**
+
+Todo...
+
+## Back-End System Design and Decisions
+
+**Technical Decisions**
+
+Todo...
+
+**Maintainability**
+
+Todo...
+
+**Scalability**
+
+Todo...
+
+**Performance**
+
+Todo...
+
+**Security**
+
+Todo...
 
 ## Demo GIFs
 
