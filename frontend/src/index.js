@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { reducer } from './reducers';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from './components/ThemeContext/ThemeContext';
+import { ThemeProvider } from './contexts/ThemeContext/ThemeContext';
 import { createStore, applyMiddleware, compose } from 'redux';
 import App from './App';
 import './index.css';
