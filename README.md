@@ -384,6 +384,7 @@ No current testing strategy for the backend portion of this application.
 
 *Future Plans To Improve Testing Strategy*
 
+- Implement unit, integration and e2e tests starting from small units and using those tests to build up to critical features.
 
 ## Demo GIFs
 
