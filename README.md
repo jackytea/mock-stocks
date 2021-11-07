@@ -327,23 +327,63 @@ All validations will be made server-side and any validations made on the client-
 
 **Technical Decisions**
 
-Todo...
+*Why Node.JS?*
+
+[Node.JS](https://nodejs.org/en/) allows for JS to be written on the  back-end, enabling rapid development and lower learning curve for developers. It is a flexible, unopinionated environment that supports many libraries for building custom solutions. Its single-threaded event loop architecture eliminates the need for thread management or the management of connections/pools. It’s also resource-efficient, using a fraction of the memory of typical event processing systems and is whyNode.js is used by some of the most high traffic sites on the web, including Twitter, Zillow and Discord. It is also well documented and has a large community backing it for support.
+
+*Why Express.JS*
+
+[Express.JS](https://expressjs.com/) is a fast, unopinionated, minimalist web framework for Node.js, it is widely used and has a good community behind it. It allows for quick development of a web server supporting RESTful methods (GET, POST, PUT, PATCH, DELETE, etc...).
+
+*Why MongoDB?*
+
+[MongoDB](https://www.mongodb.com/) is a widely used NoSQL database that allows for a flexible schema without always having to write schema migrations like in relational databases. It is also performant, highly scalable and supports indexing. For me, MongoDB is easy to setup and deploy, allowing for fast development. Also supports [ACID](https://database.guide/what-is-acid-in-databases/) transactions [unlike other NoSQL databases](https://www.mongodb.com/nosql-explained/nosql-vs-sql).
+
+*Why SocketIO?*
+
+[Socket.IO](https://socket.io/) is a WebSocket library that enables realtime, bi-directional communication between web clients and servers. For the purpose of updating stock prices frequently, a websocket solution is better than constantly polling the server.
 
 **Maintainability**
 
-Todo...
+*MVC-Like Structure*
+
+The MVC-Like structure separates parts of the backend into manageable and maintainable sections. Views (routes), models (Mongo schemas) and controllers that are accessed via the routes.
+
+*Future Plans to Improve Maintainability*
+
+- Enforce a strict linting standard for code style and practices
 
 **Scalability**
 
-Todo...
+*Future Plans to Improve Scalability*
+
+- Horizontal scaling of servers with more [Heroku Dynos](https://www.heroku.com/dynos#:~:text=The%20containers%20used%20at%20Heroku,on%20a%20user%2Dspecified%20command.&text=Dynos%20are%20the%20building%20blocks,app%2C%20from%20simple%20to%20sophisticated.) and using load balancing to distribute network requests.
+
+- Horizontal scaling of database with [sharding](https://docs.mongodb.com/manual/sharding/). Distributing data across multiple machines.
+
+- Vertical scaling not really the best idea as you can only make a machine so powerful to handle load.
 
 **Performance**
 
-Todo...
+*Future Plans To Improve Performance*
+
+- Possibly caching stock data in memory on the server to avoid too many database queries.
+
+- Make use of more [indexes](https://docs.mongodb.com/manual/indexes/) to improve lookup times and avoid collection traversals.
+
 
 **Security**
 
-Todo...
+*JWT and Future Plans to Improve Security*
+
+[JWT](https://jwt.io/) was chosen as the authentication method as they are lightweight and do not take up space on server memory, instead they are stored client side and allows the server to horizontally scale easier as opposed to sessions. Only issue is the security vulnerability against XSS attacks where a malicious client may abuse the token. This is why I enforced a short expiry time, only use server-side validation for requests and am looking into storing the token in an httpOnly cookie as opposed to in localStorage where it can be easily read by malicious javascript injections.
+
+**Testing Strategy**
+
+No current testing strategy for the backend portion of this application.
+
+*Future Plans To Improve Testing Strategy*
+
 
 ## Demo GIFs
 
