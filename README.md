@@ -359,7 +359,7 @@ The MVC-Like structure separates parts of the backend into manageable and mainta
 
 - Horizontal scaling of servers with more [Heroku Dynos](https://www.heroku.com/dynos#:~:text=The%20containers%20used%20at%20Heroku,on%20a%20user%2Dspecified%20command.&text=Dynos%20are%20the%20building%20blocks,app%2C%20from%20simple%20to%20sophisticated.) and using load balancing to distribute network requests.
 
-- Horizontal scaling of database with [sharding](https://docs.mongodb.com/manual/sharding/). Distributing data across multiple machines.
+- Adding redundancy and high availability with [replication](https://docs.mongodb.com/manual/replication/)
 
 - Vertical scaling not really the best idea as you can only make a machine so powerful to handle load.
 
