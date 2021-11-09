@@ -242,6 +242,7 @@ Components have a descriptive name about their role in the UI. (e.g. `StockCard`
 
 - Further componentization of UI modules
 - Linting via [ESLint](https://eslint.org/) to enforce strict coding style and standards such as the [AirBnB style guide](https://github.com/airbnb/javascript/tree/master/react). (This will also help with open-sourcing as contributors will have to follow a standard.)
+- Migration to [TypeScript](https://www.typescriptlang.org/) for type-safety, self-documentation and improved intellisense. TS makes it easy for the project to scale by catching errors before run time and enforcing stricter coding.
 
 **Scalability**
 
