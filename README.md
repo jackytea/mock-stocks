@@ -10,8 +10,8 @@ Mock Stocks is a trading and investment platform simulation built with the [MERN
 - [Data](#data)<br/>
 - [Developing](#developing)<br/>
 - [Architecture](#architecture)<br/>
-- [Front-End System Design](#front-end-system-design)<br/>
-- [Back-End System Design](#back-end-system-design)<br/>
+- [Front-End Insights](#front-end-insights)<br/>
+- [Back-End Insights](#back-end-insights)<br/>
 - [Demos](#demo-gifs)<br/>
 
 ## Tech
@@ -53,7 +53,6 @@ Refer to the `Database Architecture` diagram in the [Architecture](#architecture
 This project uses [JSON](https://www.json.org/json-en.html) to represent stock data in the form of:
 
 ```json
-// stock object
 [
   {
     "id": 0,
@@ -174,7 +173,7 @@ MongoDB database structure following [normalized data models.](https://docs.mong
 
 ![Front-End Architecture](./architecture_diagrams/MockStocksFrontend.png "Front-End Architecture")
 
-## Front-End System Design
+## Front-End Insights
 
 **Technical Decisions**
 
@@ -324,7 +323,7 @@ All validations will be made server-side and any validations made on the client-
 
 - Implement [i18next](https://react.i18next.com/) for  internationalization. (Supporting various languages for non-English speakers).
 
-## Back-End System Design
+## Back-End Insights
 
 **Technical Decisions**
 
